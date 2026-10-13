@@ -1,0 +1,92 @@
+{
+  "schema": "industrial_hardware_candidates_v1",
+  "checked_on": "2026-10-14",
+  "procurement_performed": false,
+  "price_and_G1_installation_not_verified": true,
+  "candidates": [
+    {
+      "id": "unitree_dex1",
+      "role": "simple_grasping",
+      "official_url": "https://www.unitree.com/Dex1-1/",
+      "qualification_questions": [
+        "G1 compatibility",
+        "fingertip/part size",
+        "grasp state feedback",
+        "mount/payload",
+        "controller and data protocol"
+      ]
+    },
+    {
+      "id": "unitree_dex3",
+      "role": "dexterous_grasping",
+      "official_url": "https://www.unitree.com/Dex3-1/",
+      "qualification_questions": [
+        "actual joint names/units",
+        "tactile/force data access",
+        "holding-tool stability",
+        "hand SDK",
+        "weight/maintenance"
+      ]
+    },
+    {
+      "id": "unitree_dex5",
+      "role": "hand_tool_research",
+      "official_url": "https://www.unitree.com/Dex5-1/",
+      "qualification_questions": [
+        "finger/action server coverage",
+        "retargeting",
+        "contact observability",
+        "tool reaction torque",
+        "lifecycle/support"
+      ]
+    },
+    {
+      "id": "industrial_gripper",
+      "role": "fixed_robot_baseline",
+      "official_url": "https://robotiq.com/products/adaptive-grippers",
+      "qualification_questions": [
+        "not assumed plug-and-play G1",
+        "mount/weight",
+        "communication",
+        "cycle durability",
+        "position/force/object feedback"
+      ]
+    },
+    {
+      "id": "wrist_ft",
+      "role": "contact_measurement",
+      "official_url": "https://ati-ia.com/products/ft/sensors.aspx",
+      "qualification_questions": [
+        "range/resolution/overload",
+        "calibration/zero/gravity compensation",
+        "wrench frame",
+        "timestamp/latency",
+        "mount/weight"
+      ]
+    },
+    {
+      "id": "tightening_tool",
+      "role": "process_quality",
+      "official_url": "https://www.atlascopco.com/content/dam/atlas-copco/industrial-technique/general/documents/brochures-leaflets/electric-assembly-tools-and-systems/Smart%20Tightening%20Strategies%20Leaflet.pdf",
+      "qualification_questions": [
+        "process owner torque/angle range",
+        "reaction torque",
+        "cycle/program ID and OK/NOK",
+        "curve export/timestamps",
+        "mount/power/feeding"
+      ]
+    },
+    {
+      "id": "diy_actuator",
+      "role": "learning_robot",
+      "official_url": "https://emanual.robotis.com/docs/en/dxl/x/",
+      "qualification_questions": [
+        "load/torque/thermal/backlash",
+        "encoder zero/feedback",
+        "control mode/bus",
+        "mechanics/URDF/inertia",
+        "not an industrial assembly qualification"
+      ]
+    }
+  ]
+}

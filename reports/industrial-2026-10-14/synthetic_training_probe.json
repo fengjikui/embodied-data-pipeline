@@ -1,0 +1,72 @@
+{
+  "device": "cpu",
+  "machine": "arm64",
+  "pipeline_code_sha256": "5d09fdb7b0922356f774f70961a26e024e548a3e9ce9f22ae226087d80d0c10e",
+  "platform": "macOS-15.7.4-arm64-arm-64bit",
+  "purpose": "Validate RGB, time-filtered language, state, masked action chunks, gradients and checkpoint I/O. NOT pretrained VLA fine-tuning or robot capability evaluation.",
+  "python": "3.12.13",
+  "release_id": "051742e14498ee2d094bf7cd",
+  "results": [
+    {
+      "checkpoint_file": "g1_edu_synthetic.pt",
+      "checkpoint_reload_max_abs_error": 0.0,
+      "checkpoint_sha256": "af5aee7db855ef558766fcd5a65ae4de66a35443c6d69e71c090da7a25e1bf1a",
+      "curve": [
+        {
+          "batch_masked_mse": 1.0379340648651123,
+          "step": 1
+        },
+        {
+          "batch_masked_mse": 0.7710439562797546,
+          "step": 11
+        },
+        {
+          "batch_masked_mse": 0.19244655966758728,
+          "step": 20
+        }
+      ],
+      "final_train_masked_mse": 0.16033445298671722,
+      "finite_gradients": true,
+      "initial_train_masked_mse": 1.111395239830017,
+      "input_shapes": {
+        "image": [
+          28,
+          3,
+          64,
+          64
+        ],
+        "mask": [
+          28,
+          8,
+          2
+        ],
+        "state": [
+          28,
+          2
+        ],
+        "target": [
+          28,
+          8,
+          2
+        ],
+        "tokens": [
+          28,
+          192
+        ]
+      },
+      "model": "TinyMultimodalBC_random_init",
+      "optimizer_state_restored": true,
+      "parameters": 10800,
+      "source_id": "g1_edu_synthetic",
+      "train_samples": 28,
+      "validation_masked_mse": 0.7656237483024597,
+      "validation_samples": 4,
+      "wall_seconds": 0.204
+    }
+  ],
+  "seed": 7,
+  "steps_per_source": 20,
+  "threads": 1,
+  "torch": "2.14.0",
+  "training_code_sha256": "25cccfb3f444277e517a2d0a05f8458c3a1d0cf1995d348cd402241179c3ddc9"
+}

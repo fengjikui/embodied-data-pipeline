@@ -1,0 +1,26 @@
+{
+  "checked_on": "2026-10-14",
+  "html_sha256": "49d4ad6f476b7c12a45660ca2736e7ce05b1a3ab35ba59dfca2295c81ab325a3",
+  "qa_script_sha256": "34388b0e72ec720e27ec4b744e14a72c1006ac634a2bd1c85596755734ce28bb",
+  "browser": "155.0.8059.40",
+  "desktop": [
+    1440,
+    1100
+  ],
+  "mobile": [
+    390,
+    844
+  ],
+  "checks": {
+    "mode_buttons": true,
+    "scenario_switching": true,
+    "anchor_targets": true,
+    "print_state_restore": true,
+    "mobile_overview_and_detail_no_document_overflow": true,
+    "no_remote_assets_or_js_errors": true
+  },
+  "errors": [],
+  "remoteRequests": [],
+  "screenshot_directory": "/Users/fengjikui/Documents/dev-coding/codex_build/vla_data_pipeline/.build/industrial-report-qa-final",
+  "scope": "Offline HTML interactions and layout; not model or robot capability validation"
+}

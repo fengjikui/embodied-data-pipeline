@@ -1,0 +1,9 @@
+{
+  "tests": 52,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "checked_on": "2026-10-14",
+  "command": "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python -m pytest -q --junitxml=.build/industrial-tests.xml",
+  "scope": "Core data contract/integration tests only; optional SDK and Torch teaching recorded separately"
+}

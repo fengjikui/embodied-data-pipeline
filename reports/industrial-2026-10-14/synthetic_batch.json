@@ -1,0 +1,38 @@
+{
+  "fields": {
+    "action_mask": {
+      "dtype": "bool",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "actions": {
+      "dtype": "float32",
+      "shape": [
+        8,
+        2
+      ]
+    },
+    "anchor_index": 0,
+    "image": {
+      "dtype": "float32",
+      "shape": [
+        3,
+        64,
+        64
+      ]
+    },
+    "language": "合成教学：将方块移动到标记处",
+    "state": {
+      "dtype": "float32",
+      "shape": [
+        2
+      ]
+    },
+    "timestamp": 0.0
+  },
+  "release_id": "051742e14498ee2d094bf7cd",
+  "train_samples": 28,
+  "validation_samples": 4
+}

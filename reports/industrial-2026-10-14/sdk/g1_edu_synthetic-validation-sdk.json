@@ -1,0 +1,107 @@
+{
+  "all_frame_action_labels_checked": true,
+  "camera": "observation.images.main",
+  "canonical_label_roundtrip_max_abs_error": 5.7220459037665705e-08,
+  "codebase_version": "v3.0",
+  "deployment_ready": false,
+  "encoder_threads": 1,
+  "episodes": [
+    {
+      "export_episode_index": 0,
+      "frames": 24,
+      "origin_group": "g1-synthetic:session-0",
+      "semantics_status": "unknown",
+      "source_episode_id": "xr_11f449fcb422e301",
+      "split": "validation",
+      "success": null
+    }
+  ],
+  "export_output_sha256": {
+    "data/chunk-000/file-000.parquet": "df62ee5d70d7c332eca05d69eb84fd14913d8d99882a29ad79dd1e94a5a04922",
+    "meta/episodes/chunk-000/file-000.parquet": "f93ffc0ecf96ac5b756d4946275f17785008b7a37d4ae643613978c66f637efb",
+    "meta/info.json": "79f2c98e9cd5c24ea7a0838284c2be5ae9e7f820ca0b6a8d8e72d2c8eebff65b",
+    "meta/stats.json": "50afa185066147fdf3ce93696924530acedd186e13ba3c9e28829f6ec2afe055",
+    "meta/tasks.parquet": "d6c1d8db2f2c7366cb7e6c8a63608cb2c340d0b6d4d98412ecca0b23d76fbbef",
+    "pipeline_export_receipt.json": "5ed997af73560f6de415bd8ca8fa88156c7aabf41d54c5c621b130b944094381",
+    "pipeline_recipe.json": "50ac95b25db7baf799e9e490c30de01f65499e02d1500b2b486b3b9cdb6da3c3",
+    "pipeline_source_lock.json": "dc36df20a5a91148598c3dc4aa77e918887321c8ee53a779ad0f076e89ed28f4",
+    "pipeline_statistics.json": "a063ae77a3965674c4d75a2e934b23de3aa599815d3d43f9e3d6864e328a9007",
+    "videos/observation.images.main/chunk-000/file-000.mp4": "fa7c821081dad73353ebb60fb0728f010d4abe10ec38a7fbab7a02948bb1cc39"
+  },
+  "frames": 24,
+  "image_shape": [
+    64,
+    64,
+    3
+  ],
+  "limitations": [
+    "one camera",
+    "no depth/force/IMU in this export",
+    "no physical timing verification",
+    "no robot capability evaluation",
+    "partial export directory is invalid unless this receipt exists"
+  ],
+  "normalization": "native_unnormalized_sdk_owns_statistics",
+  "official_action_chunk_horizon": 8,
+  "official_batch_shapes": {
+    "action": [
+      2,
+      8,
+      2
+    ],
+    "action_is_pad": [
+      2,
+      8
+    ],
+    "episode_index": [
+      2
+    ],
+    "frame_index": [
+      2
+    ],
+    "index": [
+      2
+    ],
+    "observation.images.main": [
+      2,
+      3,
+      64,
+      64
+    ],
+    "observation.state": [
+      2,
+      2
+    ],
+    "task_index": [
+      2
+    ],
+    "timestamp": [
+      2
+    ]
+  },
+  "official_episode_boundary_padding_checked": [
+    {
+      "episode_index": 0,
+      "last_frame_pad_mask": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "length": 24,
+      "start": 0
+    }
+  ],
+  "official_reader_first_last_checked": true,
+  "release_id": "051742e14498ee2d094bf7cd",
+  "schema": "lerobot_export_receipt_v1",
+  "sdk_commit": "ca69a2068462a37f7cdcb74180927a2f863d2bf7",
+  "sdk_version": "0.6.2",
+  "source_id": "g1_edu_synthetic",
+  "split": "validation",
+  "video_codec": "h264"
+}

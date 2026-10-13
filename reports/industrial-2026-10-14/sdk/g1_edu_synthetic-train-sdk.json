@@ -1,0 +1,251 @@
+{
+  "all_frame_action_labels_checked": true,
+  "camera": "observation.images.main",
+  "canonical_label_roundtrip_max_abs_error": 5.7220459037665705e-08,
+  "codebase_version": "v3.0",
+  "deployment_ready": false,
+  "encoder_threads": 1,
+  "episodes": [
+    {
+      "export_episode_index": 0,
+      "frames": 24,
+      "origin_group": "g1-synthetic:session-1",
+      "semantics_status": "unknown",
+      "source_episode_id": "xr_152d69335b98ac47",
+      "split": "train",
+      "success": null
+    },
+    {
+      "export_episode_index": 1,
+      "frames": 24,
+      "origin_group": "g1-synthetic:session-2",
+      "semantics_status": "unknown",
+      "source_episode_id": "xr_bac80c7a05b7b72e",
+      "split": "train",
+      "success": null
+    },
+    {
+      "export_episode_index": 2,
+      "frames": 24,
+      "origin_group": "g1-synthetic:session-3",
+      "semantics_status": "unknown",
+      "source_episode_id": "xr_f41460a5599189be",
+      "split": "train",
+      "success": null
+    },
+    {
+      "export_episode_index": 3,
+      "frames": 24,
+      "origin_group": "g1-synthetic:session-4",
+      "semantics_status": "unknown",
+      "source_episode_id": "xr_21e197f3d48b0ca4",
+      "split": "train",
+      "success": null
+    },
+    {
+      "export_episode_index": 4,
+      "frames": 24,
+      "origin_group": "g1-synthetic:session-5",
+      "semantics_status": "unknown",
+      "source_episode_id": "xr_425a6fc52774847a",
+      "split": "train",
+      "success": null
+    },
+    {
+      "export_episode_index": 5,
+      "frames": 24,
+      "origin_group": "g1-synthetic:session-6",
+      "semantics_status": "unknown",
+      "source_episode_id": "xr_d54ac83a46c1d634",
+      "split": "train",
+      "success": null
+    },
+    {
+      "export_episode_index": 6,
+      "frames": 24,
+      "origin_group": "g1-synthetic:session-7",
+      "semantics_status": "unknown",
+      "source_episode_id": "xr_70186cc97d3b7f38",
+      "split": "train",
+      "success": null
+    }
+  ],
+  "export_output_sha256": {
+    "data/chunk-000/file-000.parquet": "49466a40e09ffa313bc15e0c59cf778a5d5f82655041ad313351fd22da158ac6",
+    "meta/episodes/chunk-000/file-000.parquet": "7a682bd560671d0ad8cc7d0718688bc7b19ef90c93050f90f7cdb1fcbe3904ed",
+    "meta/info.json": "17f6a85b20dabc7817742850f869f9bd48080982c8e07d7b6cd1ede78e34ca80",
+    "meta/stats.json": "5f0246cae2d0d9101d85da7f25448aa9014da2d1929f4bac0005a643b8b3088e",
+    "meta/tasks.parquet": "d6c1d8db2f2c7366cb7e6c8a63608cb2c340d0b6d4d98412ecca0b23d76fbbef",
+    "pipeline_export_receipt.json": "2eee435a097113b388051da8c06e69608f40df38041658554cd5bcfe7c90c346",
+    "pipeline_recipe.json": "50ac95b25db7baf799e9e490c30de01f65499e02d1500b2b486b3b9cdb6da3c3",
+    "pipeline_source_lock.json": "dc36df20a5a91148598c3dc4aa77e918887321c8ee53a779ad0f076e89ed28f4",
+    "pipeline_statistics.json": "a063ae77a3965674c4d75a2e934b23de3aa599815d3d43f9e3d6864e328a9007",
+    "videos/observation.images.main/chunk-000/file-000.mp4": "2ae2af624eedec49fd9ba53042519aacb8c80de0122e21e8a4d3067d39dae2ec"
+  },
+  "frames": 168,
+  "image_shape": [
+    64,
+    64,
+    3
+  ],
+  "limitations": [
+    "one camera",
+    "no depth/force/IMU in this export",
+    "no physical timing verification",
+    "no robot capability evaluation",
+    "partial export directory is invalid unless this receipt exists"
+  ],
+  "normalization": "native_unnormalized_sdk_owns_statistics",
+  "official_action_chunk_horizon": 8,
+  "official_batch_shapes": {
+    "action": [
+      2,
+      8,
+      2
+    ],
+    "action_is_pad": [
+      2,
+      8
+    ],
+    "episode_index": [
+      2
+    ],
+    "frame_index": [
+      2
+    ],
+    "index": [
+      2
+    ],
+    "observation.images.main": [
+      2,
+      3,
+      64,
+      64
+    ],
+    "observation.state": [
+      2,
+      2
+    ],
+    "task_index": [
+      2
+    ],
+    "timestamp": [
+      2
+    ]
+  },
+  "official_episode_boundary_padding_checked": [
+    {
+      "episode_index": 0,
+      "last_frame_pad_mask": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "length": 24,
+      "start": 0
+    },
+    {
+      "episode_index": 1,
+      "last_frame_pad_mask": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "length": 24,
+      "start": 24
+    },
+    {
+      "episode_index": 2,
+      "last_frame_pad_mask": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "length": 24,
+      "start": 48
+    },
+    {
+      "episode_index": 3,
+      "last_frame_pad_mask": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "length": 24,
+      "start": 72
+    },
+    {
+      "episode_index": 4,
+      "last_frame_pad_mask": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "length": 24,
+      "start": 96
+    },
+    {
+      "episode_index": 5,
+      "last_frame_pad_mask": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "length": 24,
+      "start": 120
+    },
+    {
+      "episode_index": 6,
+      "last_frame_pad_mask": [
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "length": 24,
+      "start": 144
+    }
+  ],
+  "official_reader_first_last_checked": true,
+  "release_id": "051742e14498ee2d094bf7cd",
+  "schema": "lerobot_export_receipt_v1",
+  "sdk_commit": "ca69a2068462a37f7cdcb74180927a2f863d2bf7",
+  "sdk_version": "0.6.2",
+  "source_id": "g1_edu_synthetic",
+  "split": "train",
+  "video_codec": "h264"
+}

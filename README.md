@@ -6,6 +6,19 @@
 
 当前已交付**系统调研、可运行的数据 Pipeline 原型、真实样本工程验收、CPU 训练接口验证及主管汇报包**。机械臂与人形同等展开。训练探针是随机初始化的小型多模态行为克隆网络；完整预训练 VLA 微调、机器人执行和工厂能力仍待后续验证。
 
+## 工业任务、模型与全流程（2026-10-14）
+
+新增以 **G1 EDU 双手螺丝装配** 贯穿的报告和命令实操。采购手型、传感器和工艺参数尚未确定；报告比较候选方案，并明确数据、模型和控制器的接口。
+
+- [离线展示报告](deliverables/industrial-report.html)：下载后独立打开，支持汇报概览、技术详读、场景切换和打印。
+- [完整业务流程](docs/17-industrial-screw-workflow.md) / [模型结构、标签、损失与推理](docs/18-models-objectives-inference.md)。
+- [四项能力与全身协同](docs/19-whole-body-coordination.md) / [工业管线架构与验收差距](docs/20-industrial-pipeline-roadmap.md)。
+- [厂商、数据与采购候选](docs/21-ecosystem-data-hardware.md) / [逐条命令学习](docs/22-command-learning-lab.md) / [主管讲稿与问答](docs/23-supervisor-script.md)。
+- [模型路线索引](catalog/industrial_training_routes.json) / [硬件候选索引](catalog/industrial_hardware_candidates.json) / [本次源码核查](evidence/industrial-upstreams-2026-10-14.json) / [数据元信息核查](evidence/industrial-datasets-2026-10-14.json)。
+- [日期化验收记录](reports/industrial-2026-10-14/acceptance.md)：实际执行的 BC、官方 LeRobot ACT、PPO 教学、离线推理与时间对齐。
+
+工业级生产系统仍需公司对象存储/目录、权限、重试/并发、恢复及真实工位验收。目前实际训练和推理演示使用合成/虚构教学数据，不代表 G1 的装配、行走或产线能力。
+
 ## G1 EDU 数据工程（2026-10-08）
 
 采购对象已明确为 **G1 EDU**，具体自由度、手型和控制配置待确认。基础管线现已在 Ubuntu 24.04 和 Windows **各通过 40 项测试、CLI 与 wheel 构建**（[CI](https://github.com/fengjikui/vla_data_pipeline/actions/runs/37755702032)）。新增了 XR JSON/图片接入、完整原始快照与哈希、不可改写本地批次、明确 recipe、训练窗口 Dataset，以及固定官方 SDK 的可选 LeRobot 导出桥。
@@ -18,7 +31,7 @@
 
 本次的 XR 教学数据是 2 个虚构通道，**不是真实 G1 数据**。原有公开样本只验证数据与训练接口；自由行走、负载搬运及真机控制仍待专项实验。下方 PPT/离线报告保留其 2026-09-12 版本，新的工程证据单独归档。
 
-## 周一汇报入口
+## 原预研汇报入口（2026-09-12 快照）
 
 - [主管汇报摘要](docs/06-supervisor-brief.md)：先读这份，掌握结论、成果与需要协调的事项。
 - [汇报 PPTX](deliverables/VLA数据预研与管线验证-主管汇报.pptx) / [备用 PDF](deliverables/VLA数据预研与管线验证-主管汇报.pdf)。
@@ -60,7 +73,7 @@ uv run --frozen --extra train python -m vla_pipeline.training
 
 工程检查通过不等于动作语义已完整确认，当前输出视图仅为 `interface_smoke`。[验收原始结果](reports/acceptance.json)、[训练结果](reports/training_probe.json)、[完整实施计划](plans/2026-09-14-delivery.md)。
 
-Ubuntu 24.04 与 Windows 已分别通过 21 项契约／集成测试、CLI 检查与 wheel 构建。[CI 实际运行记录](https://github.com/fengjikui/vla_data_pipeline/actions/runs/34678405092)。这不涵盖 GPU、机器人 SDK 或公司内网。
+2026-09-12 的 Ubuntu 24.04 与 Windows 已分别通过 21 项契约／集成测试、CLI 检查与 wheel 构建。[当时的 CI 实际运行记录](https://github.com/fengjikui/vla_data_pipeline/actions/runs/34678405092)。较新的 G1 与工业流程证据见上方日期化章节；核心 CI 不涵盖 GPU、机器人 SDK 或公司内网。
 
 ## 阅读顺序
 

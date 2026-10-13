@@ -1,0 +1,23 @@
+{
+  "blockers": [
+    "robot_configuration missing",
+    "session_id missing",
+    "clock_id missing",
+    "controller_id missing",
+    "measured capture time and clock validation required",
+    "state_channels missing",
+    "action_channels missing",
+    "evidence missing: hardware",
+    "evidence missing: calibration",
+    "evidence missing: clock_validation",
+    "evidence missing: controller",
+    "evidence missing: data_rights",
+    "evidence missing: task_acceptance"
+  ],
+  "document_checks_passed": false,
+  "evidence_hashes_verified": {},
+  "human_review_required": true,
+  "robot_deployment_authorized": false,
+  "schema": "industrial_intake_audit_v1",
+  "scope": "Checks declared fields and file hashes only; cannot verify physical calibration, data rights, controller safety or industrial capability."
+}

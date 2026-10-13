@@ -1,0 +1,116 @@
+{
+  "accelerate_version": "1.15.0",
+  "checked_on": "2026-10-14",
+  "checkpoint_files_sha256": {
+    "config.json": "28a4da372a82e43a306840107a5069125d6aa7a14e3903a645d2daa2ac0146b9",
+    "model.safetensors": "3a64062398a785efd99e46a40ead1b873cf2f391acc530de554a96bb6802cc93",
+    "policy_postprocessor.json": "9ca3b5a1986e8b6d4f41238446eb7b3637776853102ae7f9e8ba29700e6a2e66",
+    "policy_preprocessor.json": "1f3ad5a39a5814837c35bb6466a7dd61856c8d32450c29c2ce20d79b2c4fdc6c",
+    "train_config.json": "d239e0350792469948b48ee8dc4343ffa1866b4e6f3babded3a0fd1a518d516c"
+  },
+  "commands": [
+    "-m",
+    "lerobot.scripts.lerobot_train",
+    "--dataset.repo_id=local/g1_edu_synthetic-train",
+    "--dataset.root=/Users/fengjikui/Documents/dev-coding/codex_build/vla_data_pipeline/data/industrial-sdk-2026-10-14/train",
+    "--dataset.video_backend=pyav",
+    "--policy.type=act",
+    "--policy.device=cpu",
+    "--policy.push_to_hub=false",
+    "--policy.pretrained_backbone_weights=null",
+    "--policy.chunk_size=8",
+    "--policy.n_action_steps=8",
+    "--policy.dim_model=64",
+    "--policy.n_heads=4",
+    "--policy.dim_feedforward=128",
+    "--policy.n_encoder_layers=1",
+    "--policy.n_decoder_layers=1",
+    "--policy.n_vae_encoder_layers=1",
+    "--policy.latent_dim=8",
+    "--batch_size=2",
+    "--num_workers=0",
+    "--steps=5",
+    "--save_freq=5",
+    "--log_freq=1",
+    "--env_eval_freq=0",
+    "--eval_steps=0",
+    "--wandb.enable=false",
+    "--output_dir=/Users/fengjikui/Documents/dev-coding/codex_build/vla_data_pipeline/data/industrial-act-accepted-2026-10-14"
+  ],
+  "dataset_episodes": 7,
+  "dataset_frames": 168,
+  "dataset_info_sha256": "17f6a85b20dabc7817742850f869f9bd48080982c8e07d7b6cd1ede78e34ca80",
+  "device": "cpu",
+  "losses": [
+    {
+      "kl": 3.073,
+      "l1": 1.107,
+      "step": 1,
+      "total": 31.839
+    },
+    {
+      "kl": 2.882,
+      "l1": 1.079,
+      "step": 2,
+      "total": 29.903
+    },
+    {
+      "kl": 2.685,
+      "l1": 0.845,
+      "step": 3,
+      "total": 27.696
+    },
+    {
+      "kl": 2.925,
+      "l1": 1.086,
+      "step": 4,
+      "total": 30.333
+    },
+    {
+      "kl": 2.664,
+      "l1": 1.1,
+      "step": 5,
+      "total": 27.738
+    }
+  ],
+  "pretrained_weights_downloaded": false,
+  "purpose": "Run five official ACT updates, pinned SDK, synthetic export, CPU, no downloads.",
+  "resource_snapshots": [
+    {
+      "phase": "before",
+      "snapshot": {
+        "load_average": [
+          5.08349609375,
+          3.60888671875,
+          3.0810546875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 9340 \nPages purgeable: 9328 \nPages purged: 844634 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1425036 \nPages inactive: 1415539 \nPages speculative: 6730 \nPages throttled: 0 \nPages wired down: 1213669 \n\nCompressor Stats:\nPages used by compressor: 70491 \nPages decompressed: 486066 \nPages compressed: 697077 \n\nFile I/O:\nPageins: 17198633 \nPageouts: 990254 \n\nSystem-wide memory free percentage: 68%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    },
+    {
+      "phase": "after",
+      "snapshot": {
+        "load_average": [
+          5.07666015625,
+          3.6318359375,
+          3.09228515625
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 47135 \nPages purgeable: 6636 \nPages purged: 846650 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1390988 \nPages inactive: 1387032 \nPages speculative: 1874 \nPages throttled: 0 \nPages wired down: 1215152 \n\nCompressor Stats:\nPages used by compressor: 98751 \nPages decompressed: 486149 \nPages compressed: 752259 \n\nFile I/O:\nPageins: 17202512 \nPageouts: 990261 \n\nSystem-wide memory free percentage: 68%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    }
+  ],
+  "robot_command_sent": false,
+  "sdk_commit": "ca69a2068462a37f7cdcb74180927a2f863d2bf7",
+  "sdk_version": "0.6.2",
+  "steps": 5,
+  "threads_env": 1,
+  "trainer_log_sha256": "c4799ecc21a503045c1dca157bdbff40280a6a1f6a497e3a503357804dbc6c0e"
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "phase": "before",
+    "snapshot": {
+      "load_average": [
+        3.25048828125,
+        2.91748046875,
+        2.8017578125
+      ],
+      "logical_cpu_count": 24,
+      "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 51966 \nPages purgeable: 21918 \nPages purged: 828702 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1412288 \nPages inactive: 1389460 \nPages speculative: 21349 \nPages throttled: 0 \nPages wired down: 1219124 \n\nCompressor Stats:\nPages used by compressor: 46672 \nPages decompressed: 486034 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17177213 \nPageouts: 989902 \n\nSystem-wide memory free percentage: 69%",
+      "platform": "Darwin",
+      "temperature": null,
+      "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+    }
+  },
+  {
+    "phase": "before_cpu_probe",
+    "snapshot": {
+      "load_average": [
+        3.25048828125,
+        2.91748046875,
+        2.8017578125
+      ],
+      "logical_cpu_count": 24,
+      "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 47357 \nPages purgeable: 20731 \nPages purged: 828702 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1413661 \nPages inactive: 1390043 \nPages speculative: 21358 \nPages throttled: 0 \nPages wired down: 1221685 \n\nCompressor Stats:\nPages used by compressor: 46672 \nPages decompressed: 486034 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17177406 \nPageouts: 989902 \n\nSystem-wide memory free percentage: 69%",
+      "platform": "Darwin",
+      "temperature": null,
+      "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+    }
+  },
+  {
+    "phase": "after",
+    "snapshot": {
+      "load_average": [
+        4.51123046875,
+        3.18408203125,
+        2.896484375
+      ],
+      "logical_cpu_count": 24,
+      "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 28332 \nPages purgeable: 21558 \nPages purged: 828702 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1423984 \nPages inactive: 1399742 \nPages speculative: 21363 \nPages throttled: 0 \nPages wired down: 1220661 \n\nCompressor Stats:\nPages used by compressor: 46672 \nPages decompressed: 486034 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17177552 \nPageouts: 989902 \n\nSystem-wide memory free percentage: 69%",
+      "platform": "Darwin",
+      "temperature": null,
+      "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+    }
+  }
+]

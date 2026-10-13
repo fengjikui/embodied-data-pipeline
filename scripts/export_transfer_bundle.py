@@ -7,7 +7,7 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 DIRS=('.github','catalog','configs','docs','evidence','plans','reports','scripts','src','tests','deliverables')
-FILES=('README.md','LICENSE','pyproject.toml','uv.lock','.python-version','.gitattributes','.gitignore')
+FILES=('README.md','LICENSE','PRODUCT.md','DESIGN.md','pyproject.toml','uv.lock','.python-version','.gitattributes','.gitignore')
 
 
 def export(output,include_samples=False):

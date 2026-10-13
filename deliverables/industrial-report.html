@@ -1,0 +1,326 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>G1工业具身研究 · 数据、训练与执行闭环</title><style>
+:root{--paper:oklch(0.98 0.008 95);--ink:oklch(0.29 0.025 160);--muted:oklch(0.48 0.018 160);--accent:oklch(0.49 0.095 45);--wash:oklch(0.94 0.016 145);--line:oklch(0.84 0.012 145)}
+*{box-sizing:border-box}html{scroll-behavior:auto}body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.85;font-size:17px}a{color:var(--accent);text-underline-offset:4px}button,select{font:inherit;color:inherit}button,select{border:1px solid var(--line);border-radius:4px;background:var(--paper);padding:8px 14px;cursor:pointer}button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}:focus-visible{outline:3px solid var(--accent);outline-offset:4px}.skip{position:absolute;top:-100px}.skip:focus{top:8px;left:8px;background:var(--paper);padding:8px;z-index:10}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);max-width:1450px;margin:auto}.sidebar{position:sticky;top:0;height:100vh;padding:34px 22px 26px;border-right:1px solid var(--line);overflow:auto}.brand{font-size:15px;font-weight:700;letter-spacing:.04em;margin-bottom:26px}.sidebar nav a{display:block;text-decoration:none;color:var(--muted);padding:9px 0;font-size:14px}.sidebar nav a:hover{color:var(--accent)}.sidebar .small{font-size:13px;margin-top:28px;color:var(--muted)}main{min-width:0;padding:58px clamp(24px,5vw,76px) 80px}.meta{color:var(--accent);font-size:14px;letter-spacing:.08em}h1{font-size:clamp(34px,4.2vw,59px);letter-spacing:-.04em;line-height:1.25;margin:20px 0 24px;max-width:16ch}h2{font-size:29px;line-height:1.45;letter-spacing:-.02em;margin:12px 0 20px}h3{font-size:24px;line-height:1.5;margin:40px 0 14px}h4{font-size:20px;margin-top:26px}p,li{max-width:76ch;overflow-wrap:anywhere}p{margin:16px 0}.lead{font-size:21px;line-height:1.75;max-width:46ch}.boundary{background:var(--wash);padding:20px 24px;margin:24px 0 32px;font-size:16px}.toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:28px 0}.toolbar label{font-size:14px;color:var(--muted)}.chapter{border-top:1px solid var(--line);padding-top:36px;margin-top:56px;scroll-margin-top:20px}.chapter-number{font-size:14px;color:var(--accent);letter-spacing:.1em}.takeaway{font-size:24px;font-weight:600;line-height:1.55;max-width:42ch}.chapter details{margin-top:24px;border-top:1px solid var(--line);padding-top:16px}summary{cursor:pointer;font-size:16px;font-weight:600;line-height:1.8}summary:hover{color:var(--accent)}.details-body{padding-top:12px}.table-wrap{overflow-x:auto;max-width:100%;margin:24px 0}table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px;line-height:1.7}th,td{padding:13px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:var(--wash);font-weight:650}td:first-child{font-weight:550}code{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-size:.85em;overflow-wrap:anywhere}pre{background:var(--ink);color:var(--paper);padding:22px 24px;overflow:auto;border-radius:3px;line-height:1.65;max-width:100%;font-size:14px}pre code{font-size:inherit;white-space:pre;overflow-wrap:normal}.code-label{display:block;color:oklch(0.83 0.018 145);font-size:12px;margin-bottom:8px}.flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);margin:28px 0}.flow li{padding:20px 18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);font-size:15px}.flow b{display:block;font-size:18px}.flow span{display:block;color:var(--muted);margin-top:8px;font-size:14px}.flow .n{color:var(--accent);font-size:12px;margin-bottom:6px}.control{display:grid;grid-template-columns:1fr 2fr;gap:24px;background:var(--wash);padding:26px;align-items:start}.control ul{margin:0;padding-left:20px}.control p{margin:0}.control strong{display:block;font-size:19px;margin-bottom:8px}.scene{padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.scene label{font-weight:600;margin-right:12px}.scene h3{margin:20px 0 6px;font-size:21px}.scene p{font-size:16px}.small{font-size:14px;color:var(--muted)}.evidence-list{padding-left:20px}.evidence-list li{margin:10px 0}footer{margin-top:70px;padding-top:25px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.mode-live{font-size:14px;color:var(--muted)}
+@media(max-width:1000px){.layout{grid-template-columns:190px minmax(0,1fr)}.sidebar{padding:24px 16px}main{padding:40px 30px 60px}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.control{grid-template-columns:1fr}h1{font-size:44px}}
+@media(max-width:700px){body{font-size:16px}.layout{display:block}.sidebar{height:auto;position:static;border-right:0;border-bottom:1px solid var(--line);padding:20px}.brand{margin-bottom:12px}.sidebar nav{display:flex;gap:6px 16px;flex-wrap:wrap}.sidebar nav a{padding:3px 0;font-size:13px}.sidebar .small{display:none}main{padding:30px 20px 50px}h1{font-size:35px}h2{font-size:25px}.lead{font-size:19px}.takeaway{font-size:21px}.flow{grid-template-columns:1fr}.flow li{border-right:0}.chapter{margin-top:42px}.control{padding:20px}pre{padding:18px 15px}.boundary{padding:18px}}
+@media print{body{background:var(--paper);font-size:11pt}.layout{display:block}.sidebar,.toolbar,.scene,.skip{display:none}main{padding:0}h1{font-size:30pt}h2{font-size:20pt}.chapter{margin-top:24px;break-before:page}.takeaway{font-size:15pt}summary{display:none}.details-body{display:block}pre{white-space:pre-wrap;overflow:visible;background:var(--wash);color:var(--ink)}pre code{white-space:pre-wrap}.table-wrap{overflow:visible}table{min-width:0;font-size:9pt}tr{break-inside:avoid}h2,h3,h4{break-after:avoid}.flow,.control,.boundary{break-inside:avoid}a{color:var(--ink)}}
+</style></head><body><a class="skip" href="#main">跳到报告正文</a><div class="layout"><aside class="sidebar"><div class="brand">VLA DATA PIPELINE<br>实验室研究报告</div><nav aria-label="报告章节"><a href="#overview">总览与两种流程</a><a href="#chapter-1">01　任务与数据闭环</a><a href="#chapter-2">02　模型如何训练与推理</a><a href="#chapter-3">03　行走、导航、操作与协同</a><a href="#chapter-4">04　工业管线与验收差距</a><a href="#chapter-5">05　厂商、数据、模型与采购</a><a href="#chapter-6">06　逐条命令实操</a><a href="#chapter-7">07　汇报讲稿与主管问答</a><a href="#evidence">运行证据与边界</a></nav><p class="small">核查日期 2026-10-14<br>可离线阅读，无网络字体或脚本。<br><br>G1 EDU 已确定；具体手型、传感器与工艺待确认。</p></aside><main id="main"><header id="overview"><div class="meta">工业具身智能 / G1 EDU / 2026-10-14</div><h1>从一次示范<br>到一次合格装配</h1><p class="lead">把数据、模型和控制接口连起来，讲清机器人怎样学习、怎样执行，以及每一步用什么证据验收。</p><p>案例：双手配合完成螺丝装配。先从固定工位建立基线，再扩展全身与持工具移动。</p><div class="boundary"><strong>本次交付：</strong>系统研究、可执行学习流程与工业化方案。真实设备、工艺质量和生产可靠性另有验收门槛，不用教学演示代替。</div><div class="toolbar" aria-label="阅读模式"><button id="brief" aria-pressed="true">汇报概览</button><button id="deep" aria-pressed="false">技术详读</button><button id="print">打印 / 保存PDF</button></div><p id="mode-live" class="mode-live" aria-live="polite">当前为汇报概览；每章可单独展开技术细节。</p></header><h2>数据闭环：从经验生成训练输入</h2><ol class="flow"><li><span class="n">01 / 采集与获取</span><b>真机、仿真、公开来源</b><span>保留完整session、动作语义、时钟与权限。</span></li><li><span class="n">02 / 原始与接入</span><b>快照、哈希、解析</b><span>原始只追加，adapter按明确契约读取。</span></li><li><span class="n">03 / 质量与同步</span><b>时间、语义、任务标签</b><span>隔离异常，按session切分防止泄漏。</span></li><li><span class="n">04 / 模型视图</span><b>相机、状态、动作块</b><span>按模型生成格式，使用train-only统计。</span></li><li><span class="n">05 / 训练与评估</span><b>监督学习或强化学习</b><span>固定数据与配置，评价独立任务条件。</span></li><li><span class="n">06 / 执行与回流</span><b>闭环日志、质量、失败</b><span>回流新批次，为恢复与下一轮训练提供依据。</span></li></ol><h2>控制闭环：模型输出怎样成为动作</h2><div class="control"><p><strong>任务与模型</strong>选择技能并生成动作参考。模型输出不自动成为硬件命令。</p><ul><li>导航确定移动目标，运动控制器跟踪。</li><li>操作策略生成双手参考，全身控制协调平衡与负载。</li><li>工具控制器完成拧紧，工艺结果判定质量。</li><li>持续采集实际反馈，管理超时、接管和恢复。</li></ul></div><div class="scene"><label for="scenario">切换研究场景</label><select id="scenario"><option value="station">固定站位装配</option><option value="moving">持工具移动与操作</option><option value="diy">自造机械臂研究</option></select><div aria-live="polite"><h3 id="scene-title"></h3><p id="scene-body"></p><p id="scene-data"></p><p id="scene-model"></p></div><p class="small">场景切换展示设计建议，不表示这些任务已经验证。</p></div><section class="chapter" id="chapter-1" aria-labelledby="title-1"><div class="chapter-number">01 / 07</div><h2 id="title-1">任务与数据闭环</h2><p class="takeaway">先把“拧螺丝”定义成可测的完整任务。</p><p>到工位、取料、双手对位、接触、拧紧、质量复核需要不同观测与验收。数据管线连接采集、训练与失败回流。</p><details><summary>展开：原理、字段、方案与复现细节</summary><div class="details-body"><p>核查日期：2026-10-14。本文是实验室方案，G1 EDU 配置和工艺尚未确认。最新汇报入口：<a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/deliverables/industrial-report.html">离线报告</a>，配套 <a href="#chapter-2">模型</a>、<a href="#chapter-3">全身协同</a>、<a href="#chapter-4">工程架构</a>、<a href="#chapter-5">采购与来源</a>、<a href="#chapter-6">命令实操</a>。</p>
+<h3>1. 先修正三个概念</h3>
+<p>你的理解可以整理为：<strong>采集或获取轨迹 → 保留原始和语义 → 质检与同步 → 按任务切分 → 按模型导出 → 训练 → 评估 → 控制器闭环执行 → 回流失败数据。</strong></p>
+<p>“遥操作”描述谁发出动作：人通过 VR、主从机械臂、手柄或拖动示教控制机器人；被控制对象可以是真机，也可以是仿真机器人。“仿真”描述环境：相机、接触和关节读数由模拟器产生；动作可以来自人、脚本或训练中的策略。“开放数据”描述获取渠道与权利，也可能正是遥操作数据。LeRobot 描述存储与工具生态。它们是独立维度，不能作互斥分类。</p>
+<p>LeRobot 文件能被 DataLoader 读取，只意味着字段、媒体、episode 和索引可解析。它没有自动证明：相机适合小螺丝、手型匹配、动作单位正确、数据包含拧紧过程、训练脚本使用了这些字段，或输出能接到 G1 控制器。</p>
+<h3>2. 以“拧螺丝”把目标变得可测</h3>
+<p>主管的业务需求应该写为：“把指定规格螺丝装入指定工件的孔，并通过规定的扭矩/角度或其他工艺检验，在允许时间内完成，失败可检测、可恢复。”不是只写“学会拿螺丝”。</p>
+<p>首先确认：螺丝规格与头型、螺孔材料/公差/螺纹、是否有预定位与自动供料、工具质量与反扭矩、工件治具、允许的返工、节拍以及质量判定。<strong>本文不填写尚未确定的扭矩、力或速度限值</strong>，这些要由工艺与设备负责人定义。</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">阶段</th><th scope="col">系统行为</th><th scope="col">需要的观测/标签</th><th scope="col">第一版建议</th><th scope="col">单独验收什么</th></tr></thead><tbody><tr><td>到工位</td><td>行走、避障、停靠</td><td>地图/位姿、障碍、目标、速度命令、接管</td><td>先用已有运动控制器与导航</td><td>到达率、停靠误差、碰撞和接管</td></tr><tr><td>识别取料</td><td>找螺丝、区分规格、抓取</td><td>头部/腕部图像、关节、夹爪/手动作、工件 ID</td><td>固定供料位置，比较视觉伺服与 BC/VLA</td><td>取错、漏取、掉落</td></tr><tr><td>双手对位</td><td>一手扶持/定位，一手带工具接近</td><td>两臂状态/命令、TCP 位姿、两手角色、接触</td><td>先固定站位，联合预测两臂动作或分技能</td><td>对位误差、相互碰撞、工件移动</td></tr><tr><td>入孔与接触</td><td>轴线对齐、插入、保持轴向力</td><td>力/力矩、触觉、相机、工具状态、失败标记</td><td>视觉引导＋经验证的阻抗/导纳/接触策略</td><td>卡滞、滑牙、偏斜、异常力</td></tr><tr><td>拧紧</td><td>驱动工具、受力稳定</td><td>工具转速、扭矩/角度曲线、程序 ID、OK/NOK</td><td>采用可记录结果的拧紧控制器</td><td>工艺合格、过扭、欠扭、滑牙</td></tr><tr><td>复核与退出</td><td>检查、释放、重试或交给人</td><td>工具结果、视觉、故障码、恢复分支</td><td>明确状态机与次数上限</td><td>真实质量、误判、返工与耗时</td></tr></tbody></table></div>
+<p>这是本项目建议的混合架构，不是任何厂商生产系统的内部结构声明。<strong>取料可以成功但拧紧仍失败</strong>；BC 训练误差下降不意味着螺纹质量合格。</p>
+<h3>3. 三种工具方案怎样影响数据与模型</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">工具方案</th><th scope="col">适合先做什么</th><th scope="col">数据变化</th><th scope="col">主要工程约束</th></tr></thead><tbody><tr><td>灵巧手持普通电钻/电批</td><td>人类工具迁移研究、握持和按扳机</td><td>手指、触觉、工具相对位姿、扳机动作</td><td>握持防滑、反扭矩、工具结果能否读取</td></tr><tr><td>手持可联网工业拧紧工具</td><td>同时研究手持工具和工艺闭环</td><td>增加 cycle ID、目标程序、扭矩/角度结果</td><td>厂商协议、质量追溯、重量和载荷</td></tr><tr><td>腕部固定拧紧模组＋供料/治具</td><td>优先验证可测的装配闭环</td><td>固定 TCP、工具启停/程序、曲线与结果</td><td>机械安装、供电、反扭矩和全身平衡</td></tr></tbody></table></div>
+<p>工程上建议先比较“固定模组/治具”与“手持工具”两条基线，选能稳定读取工艺结果的路线。不因人形外观就要求每一步复刻人手操作。两个手的角色也可以改变：一手扶工件、另一手拧紧；或者供料器预放螺丝，让一手直接操作工具。</p>
+<h3>4. 一条真实轨迹需要保存什么</h3>
+<p>采集 session 是一次有明确硬件、时钟、操作者和工位配置的连续录制；episode 是一个完整尝试；segment 是 episode 内的取料、对位、接触等阶段。<strong>同一 session 切出来的 segment 必须在同一 train/validation/test 组</strong>。</p>
+<p>原始数据包括图像/视频及曝光时间、实际关节位置和速度、原始操作输入、发出的目标动作、控制器实际接收/执行信息、力/触觉、IMU/基座状态、工具记录、接管事件、标定和质量结果。命令目标 <code>q_target</code> 与测得位置 <code>q_measured</code> 都保留；不能把未来测得位置偷偷替代动作标签。</p>
+<p>语义示意，不是 G1 的字段顺序或可执行命令：</p>
+<pre><span class="code-label">json</span><code>{
+  &quot;session_id&quot;: &quot;factoryA_stationB_captureC&quot;,
+  &quot;episode_id&quot;: &quot;attempt_0001&quot;,
+  &quot;capture_time_s&quot;: 12.050,
+  &quot;clock_id&quot;: &quot;lab_clock_after_calibration&quot;,
+  &quot;instruction&quot;: &quot;将指定螺丝装入工件孔并按工艺拧紧&quot;,
+  &quot;phase&quot;: &quot;align&quot;,
+  &quot;observation&quot;: {
+    &quot;images&quot;: {&quot;head&quot;: &quot;frame_reference&quot;, &quot;left_wrist&quot;: &quot;frame_reference&quot;},
+    &quot;q_measured&quot;: &quot;vector with explicit joint_names and rad units&quot;,
+    &quot;wrench&quot;: &quot;Fx,Fy,Fz,Tx,Ty,Tz with frame and N/Nm units&quot;
+  },
+  &quot;command&quot;: {
+    &quot;representation&quot;: &quot;declared joint targets OR TCP targets, not inferred&quot;,
+    &quot;controller_id&quot;: &quot;versioned controller and mode&quot;,
+    &quot;tool_program_id&quot;: &quot;process_owner_defined&quot;
+  },
+  &quot;event&quot;: {&quot;intervention&quot;: false, &quot;fault&quot;: null},
+  &quot;outcome&quot;: {&quot;tightening_result&quot;: null, &quot;success&quot;: null}
+}</code></pre>
+<p>末尾结果可以是评估或奖励标注，但<strong>不能在推理前作为模型输入</strong>。阶段语言只在其生效时刻以后可见；不能把整个未来流程拼给每一帧。</p>
+<h3>5. 从采集到模型的具体转换</h3>
+<ol><li>完成录制与文件关闭，接收到独立 incoming 批次，检查来源、许可、文件大小与哈希。</li><li>原始数据只追加，记录机器人配置/控制器/相机/手型/标定 revision。新手型不是同一动作契约。</li><li>用 adapter 解析 XR JSON、LeRobot、ROS2/MCAP 或模拟器日志。当前仓库已支持前两类和实验室 JSON，尚无 ROS2/MCAP adapter。</li><li>把硬件时钟转换到经验证的统一时间基准，记录 offset/drift/时延。观测使用不晚于当前锚点的最近样本，过旧则无效；不默默插值接触事件。</li><li>建立完整 episode 及动作契约，隔离缺失媒体、错单位、重复/越界时间、未确认控制语义。失败轨迹保留，但不能全部当成功示范训练。</li><li>先按 session/工件/工位划分，再切窗口和计算 train-only 统计。持出一批不参与调参的 test；当前原型只实现 train/validation。</li><li>canonical 保留物理值和所有关键字段，再生成指定模型的训练视图：相机顺序、分辨率、语言处理、动作块长度 H、归一化、padding/mask。</li><li>保存 release、recipe、adapter commit、数据权限与训练运行环境，训练脚本读取固定 release；checkpoint 和统计一同归档。</li><li>先离线回放，再仿真闭环与固定工位实验，达到任务卡要求后再做持物行走/产线试验。推理的新日志重新进入 incoming。</li></ol>
+<p>异步数值流教学实现见 <code>src/vla_pipeline/synchronize.py</code>。它要求输入已经校时，不能替代真实时钟标定；它没有自动接进旧 XR importer，也没有实现多相机/力数据的训练后端。</p>
+<h3>6. 数据怎样具体提升能力</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">数据变化</th><th scope="col">学到的关联</th><th scope="col">改善的预期</th><th scope="col">怎样证明</th></tr></thead><tbody><tr><td>增加光照/遮挡/螺丝摆放</td><td>图像变化下对应正确抓取动作</td><td>视觉与抓取鲁棒性</td><td>固定未见工件与光照下比较</td></tr><tr><td>成对记录语言/规格/动作</td><td>指令区别应改变取料与程序</td><td>任务选择</td><td>改指令并比较正确取料，不能只看语言 embedding</td></tr><tr><td>增加接触与受力记录</td><td>接触状态对应顺应/退出动作</td><td>入孔与恢复</td><td>真实卡滞/偏斜试验和工艺检测</td></tr><tr><td>同步双手动作</td><td>两手角色和相对动作相关性</td><td>双手协作</td><td>工件稳定、对位误差、碰撞</td></tr><tr><td>负载变化与全身状态</td><td>手臂/工具改变身体受力</td><td>持物移动稳定性</td><td>在确认负载范围内的闭环验证</td></tr><tr><td>失败＋接管＋修正示范</td><td>识别偏离并转向恢复</td><td>恢复与减少人工干预</td><td>接管率、恢复率和误判</td></tr></tbody></table></div>
+<p>“预期改善”是待验证假设。开展 target-only、public+target、sim+target 三组对照，保持测试集、模型、训练预算和评估流程一致；避免把更多计算误认成更好数据。</p>
+<h3>7. 第一批实际该采多少</h3>
+<p>优先先采 <strong>10 个完整试采 episode</strong> 用来验字段、时钟、图像与工具日志，不用于宣称能力。随后可按工艺条件建立 50–100 次成功/失败尝试的试验矩阵；这是起步实验建议，不是保证模型学会的阈值。覆盖不同操作者、不同日期、典型摆放和可控失败，统计每个格子的独立 session 数。按学习曲线扩充，而不是先下载 TB。</p>
+<p>先固定站位与低复杂度治具，评估 ACT/传统伺服基线，再比较小 VLA 和 G1 专门路线；行走采用独立仿真/控制器路线。选择依据见下一篇。</p>
+<p>参考工具接口与控制器能力：<a href="https://github.com/unitreerobotics/xr_teleoperate">宇树采集工具</a>、<a href="https://github.com/unitreerobotics/unitree_lerobot">宇树 IL</a>、<a href="https://www.atlascopco.com/content/dam/atlas-copco/industrial-technique/general/documents/brochures-leaflets/electric-assembly-tools-and-systems/Smart%20Tightening%20Strategies%20Leaflet.pdf">Atlas Copco 拧紧系统</a>。工具厂商声明不是本实验室已完成的装配验证。</p></div></details></section><section class="chapter" id="chapter-2" aria-labelledby="title-2"><div class="chapter-number">02 / 07</div><h2 id="title-2">模型如何训练与推理</h2><p class="takeaway">标签、损失与控制接口决定模型怎样使用数据。</p><p>BC/ACT学习示范动作；token VLA、flow与diffusion采用不同动作生成目标；PPO从奖励学习。推理输出参考，再由控制器执行。</p><details><summary>展开：原理、字段、方案与复现细节</summary><div class="details-body"><p>核查日期：2026-10-14。以下区分通用算法原理、上游实现与实验室选型。生产模型训练尚未在本仓库执行；现有真实训练是小型 BC 接口探针，本次新增 PPO 教学。</p>
+<h3>1. 先区分模型承担的工作</h3>
+<p>VLA 是用视觉 V、语言 L 和本体状态生成动作 A 的策略家族，不是固定一个 Transformer 结构。一个工程系统还可能包含视觉检测/几何、导航、任务状态机、力控、全身控制以及工具控制器。<strong>ACT、Diffusion Policy 可以是没有语言输入的模仿学习策略，不应自动称为 VLA。</strong></p>
+<p>共同形式是：<code>o_t = 图像历史 + 状态 + 可获得的指令</code>，策略输出 <code>A_t = [a_t, ..., a_(t+H-1)]</code>。同样是 action，可能表示关节目标、末端位姿增量、速度、力矩或某个全身控制器的运动 latent。输出维度相同也不代表动作含义相同。</p>
+<h3>2. 主要模型家族比较</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">家族/代表</th><th scope="col">核心结构</th><th scope="col">监督标签与目标</th><th scope="col">训练输入容器</th><th scope="col">推理方式</th><th scope="col">本项目定位</th></tr></thead><tbody><tr><td>BC MLP/CNN</td><td>图像编码＋状态融合＋回归头</td><td>示范连续动作，MSE/L1</td><td>自定义张量/NPZ</td><td>一次 forward</td><td>理解数据接口与基线</td></tr><tr><td>ACT</td><td>图像骨干＋Transformer＋条件变分潜变量，输出动作块</td><td>示范动作块，重建＋KL</td><td>LeRobot 或原实现数据</td><td>生成块，可时间集成</td><td>固定工位第一组学习基线</td></tr><tr><td>Diffusion Policy</td><td>条件视觉/状态编码＋去噪网络</td><td>加噪动作的噪声/score</td><td>LeRobot/HDF5 adapter</td><td>迭代去噪生成动作块</td><td>多峰动作，比较延迟与准确率</td></tr><tr><td>离散 token VLA / OpenVLA</td><td>视觉编码接入 LLM，离散动作 token 自回归</td><td>动作 token 交叉熵</td><td>原版使用 RLDS＋动作处理</td><td>生成 token 后解码物理动作</td><td>学习 LLM 到 action 的联系</td></tr><tr><td>连续 flow VLA / SmolVLA、π 系列</td><td>VLM 条件＋连续动作专家</td><td>含噪动作到示范的向量场</td><td>LeRobot/模型指定视图</td><td>从噪声积分生成动作块</td><td>多任务、指令条件与迁移</td></tr><tr><td>GR00T</td><td>多模态语义编码＋动作生成，配置本体</td><td>连续动作，细节依版本</td><td>GR00T 要求的 LeRobot＋modality config</td><td>策略服务＋指定控制接口</td><td>G1/全身路线重点候选</td></tr><tr><td>宇树 UnifoLM-WLA</td><td>多模态/世界建模基础与动作专家</td><td>动作专家按其代码训练</td><td>其 action/state 规范</td><td>模型服务＋本体动作适配</td><td>G1 专属规范优先核对</td></tr><tr><td>RL actor/critic</td><td>actor 可用 MLP/循环网络；critic 估计价值</td><td>rollout 奖励与回报，不是逐帧专家标签</td><td>环境生成观测/动作/奖励/终止</td><td>actor 输出控制动作</td><td>行走或接触技能优化</td></tr><tr><td>世界模型＋规划</td><td>预测下一状态/latent/视频＋规划器</td><td>状态转移、视频/latent、奖励等</td><td>时间序列，动作条件按模型要求</td><td>预测/搜索/优化候选动作</td><td>辅助规划与训练，不能等价实机物理</td></tr><tr><td>智元 GO-1</td><td>VLM＋latent planner＋动作专家，Air变体去掉planner</td><td>原论文含latent计划标签与动作去噪目标</td><td>该版本LeRobot与具名通道配置</td><td>先预测latent计划，再生成动作块</td><td>双臂/跨本体对照，需目标数据与许可核查</td></tr></tbody></table></div>
+<p>不把不同版本“最新模型”排行当选型依据。此处引用核查的入口；准确依赖/算子和数据处理必须锁定 commit。</p>
+<p>GO-1的latent planner表示“下一阶段应怎样变化”，不是直接可执行的电机命令；动作专家再根据观测/状态生成本体动作。训练latent表示可以利用前后图像对，但部署输入仍只能是当前可得观测。原论文与开源版本/GO-1 Air的配置需分开核对。<a href="https://agibot-world.com/blog/agibot_go1.pdf">GO-1原报告</a>、<a href="https://github.com/OpenDriveLab/AgiBot-World">开源入口</a>。</p>
+<h3>3. 监督学习的标签到底是什么</h3>
+<p>LLM SFT 的 label 是目标 token；机器人 BC 的 label 通常是人示范时<strong>发出的动作目标</strong>。当前状态是输入，接下来的动作块是监督标签。视频中的对象位置不是默认动作标签；任务成功 <code>success=true</code> 也不是动作向量。</p>
+<p>例如观测 batch：<code>images [B,K,3,h,w]</code>，<code>state [B,D_s]</code>，<code>language token IDs [B,L]</code>；标签：<code>actions [B,H,D_a]</code>；有效性：<code>mask [B,H,D_a]</code> 或框架规定的逐时刻 pad mask。K 是相机数，H 是预测步数。我们的已有 NPZ 接口只有一路相机；下文多相机是模型契约示例。</p>
+<p>训练期动作未来 H 步作为<strong>标签</strong>合法，未来图像/终局结果作为当前<strong>输入</strong>则泄漏。跨 episode 的末尾用 padding 与 mask，不从下一次尝试取标签。原生动作先保留，再按 train-only 统计处理；部署使用训练时相同统计，不能随现场新样本改均值。</p>
+<h3>4. 损失函数对照</h3>
+<h4>4.1 连续 BC</h4>
+<p><code>L_MSE = sum(mask * (pred_action - demo_action)^2) / sum(mask)</code>。</p>
+<p>这是仓库 <code>training.masked_mse</code> 的真实目标。动作归一化改变各维损失权重；物理误差仍需逆归一化后按单位报告。虚构两维合成数据上的 loss 不能用来衡量 G1 扭矩或定位精度。</p>
+<h4>4.2 ACT</h4>
+<p><code>L_ACT = L_reconstruction(pred_chunk, demo_chunk, pad_mask) + beta * KL(q(z|state,demo_chunk) || N(0,I))</code>。</p>
+<p>训练时 encoder 用示范动作估计 latent，decoder 用观测和 latent 预测块；推理不能把真实未来动作送 encoder，通常使用先验 latent 的指定值。锁定 SDK 的 ACT 使用 L1 重建和 KL，而不是本仓库探针的 MSE。具体 padding 归约规则以代码为准。<a href="https://huggingface.co/docs/lerobot/en/act">ACT 官方说明</a>、<a href="https://github.com/tonyzhaozh/act">原论文与实现</a>。</p>
+<h4>4.3 Diffusion Policy</h4>
+<p>示例 DDPM 目标：<code>a_k = sqrt(alpha_bar_k)*a_demo + sqrt(1-alpha_bar_k)*epsilon</code>，<code>L = E[||epsilon_theta(a_k,k,o)-epsilon||²]</code>。噪声是训练目标，背后仍由示范动作生成训练样本。推理从随机噪声反复去噪，得到动作块。该路线能表示多种合理动作，采样次数影响延迟。<a href="https://diffusion-policy.cs.columbia.edu/">作者项目</a>。</p>
+<h4>4.4 自回归动作 token</h4>
+<p>将物理动作按指定 tokenizer 离散化，<code>L_CE = -sum log p(action_token_i | o, instruction, previous_tokens)</code>。OpenVLA 原版是这一路线；tokenizer、bin 范围与归一化要一同部署。训练 token 准确不等于闭环成功；某些后续变体的动作头不同，不混写成原版行为。<a href="https://github.com/openvla/openvla">OpenVLA</a>。</p>
+<h4>4.5 Flow matching</h4>
+<p>取噪声 <code>z~N(0,I)</code> 和示范 <code>a</code>，一种约定为 <code>x_tau=(1-tau)z+tau*a</code>；目标速度 <code>v*=a-z</code>，<code>L=E[||v_theta(x_tau,tau,o,l)-v*||²]</code>。推理从 tau=0 的噪声积分到 tau=1 的动作。不同实现可反向定义 tau，因此不能直接拷贝符号而忘记路径约定。<a href="https://huggingface.co/docs/lerobot/en/smolvla">SmolVLA</a>、<a href="https://github.com/physical-intelligence/openpi">openpi</a>。</p>
+<h3>5. 训练后怎么用</h3>
+<ol><li>加载模型、数据统计、相机顺序/预处理、动作契约与控制器版本。</li><li>读取新图像与关节/接触状态，校验捕获时间与延迟；构造和训练一致的输入。</li><li>推理得到动作块，逆归一化，再按已确认的单位、关节/坐标顺序转换。</li><li>按任务选择执行前 k 步后重新观测；H 是预测长度，k 是实际开环执行长度，两者不必相同。</li><li>控制器插值/跟踪并处理接触/平衡，工具控制器完成拧紧；监督程序监视状态、超时、接管和质量。</li><li>保存预测、实际命令、实测状态与结果。模型对“已拧紧”的语言判断不能替代工具曲线/工艺检验。</li></ol>
+<p>简单闭环示意：</p>
+<pre><span class="code-label">python</span><code>while task_is_active:
+    observation = synchronized_capture()
+    predicted_chunk = policy(observation, current_instruction)
+    native_chunk = training_statistics.inverse(predicted_chunk)
+    reference = validated_action_adapter(native_chunk[:execute_steps])
+    controller.track(reference)  # controller owns hardware execution
+    log_prediction_command_measurement_and_tool_result()</code></pre>
+<p>这些函数是结构示意，<strong>不是本仓库的真机 API</strong>。本次 <code>infer_bc_offline.py</code> 实际运行的是已保存 validation 窗口的离线预测，不是闭环 G1 执行。</p>
+<h3>6. PPO 用什么数据、什么模型、什么目标</h3>
+<p>机器人行走常用仿真中的 on-policy PPO。actor 输入 deploy-time 可得的关节、IMU、运动命令与历史，输出关节目标偏移或控制动作；critic 训练时可以额外用地形/真实速度/物理参数等 privileged state。是否采用非对称 actor-critic 要查具体任务实现；不能把训练才有的信息误接进部署 actor。</p>
+<p>环境每步输出 <code>o_t,a_t,r_t,o_(t+1),terminated,truncated</code>。还记录旧策略 log probability 与价值。标签不是“正确脚步”，而是奖励定义下的优势/回报。奖励可能包括速度跟踪、平衡、能耗、姿态、接触、碰撞；<strong>奖励设错也会训练出投机策略</strong>。</p>
+<p>PPO 核心：<code>ratio=exp(new_log_prob-old_log_prob)</code>；最大化 <code>mean(min(ratio*A, clip(ratio,1-eps,1+eps)*A))</code>。最小化时取负号。critic 拟合回报，常加价值损失和 entropy 项；GAE 用 TD 残差构造优势。真正终止通常不 bootstrap；时间上限截断若对应 continuing task 应用终止前观测 bootstrap，不能用 reset 后观测。代码实现要区分这两种 done。</p>
+<p>推理时通常只需 actor 和观测归一化/历史栈，不需要计算 PPO loss、GAE 或运行 critic。仿真训练还需机器人模型、关节限制、PD 增益、延迟和动力学；sim2sim 验证，再依据实机合同做 sim2real。见 <a href="https://github.com/unitreerobotics/unitree_rl_lab">宇树 RL</a>、<a href="https://github.com/leggedrobotics/rsl_rl">rsl_rl</a>、<a href="https://arxiv.org/abs/1707.06347">PPO 原论文</a>。</p>
+<p>本次 PPO 代码是一个虚构的一维有限时域环境，actor/critic 都是小 MLP，观测含剩余时间，最后一步是真正终止。它让你逐项检查 rollout、优势、ratio、checkpoint 与 actor 推理；没有机器人接触物理或步态，不证明行走能力。</p>
+<h3>7. RLHF 知识怎样迁移过来</h3>
+<p>PPO 的概率比、优势与 clipping 和你熟悉的 LLM PPO 共通，但机器人“环境反馈”是接触、运动与工具结果，不是文本偏好；actor 常输出连续分布，不是 token。GRPO/DPO 并不是走路的默认训练方法。接触技能也可能使用离策略 actor-critic，例如 SAC，或人接管辅助 RL；这通常需要在线 replay buffer、奖励/重置机制与控制接口。<a href="https://github.com/rail-berkeley/serl">SERL</a>。先做好可重复的 BC 基线，再决定是否需要 RL。</p>
+<h3>8. 训练设备与选型顺序</h3>
+<p>数据接收、哈希、Parquet 质检通常是 CPU＋存储 I/O；模型训练依模型/分辨率/H/batch 选择加速器；大量物理仿真有其独立 GPU/驱动需求；实机推理需满足端到端周期和时延，训练服务器不必放在机器人上。</p>
+<p>实验室可规划使用昇腾 A3 资源，但具体型号/内存/CANN、PyTorch/torch_npu、占用与访问尚未核实。不能因为“有 A3”就声称 Isaac Sim、TensorRT、JAX 或上游 CUDA 算子能直接运行。先做算子、精度、小 batch、保存/恢复与速度验证；NVIDIA 仿真/部署部分可能需要独立兼容节点。基础数据工程仍保持 Python/Parquet 的平台可移植性。</p>
+<p>建议顺序：固定工位传统伺服/ACT → 需要语言、多任务时比较 SmolVLA → 用目标 G1 数据比较 UnifoLM-WLA/GR00T；π 系列作为强连续 VLA 候选。行走单独评估已有控制器与 RL；需要连续行走操作时再选择全身路线。选型表是实验室建议，不是未经试验的性能排名。</p></div></details></section><section class="chapter" id="chapter-3" aria-labelledby="title-3"><div class="chapter-number">03 / 07</div><h2 id="title-3">行走、导航、操作与协同</h2><p class="takeaway">四项能力是功能划分，不是必须训练四个网络。</p><p>先固定工位，再比较分层策略与全身控制器。共享的关节权限、坐标、时序、接触和负载使上下身不能直接拼接。</p><details><summary>展开：原理、字段、方案与复现细节</summary><div class="details-body"><h3>1. 四项能力不是四个必选神经网络</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">能力</th><th scope="col">回答的问题</th><th scope="col">典型输入</th><th scope="col">输出到哪</th><th scope="col">验收</th></tr></thead><tbody><tr><td>运动控制</td><td>怎样站稳、走、转身</td><td>关节、IMU、基座速度/姿态、运动命令</td><td>关节目标/力矩到低层控制</td><td>跟踪、失稳、跌倒、能耗</td></tr><tr><td>导航</td><td>往哪走、怎样避障到工位</td><td>定位/地图、目标、相机/深度、障碍</td><td>速度/路径给运动控制</td><td>到达、碰撞、接管、停靠</td></tr><tr><td>操作</td><td>怎样抓、放、对位、用工具</td><td>视觉、语言、双臂/手状态、接触</td><td>手臂/手/工具参考</td><td>物品和工艺质量</td></tr><tr><td>全身协同</td><td>身体如何支持操作与持物移动</td><td>全身状态、手臂参考、接触、负载、目标</td><td>一致的全身参考/执行动作</td><td>负载稳定、碰撞、可达性</td></tr></tbody></table></div>
+<p>这是功能划分。同一个模型可以覆盖多项，一项也可能由规划器、网络和控制器共同实现。原报告的四项能力不意味着要训练四个 VLA。</p>
+<p>“下半身 PPO”和“上半身 BC/VLA”是起点，不是系统的完整接口。手伸到远处、工具反扭矩、持物质量都会改变重心和接触力；腰关节常属于双方都想控制的共享区域。</p>
+<h3>2. 三条组合路线</h3>
+<h4>路线 A：分阶段执行，先获得可解释基线</h4>
+<p>导航到工位 → 确认稳定站立 → 允许上肢策略执行 → 工具完成与质量复核 → 恢复移动。一次只有一套有明确关节权限的控制链。先测固定工位取放/对位，再扩展工具。这是实验室首轮建议，不能覆盖边走边装配。</p>
+<p>使用出厂/已有控制器并不要求实验室重新训练行走。实机接口是否允许上肢控制叠加、哪些关节可写、控制模式如何交接，必须依据采购配置与 SDK 实测确认。</p>
+<h4>路线 B：分层策略＋全身控制器</h4>
+<p>任务层选择工位/技能；导航给移动目标；操作策略给双手 TCP/关节/运动参考；全身控制器统一跟踪，保持接触和平衡。全身控制器可用优化、RL 或混合方法，不是只能用 VLA。</p>
+<p>优化式 WBC 的思想可以写为：最小化手部与基座跟踪误差、姿态和动作变化，满足机器人动力学、足部接触、摩擦、关节限位等约束。示意动力学 <code>M(q)qdd + h(q,qd) = S^T*tau + J_contact^T*f_contact</code>。真实约束和权重要根据设备设计；本仓库没有实现该求解器。</p>
+<p>RL 跟踪式控制器可把全身参考与实测状态输入 actor，输出一致的关节命令。上层学习模型的标签必须和它的参考接口相匹配，不能把关节角、TCP 或 latent 互换。</p>
+<p>公开候选：<a href="https://github.com/NVlabs/GR00T-WholeBodyControl">NVIDIA GR00T-WholeBodyControl</a> 包含 decoupled WBC 和 SONIC 线路，公开了 G1 的采集、VLA 训练与执行文档。SONIC 把运动表示与控制器配套，GR00T 的 <code>UNITREE_G1</code> 与 <code>UNITREE_G1_SONIC</code> 接口不同。<strong>本次只核查文档，不运行该控制栈</strong>。<a href="https://github.com/NVIDIA/Isaac-GR00T">GR00T 入口</a>。</p>
+<h4>路线 C：联合的全身学习系统</h4>
+<p>策略根据视觉/语言与全身状态同时产生身体和手部参考，底层仍有执行与平衡机制。联合训练数据需要身体、接触和双手同步，单独桌面上肢数据不够。训练更复杂，失败归因也更难。</p>
+<p><a href="https://www.figure.ai/news/helix-02">Figure Helix 02</a> 官方披露了任务理解、视觉动作与学习全身控制的分层系统。它是理解架构的参考；本次未确认可用于本实验室的完整 Helix 权重/训练数据，不作为 G1 可运行入口。<a href="https://github.com/unitreerobotics/unifolm-wla">宇树 UnifoLM-WLA</a> 提供自己的动作专家与本体规范，仍需验证其与采购设备、控制器及任务的关系。</p>
+<h3>3. 最容易出问题的是接口</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">接口</th><th scope="col">必须说清</th><th scope="col">错了会怎样</th></tr></thead><tbody><tr><td>关节权限</td><td>哪个进程控制腿、腰、臂、手；仲裁与切换</td><td>两个进程互相覆盖命令</td></tr><tr><td>坐标</td><td>world/base/body/flange/tool，左右手，四元数顺序</td><td>对位方向错、目标不可达</td></tr><tr><td>动作含义</td><td>绝对/增量、角度/速度/力矩、TCP/latent</td><td>文件能读却执行完全不同</td></tr><tr><td>时间</td><td>捕获时间、推理延迟、参考开始时间、有效期</td><td>跟踪过期目标、忽快忽慢</td></tr><tr><td>负载</td><td>工具/物品质量、重心、惯量、反力矩</td><td>空载稳定、持物失稳</td></tr><tr><td>接触</td><td>双脚、手、工件/工具的接触与状态转换</td><td>操作干扰平衡或错误退出</td></tr><tr><td>控制器版本</td><td>参考维度、归一化、增益、历史与 latent decoder</td><td>上层模型与底层接口不兼容</td></tr></tbody></table></div>
+<p>时频示意：操作策略每隔一段时间生成动作块，全身控制器更频繁更新，电机伺服再跟踪。实际频率依上游与设备确定，不给 G1 EDU 猜默认值。上层块的时间跨度必须与执行频率匹配，例如 H=8、训练采样20Hz覆盖约0.4秒；这不能直接拿去按50Hz解释。</p>
+<h3>4. 螺丝装配如何具体配合</h3>
+<p>第一阶段用固定工位＋稳定站立控制。让上肢完成取料与工具接近，验证工艺和工具接口。第二阶段添加身体/腰姿态以扩大可达空间，统一两臂与身体参考。第三阶段再研究持工具移动，加入负载和惯量，并在移动和操作阶段之间管理接触/姿态。</p>
+<p>“固定站位”不是随意关闭腿控制；腿仍由已确认的站立/平衡控制链负责。工具拧紧的反扭矩不能只在手指数据里体现，需要日志和控制器共同处理。</p>
+<h3>5. 数据怎样支撑协同</h3>
+<p>上肢示范：双臂/手的联合命令、实际状态、视角、语言。行走 RL：仿真器中的状态/命令/动作/奖励、终止、动力学随机化与模型版本。导航：定位/地图、目标、路径/速度、障碍与接管。全身操作：身体与手部同步参考、接触、负载、控制器执行与任务结果。</p>
+<p>这些可以存在同一个 session 中，用不同视图供不同训练器；不能把 PPO 的 rollout 强行变成“每帧有专家正确动作”的 BC 标签。人动作捕捉经 retargeting 后可以提供运动参考；它仍需目标机器人可达性、碰撞、平衡与动力学验证。</p>
+<h3>6. 世界模型能帮哪里</h3>
+<p>世界模型预测动作后可能发生的状态/图像/latent，可辅助候选动作规划、任务进展判断、数据增广或模型式 RL。动作条件、预测跨度与接触可观测性决定它能回答什么。</p>
+<p>对螺丝场景，可研究“会不会撞、是否接近、哪个候选动作更可能进入下一阶段”；视觉生成很像不等于准确模拟螺纹摩擦、打滑、反扭矩与质量。需要用真实工具结果校验预测，不能把世界模型视频当拧紧验收。<a href="https://github.com/unitreerobotics/unifolm-world-model-action">宇树世界模型动作项目</a>、<a href="https://www.1x.tech/discover/redwood-ai-world-model">1X 世界模型说明</a>。</p>
+<h3>7. 最短学习顺序</h3>
+<p>先把四项能力各用一句话解释 → 画出任务层/策略/控制器/电机 → 从 BC 预测看到动作还原 → 看 PPO actor 的输入输出 → 读 G1 上游控制接口 → 才讨论两者连接。详细命令见 <a href="#chapter-6">实操</a>。</p></div></details></section><section class="chapter" id="chapter-4" aria-labelledby="title-4"><div class="chapter-number">04 / 07</div><h2 id="title-4">工业管线与验收差距</h2><p class="takeaway">生产可靠性需要服务与真实环境验收。</p><p>当前原型已有本地数据工程。生产还需对象存储、目录事务、作业恢复、权限、备份、多传感接入与工位质量闭环。</p><details><summary>展开：原理、字段、方案与复现细节</summary><div class="details-body"><h3>1. 当前原型和生产系统的边界</h3>
+<p>原型能完成小样本接入、原始快照/哈希、质检、组切分、不可变本地发布、训练视图、训练接口与固定 SDK 导出。本次增加异步数值对齐和接入资料检查。<strong>它目前不是已上线的工业生产系统</strong>：还没有多租户权限、生产对象存储、服务调度、数据库目录、断点任务、并发发布事务、真实 ROS2/MCAP 接入、多传感训练与工位 SLA 验收。</p>
+<p>生产目标是“同一条数据能找到来源、语义、转换和使用的模型，坏数据不会悄悄进入训练，新批次能可靠重试，旧版本能恢复”。工业等级由真实环境的验收决定，不能用文件数量或单机演示替代。</p>
+<h3>2. 最小可落地的服务边界</h3>
+<pre><span class="code-label">text</span><code>采集器 / 数据集镜像 / 仿真作业
+      ↓ 完成批次 + 原始清单 + 本体/权限/时钟/工艺契约
+Incoming 接收与完整性检查
+      ↓
+Raw 对象存储（原始文件只追加） + Catalog 元数据数据库
+      ↓ 按批次排队；adapter / clock calibration / QC / session split
+Canonical 分片（物理值、语义、事件、provenance）
+      ↓ 按模型 recipe 生成，不改原始
+LeRobot / RLDS / HDF5 / RL motion/rollout 训练视图
+      ↓ 不可变 release manifest + 独立测试集
+训练运行 → 模型登记 → 离线/仿真/工位评估 → 发布审批
+      ↓
+部署日志、工具结果与失败样本 → 新 Incoming 批次</code></pre>
+<p>这是规划架构；图中未实现模块明确见表。先用少量服务，按数据量与团队需求扩展，不建议第一天就部署全部中间件。</p>
+<h3>3. 存储与版本怎样管理</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">层</th><th scope="col">存什么</th><th scope="col">版本和写入规则</th><th scope="col">备份/权限</th></tr></thead><tbody><tr><td>incoming</td><td>未完成审核的采集批次</td><td>batch ID、上传状态，完成标记后消费</td><td>写入者与审核者分权</td></tr><tr><td>raw</td><td>原始视频、日志、配置、标定</td><td>source/session/revision＋逐文件 SHA256，只追加</td><td>限制删除，保留策略与备份</td></tr><tr><td>catalog</td><td>文件与 episode 指针、契约、质检、任务状态</td><td>PostgreSQL 等目录服务，事务</td><td>数据库备份与访问审计</td></tr><tr><td>canonical</td><td>对齐物理值、事件、媒体指针</td><td>adapter/校时/QC commit、schema version</td><td>可再生但保存追溯</td></tr><tr><td>releases</td><td>切分、统计、模型视图、manifest</td><td>输入版本＋recipe＋代码哈希标识，发布后不可写</td><td>manifest 完整性和恢复演练</td></tr><tr><td>runs/models</td><td>超参、模型/优化器、环境、评估</td><td>run ID、数据 release、权重 hash</td><td>模型 registry 与批准记录</td></tr></tbody></table></div>
+<p>小规模在内网 Linux 数据盘开始，大规模再用 S3 兼容对象存储＋数据库目录；Git 存代码、schema、recipe、索引和经脱敏的报告，不存工厂视频、模型大权重或秘密。DVC/类似工具可以管理指针与缓存，但它不是语义校验器，也不能替代目录事务。</p>
+<p>目前本地 revision 存储和 release 哈希已实现。去复制的 CAS、多来源累计快照、数据库 catalog 与对象存储后端未实现；不能把现有累计 revision 复制包装成工业增量合并。</p>
+<h3>4. 作业生命周期与一致性</h3>
+<p>建议状态 <code>RECEIVED → LOCKED → VALIDATED → CANONICALIZED → VIEW_BUILT → REVIEWED → PUBLISHED</code>；失败进入 <code>FAILED/QUARANTINED</code>，保存原因，修复以新版本重新提交。</p>
+<p>每一步输出到临时前缀，成功验证后写入完成标记；读者只读取已发布 manifest。任务幂等键可由输入 hash、adapter、schema、recipe 构成。并发相同任务用数据库唯一约束或租约；远端对象存储没有本地 rename 的全部语义，要用完成标记/事务指针，不能直接照搬单机目录写法。</p>
+<p>重试必须有次数/超时与失败类别：网络中断可重试，数据维度/权限/语义错误应隔离而非无限重试。现有原型只有已完成 release 的复用，没有全阶段作业恢复/分布式并发保证。</p>
+<h3>5. 格式转换与时间处理</h3>
+<p>保留原始捕获时间与接收时间，记录每个设备时钟到统一钟的校正函数和误差报告。观测对齐用因果选择与最大年龄阈值；数值插值、掉帧补齐与图像重编码都产生派生版本，记录方法和损失。接触突变不能由通用线性插值“修复”。</p>
+<p>canonical 不必是一个无限宽表：可把媒体、慢速标签、关节与高速力/触觉分别存表，用 session、clock、time 与索引关联。模型视图才按实际采样频率产生统一 batch。机器人实际关节、单位和坐标来自合同/控制器定义，不从 D_a 猜。</p>
+<p>本次 <code>causal_align</code> 是纯数值同步组件，输入已经统一时钟；保留 index/age/valid。缺失或过旧输出 null 和 invalid，不补未来数据。它未实现设备校时、媒体/MCAP 解码或完整多模态 adapter。</p>
+<h3>6. 数据质量与切分</h3>
+<p>结构检查：哈希/解码/维度/数值/时间；语义检查：动作定义、关节顺序、单位、坐标、控制器；任务检查：阶段、接管、失败、工艺结果、异常原因；统计检查：覆盖矩阵、重复、偏置、场景泄漏。</p>
+<p>在 segment 和窗口之前按 session 或更严格工件/工位划分。train-only 统计用于训练与部署，validation 用于调参，test 最终持出。成功示范进 BC 视图，失败/接管进恢复、结果预测或 RL 数据视图；一条轨迹可以有多种用途，但每个用途有不同标签规则。</p>
+<h3>7. Linux / Windows 与内网</h3>
+<p>基础接入、哈希、Parquet 与教学命令可跨平台；每个平台重建 <code>.venv</code>，锁依赖并各自验证。Linux 服务器是生产运行首选。机器人 DDS/ROS2、相机驱动、Isaac Lab/Sim、TensorRT 或第三方工具协议需要单独的 OS/驱动/设备兼容矩阵，不能因为基础 CI 是绿的就承诺全栈 Windows。</p>
+<p>联网区预先收集固定版本的源码、平台 wheel、模型/数据许可证与哈希、驱动安装材料，形成带清单的转移包；在内网使用专用镜像/缓存。模型大权重按本次用户要求列候选，暂不在本机下载。平台依赖详见 <a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/docs/10-linux-windows-offline-deployment.md">内网部署</a>。</p>
+<h3>8. 分项交付与验收</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">项目</th><th scope="col">现状</th><th scope="col">生产验收方法</th></tr></thead><tbody><tr><td>原始完整性、不可变本地 release</td><td>已有实现与测试</td><td>注入损坏、重复任务、旧版本恢复</td></tr><tr><td>异步数值流因果对齐</td><td>本次实现，合成验证</td><td>真实钟差/延迟/掉帧与每流误差</td></tr><tr><td>接入资料与证据哈希检查</td><td>本次实现</td><td>缺配置/坏hash应阻止资料通过</td></tr><tr><td>多相机/力/工具训练视图</td><td>待实现</td><td>字段实际进入模型且影响任务评价</td></tr><tr><td>ROS2/MCAP adapter</td><td>待实现</td><td>真实日志转译、回放与语义检查</td></tr><tr><td>对象存储＋目录事务＋重试</td><td>待部署实现</td><td>断网/并发/崩溃故障注入</td></tr><tr><td>权限、脱敏与访问审计</td><td>待公司接入</td><td>越权拒绝、日志可追踪</td></tr><tr><td>保留/备份/恢复</td><td>待公司接入</td><td>用备份恢复指定 release 并复核hash</td></tr><tr><td>生产监控与成本</td><td>待公司接入</td><td>延迟、失败率、容量/作业资源看板</td></tr><tr><td>工位成功与工艺质量</td><td>未验证</td><td>独立试验记录、工艺曲线、失败归因</td></tr></tbody></table></div>
+<p>规模/SLA 由实验室确定：每日 sessions/小时、每路码率、保留月数、并发训练数、接入延迟、恢复时间与可接受丢失量。容量估算为 <code>sum(各流每秒字节数)*录制秒数*批次数</code> 加版本、备份和派生开销；不凭机器人台数猜 TB。</p>
+<h3>9. 已做的检查不等于审批</h3>
+<p><code>check_industrial_contract.py</code> 核验资料字段与附件 hash。即使文件齐全，也只能报告 <code>document_checks_passed</code>，始终输出 <code>human_review_required=true</code>、<code>robot_deployment_authorized=false</code>。它无法自动判断校准是否真实、授权是否覆盖生产、硬件是否安全或工艺能力是否合格。</p>
+<p>这个边界让自动数据处理可持续扩展，同时避免把一个 schema 检查器当成工业认证。实机审批由现场设备/工艺/实验负责人按任务验收决定。</p></div></details></section><section class="chapter" id="chapter-5" aria-labelledby="title-5"><div class="chapter-number">05 / 07</div><h2 id="title-5">厂商、数据、模型与采购</h2><p class="takeaway">格式可读、能够训练、实机可用是三个不同层次。</p><p>优先目标G1自采与匹配手型的公开数据；跨本体数据用于迁移对照。采购比较简单夹持/固定工具和灵巧手，按接口与工艺验证。</p><details><summary>展开：原理、字段、方案与复现细节</summary><div class="details-body"><p>核查日期：2026-10-14。信息优先来自厂商、作者和官方仓库。厂商示范/自报能力不是本实验室验证，也不等于已证实能完成本集团螺丝工位。</p>
+<h3>1. “直接可用”必须分三层</h3>
+<ol><li><strong>格式可用</strong>：reader 能解析文件，字段/视频有版本和元信息。</li><li><strong>训练可用</strong>：选定模型的视图、语言、mask、归一化和标签适配，训练更新确实执行。</li><li><strong>实机可用</strong>：动作语义、手型、本体、传感器、控制器、时序和闭环评价一致。</li></ol>
+<p>本项目公开小样本已验证第一层，CPU BC/本次官方 ACT 教学验证训练接口的一部分；没有验证工厂能力。不同机器人的数据通常是预训练/迁移候选；<strong>公开下载不能代替目标 G1 的工位示范</strong>。</p>
+<p>命名也要分清：宇树 G1、智元材料中的 AgiBot G1 和银河通用 Galbot G1 是不同厂商的本体，不能因为都叫“G1”就认为关节与控制接口相同。</p>
+<h3>2. 厂商方案与开放程度</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">厂商/路线</th><th scope="col">一手材料披露什么</th><th scope="col">本次实际可获取的入口</th><th scope="col">对我们的作用</th><th scope="col">不能据此承诺</th></tr></thead><tbody><tr><td>宇树 G1</td><td>真机/仿真 XR、IL 框架、RL 仿真、UnifoLM 模型路线</td><td>XR、unitree_lerobot、RL Lab、Dex1/WBT 数据和 UnifoLM-WLA</td><td>最接近目标本体，先核对控制/数据契约</td><td>出厂内部算法、任意 EDU 配置通用、已会拧螺丝</td></tr><tr><td>NVIDIA 与 G1</td><td>GR00T 和全身控制配套</td><td>G1 Teleop、Isaac-GR00T、GR00T-WBC/SONIC</td><td>上肢与全身两套可读技术路线</td><td>所有 G1 动作表示可以混用</td></tr><tr><td>智元</td><td>AgiBot World/GO-1、2026 分层/接触数据、Genie Sim</td><td>数据、模型、采集/仿真研究入口</td><td>双臂、长任务、接管/失败标注与仿真</td><td>智元本体数据直接驱动宇树；NC 数据默认可做产线商业训练</td></tr><tr><td>银河通用</td><td>官网介绍 GraspVLA、运动跟踪与导航路线，SDK有导航/感知/抓放组合例子</td><td>作者 GraspVLA/SynGrasp-1B、官方开发平台与 HumanTracker</td><td>抓取迁移、组合系统和全身评价参考</td><td>抓取/导航示范等于全流程装配/拧紧</td></tr><tr><td>Figure</td><td>Helix 02 全身分层路线</td><td>官方架构文章与示范</td><td>全身协同技术参考</td><td>本次未确认公开可下载的完整 Helix 训练数据/权重</td></tr><tr><td>Tesla Optimus</td><td>AI、感知、控制、导航与平衡的软件需求</td><td>官方 AI/Robotics 页面</td><td>理解系统需要多项能力</td><td>不能仅凭网页判定其统一 VLA、算法/数据配方</td></tr><tr><td>1X</td><td>动作条件世界模型路线</td><td>官方模型研究说明</td><td>预测/规划方向参考</td><td>预测视频代替真实接触/质量验证</td></tr><tr><td>UR/睿尔曼等机械臂</td><td>工业接口、控制器和具体机型</td><td>官方硬件/开发接口</td><td>固定工位装配对照平台</td><td>购买设备自动提供通用 VLA 或训练数据</td></tr></tbody></table></div>
+<p>证据：<a href="https://github.com/unitreerobotics/xr_teleoperate">宇树 XR</a>、<a href="https://github.com/unitreerobotics/unitree_lerobot">宇树 IL</a>、<a href="https://github.com/unitreerobotics/unitree_rl_lab">宇树 RL</a>、<a href="https://github.com/unitreerobotics/unifolm-wla">UnifoLM-WLA</a>、<a href="https://github.com/NVIDIA/Isaac-GR00T">NVIDIA GR00T</a>、<a href="https://github.com/NVlabs/GR00T-WholeBodyControl">全身控制</a>、<a href="https://github.com/OpenDriveLab/AgiBot-World">智元/GO-1</a>、<a href="https://github.com/AgibotTech/genie_sim">Genie Sim</a>、<a href="https://github.com/PKU-EPIC/GraspVLA">GraspVLA</a>、<a href="https://www.figure.ai/news/helix-02">Figure</a>、<a href="https://www.tesla.com/AI">Tesla</a>、<a href="https://www.1x.tech/discover/redwood-ai-world-model">1X</a>、<a href="https://www.universal-robots.com/products/">UR</a>、<a href="https://develop.realman-robotics.com/en/robot/apic/classes/force/">睿尔曼开发</a>。</p>
+<p>银河通用的厂商关联与接口依据：<a href="https://www.galbot.com/about/">官网介绍</a>、<a href="https://developer.galbot.com/docs/SDK/1.10.0/s1/en/tutorials/">官方任务教程</a>。官网能力描述属于厂商声明。</p>
+<h3>3. 值得列入内网下载计划的数据</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">优先级与来源</th><th scope="col">格式/内容</th><th scope="col">怎么帮 G1 EDU</th><th scope="col">下载与适配策略</th></tr></thead><tbody><tr><td>P0 · 目标 G1 自采</td><td>原始 XR/传感/工具日志</td><td>工位动作、手型和质量的直接监督</td><td>先10完整episode试采；采集实际关节/控制器契约</td></tr><tr><td>P0 · <a href="https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-GR00T-Teleop-G1">NVIDIA G1 Teleop</a></td><td>LeRobot，G1上肢操作</td><td>格式和目标本体参考，已有6条小样本</td><td>复用锁定小样本；验证实际手型与控制含义</td></tr><tr><td>P0 · <a href="https://huggingface.co/datasets/unitreerobotics/G1_Dex1_Clean_Table">宇树 Dex1</a></td><td>旧快照已抽查任务为LeRobot v2.1；本次API返回401</td><td>简单夹爪上肢参考</td><td>当前访问状态需确认；如采购Dex1，先metadata＋10完整episode；不代表装配</td></tr><tr><td>P1 · <a href="https://huggingface.co/collections/unitreerobotics/unifolm-wbt-dataset">宇树 WBT</a></td><td>所选任务已抽查LeRobot v3.0，全身/手的字段</td><td>全身动作契约研究</td><td>选实际手型对应任务；每条task单独锁revision</td></tr><tr><td>P1 · <a href="https://huggingface.co/datasets/agibot-world/AgiBotWorld2026">AgiBot World 2026</a></td><td>Parquet＋视频，层级步骤、错误/接管标注</td><td>长任务分段、恢复与数据治理</td><td>先一条完整长任务及其标注；CC-BY-NC-SA，生产用途先确认授权</td></tr><tr><td>P1 · <a href="https://github.com/OpenDriveLab/AgiBot-World">AgiBot World/GO-1</a></td><td>智元双臂数据＋模型生态</td><td>迁移/数据多样性对照</td><td>本体不同，需adapter和目标数据；许可同上游声明</td></tr><tr><td>P1 · <a href="https://huggingface.co/datasets/vegebirrd/SynGrasp-1B">SynGrasp-1B</a></td><td>仿真抓取轨迹，作者训练器有LeRobot Franka loader</td><td>研究仿真视觉/抓取泛化</td><td>先schema和单批，非G1/非拧紧；模型/数据许可分别核查</td></tr><tr><td>P1 · <a href="https://github.com/AgibotTech/genie_sim">Genie Sim</a></td><td>仿真任务/生成工具与数据入口</td><td>生成可控任务变化和评估</td><td>工具不是现成真机示范，先验证仿真机器人/输出格式</td></tr><tr><td>P2 · <a href="https://github.com/google-deepmind/open_x_embodiment">Open X-Embodiment</a> / <a href="https://droid-dataset.github.io/">DROID</a></td><td>多本体RLDS/机器人操作轨迹</td><td>通用操作预训练与迁移</td><td>需RLDS adapter；每来源许可和动作都分开</td></tr><tr><td>P2 · 人体动作/运动跟踪</td><td>动捕/retargeted动作、控制器指定motion library</td><td>行走/全身参考跟踪RL</td><td>有参考不等于有稳定控制，需机器人模型与奖励</td></tr><tr><td>P1 · <a href="https://github.com/GalaxyGeneralRobotics/HumanTracker">HumanTracker</a></td><td>人动作/机器人参考轨迹、运动跟踪评价及偏好对</td><td>全身跟踪与奖励模型研究</td><td>有G1版本约束；参考轨迹/偏好标签不等于本工位动作示范；仅核查README</td></tr></tbody></table></div>
+<p>本次只抓取 metadata、README 和规范，不下载这些完整数据集/大模型；固定 revision 与字段见 <a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/evidence/industrial-datasets-2026-10-14.json">数据快照</a>、<a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/evidence/industrial-upstreams-2026-10-14.json">代码快照</a>。旧24项目录继续保留在 <a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/docs/02-dataset-catalog.md">数据集索引</a>，不把新核查状态追溯成旧报告的实测。</p>
+<h3>4. 一个具体例子：宇树 WLA 并不只读“关节向量”</h3>
+<p>核查的 <code>unifolm-wla</code> 规范提供统一的 <strong>54维动作、60维状态</strong> 与有效性 mask；状态与mask拼接后投影器输入120维。末端/基座位姿使用相对当前状态的 SE(3) 表示，其余通道保留来源控制语义。规范示例的动作块是30个动作点。<strong>这些是该版本模型表示，不是 G1 拥有54个电机。</strong></p>
+<p>更关键的限制：核查版本的 WBC msgpack action server 默认 adapter 只覆盖 Dex1 槽位；Dex5/WBT 客户端与协议需扩展。能训练某种手型不代表现有服务已可执行该手型。来源：<a href="https://github.com/unitreerobotics/unifolm-wla/blob/0a1aa87be8f7/docs/robot_action_state_processing_en.md">动作/状态规范</a>、<a href="https://github.com/unitreerobotics/unifolm-wla/blob/0a1aa87be8f7/docs/train_action_expert_en.md">训练与服务规范</a>。完整revision/hash见代码快照。</p>
+<p>我们的 NPZ 是本来源原生维度＋mean/std；直接送给这个54/60维模型会错。需按上游 slot、SE(3)、统计与mask重新派生视图，不能简单补零猜缺失维度。官方 LeRobot 导出只解决存储，不自动做该模型 adapter。</p>
+<h3>5. 手部/传感/工具采购怎么比较</h3>
+<p>以下是候选类别与工程建议，不是采购承诺。价格、交期、G1安装、控制授权与可读数据均需供应商书面确认。本次不采用经销商价格或未经验证的兼容声明。</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">候选</th><th scope="col">适用与优势</th><th scope="col">对数据的要求</th><th scope="col">决策条件</th></tr></thead><tbody><tr><td>宇树 <a href="https://www.unitree.com/Dex1-1/">Dex1-1</a> 类简单夹持</td><td>状态/动作简单，适合早期取放和固定治具</td><td>开合/夹持命令、实际状态、抓到/掉落结果</td><td>螺丝尺寸/指尖、防滑、工具固定方式是否满足</td></tr><tr><td>宇树 <a href="https://www.unitree.com/Dex3-1/">Dex3-1</a></td><td>更丰富接触与握持，官方生态入口</td><td>实际手指顺序、力/触觉读数、手臂同步</td><td>是否真能读需要的数据，重复握持工具的稳定性</td></tr><tr><td>宇树 <a href="https://www.unitree.com/Dex5-1/">Dex5-1</a>／其他五指手</td><td>研究复杂人类工具与手内操作</td><td>高维手指、触觉、retargeting、接触标注</td><td>功能是否确有必要、接口覆盖、寿命/维护与样本成本</td></tr><tr><td><a href="https://robotiq.com/products/adaptive-grippers">Robotiq Hand-E/2F</a> 类工业夹爪</td><td>固定机械臂装配对照、产业集成生态</td><td>位置/速度/夹持力/物体检测</td><td>并非默认G1即插即用，核验安装/重量/协议</td></tr><tr><td><a href="https://ati-ia.com/products/ft/sensors.aspx">ATI 六维 F/T</a>／<a href="https://develop.realman-robotics.com/en/robot/apic/classes/force/">睿尔曼内置六维力</a></td><td>接触、反力矩、工具过程研究</td><td>六维数值、坐标、零偏、时间、采样/滤波</td><td>量程/噪声/过载、零点与重力补偿、驱动时延</td></tr><tr><td>头部＋腕部 RGB／深度</td><td>大范围定位与近距离精细对位互补</td><td>内外参、曝光时间、帧率、同步/丢帧</td><td>小螺丝成像、遮挡、反光、安装稳定性</td></tr><tr><td><a href="https://www.atlascopco.com/content/dam/atlas-copco/industrial-technique/general/documents/brochures-leaflets/electric-assembly-tools-and-systems/Smart%20Tightening%20Strategies%20Leaflet.pdf">工业拧紧模组/控制器</a></td><td>可读扭矩/角度与质量结果，适合可测闭环</td><td>程序/周期ID、曲线、OK/NOK、时间、故障</td><td>工艺范围、反扭矩、通讯、供料、追溯与安装</td></tr></tbody></table></div>
+<p>实验室起点建议：<strong>先验证简单夹持/固定工具＋可读工艺结果，再为明确需要的手内操作升级灵巧手。</strong> 若研究目标本身是手持工具泛化，可并行保留灵巧手方案。用同一工件完成抓取/对位/拧紧试验，再比较复杂度与可靠性。</p>
+<h3>6. 买电机构造自己的机器人是否可行</h3>
+<p>可以把 <a href="https://github.com/huggingface/lerobot/blob/main/docs/source/so101.mdx">SO-101</a> 等开源机械臂作为数据/BC教学基线；<a href="https://emanual.robotis.com/docs/en/dxl/x/">ROBOTIS DYNAMIXEL</a> 提供带反馈的执行器生态。它们有利于理解标定、主从示教、关节命令和训练，<strong>不代表能承受产线电批反扭矩或达到装配工艺指标</strong>。</p>
+<p>自造本体需要机械设计、驱动、编码器零点、减速器/背隙、刚度/热/制动、控制带宽、URDF/惯量、供电/通讯、标定与安全机制。电机规格不等于整机能力。动作先在该本体验证，再映射世界/工具空间，并通过IK/可达性/碰撞与目标数据适配。不能复用另一台机器人同维度关节向量。</p>
+<p>建议用小臂验证算法、用购买的工业臂做固定工位对照、用G1研究移动与全身协作。是否另买臂由预算和工艺需求决定，不自动采购。</p>
+<h3>7. 商业数据与服务</h3>
+<p><a href="https://scale.com/physical-ai">Scale Physical AI</a> 等提供机器人数据采集/整理服务。把它作为候选供应商，不认为存在现成可用于本工位的货架数据包。本次未取得报价或采购样本。</p>
+<p>采购清单应明确：本体/手型/控制器、原始图像与动作、实测捕获时间、双手/力/工具字段、原始session分组、失败/接管、标定、权限范围、完整数据交付与重复率。先采购/验收10条完整样本，验证能进我们的adapter再讨论规模。只交视频或模型归一化后的向量可能无法恢复动作物理含义。</p>
+<h3>8. 如何选模型与数据组合</h3>
+<p>最接近本体的数据优先用作语义/接口参考；目标任务自采优先用于任务能力；跨本体公开数据用于预训练/迁移对照；仿真用于可控变化与RL；商业服务补采集/整理产能。模型按动作接口、训练资源、推理周期与任务成功选择，不能按厂商演示或参数数量排名。</p></div></details></section><section class="chapter" id="chapter-6" aria-labelledby="title-6"><div class="chapter-number">06 / 07</div><h2 id="title-6">逐条命令实操</h2><p class="takeaway">每关都能看到输入、输出和代码。</p><p>合成原始数据、转换与版本、BC训练/预测、异步流对齐、PPO、官方ACT以及真实G1候选路线分开讲解。</p><details><summary>展开：原理、字段、方案与复现细节</summary><div class="details-body"><p>目标：每次执行后都知道输入、输出、关键字段与限制。第1–5关不需要机器人/权重/大数据；第6关使用官方 LeRobot ACT，但仍是合成教学；第7关展示真实上游路线的准备步骤，不冒充已执行的 VLA/行走实验。</p>
+<h3>0. 环境和资源</h3>
+<p>在仓库根目录，Python3.12；Linux/macOS 命令如下。Windows PowerShell 的 <code>uv run ...</code> 命令相同，虚拟环境路径 <code>bin/python</code> 改为 <code>Scripts/python.exe</code>。不要复制Mac虚拟环境到服务器。</p>
+<pre><span class="code-label">bash</span><code>uv sync --frozen --extra dev --extra train
+uv run --frozen python scripts/resource_status.py</code></pre>
+<p>Torch 软件包可能较大；仅CPU演示可按 <a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/docs/16-training-export.md#cpu-训练探针">独立CPU环境</a> 安装 CPU wheel，或者使用已安装环境的python执行下文脚本。<code>--offline</code> 只能使用已有缓存，不会补齐依赖。训练前后及期间查看内存/热压力，采用1线程与小批次；无温度读数时不声称具体温度。</p>
+<p>Linux/macOS：</p>
+<pre><span class="code-label">bash</span><code>export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export PYTHONUTF8=1</code></pre>
+<p>PowerShell：</p>
+<pre><span class="code-label">powershell</span><code>$env:OMP_NUM_THREADS=&quot;1&quot;
+$env:OPENBLAS_NUM_THREADS=&quot;1&quot;
+$env:MKL_NUM_THREADS=&quot;1&quot;
+$env:PYTHONUTF8=&quot;1&quot;</code></pre>
+<p>以下使用新目录 <code>data/learning-001</code>。若已存在，替换为<code>learning-002</code>并同步更改后续路径，不删除旧版本。</p>
+<h3>1. 看懂原始数据</h3>
+<pre><span class="code-label">bash</span><code>uv run --frozen python scripts/generate_g1_demo.py --output data/learning-001
+uv run --frozen python -c &quot;import json; from pathlib import Path; d=json.loads(Path(&#x27;data/learning-001/capture/demo_task/episode_0000/data.json&#x27;).read_text(encoding=&#x27;utf-8&#x27;)); print(d[&#x27;text&#x27;]); print(d[&#x27;data&#x27;][0]); print(d[&#x27;data&#x27;][1])&quot;</code></pre>
+<p>应看到8个episode，每条24个时刻；两维虚构state与action，还有图片路径。请回答：哪个字段是输入状态？哪个字段是监督标签？图片本身在哪里？本数据不是G1实采，也不是物理仿真。</p>
+<h3>2. 手动转换、注册、发布</h3>
+<pre><span class="code-label">bash</span><code>uv run --frozen vla-pipeline import-unitree --source-dir data/learning-001/capture --mapping data/learning-001/mapping.json --output data/learning-001/prepared
+uv run --frozen vla-pipeline register-local --source-dir data/learning-001/prepared --descriptor data/learning-001/prepared/source.json --root data/learning-001/store --output data/learning-001/sources.lock.json
+uv run --frozen vla-pipeline run --lock data/learning-001/sources.lock.json --root data/learning-001/store --recipe configs/g1_edu_interface_recipe.json --offline
+uv run --frozen python -c &quot;import json; from pathlib import Path; print(json.loads(Path(&#x27;data/learning-001/store/latest.json&#x27;).read_text())[&#x27;release_id&#x27;])&quot;</code></pre>
+<p>记下实际打印的release，替换下文所有<code>&lt;release_id&gt;</code>，不能原样粘贴。应有8条accepted、192个时刻、32个窗口，train28/validation4个窗口。解释 <code>mapping</code> 决定了什么，为什么 <code>idx/fps</code> 是名义时间而非实测同步。</p>
+<pre><span class="code-label">bash</span><code>uv run --frozen vla-pipeline verify data/learning-001/store/releases/&lt;release_id&gt;
+uv run --frozen python scripts/inspect_training_batch.py --release data/learning-001/store/releases/&lt;release_id&gt; --source g1_edu_synthetic</code></pre>
+<p>应有 image <code>[3,64,64]</code>、state <code>[2]</code>、actions/mask <code>[8,2]</code>，语言字符串。看 <code>canonical/</code> 原生动作与 <code>statistics.json</code>，解释NPZ为何归一化。完整中间产物逐项说明见 <a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/docs/14-g1-edu-manual-reproduction.md">旧手工教程</a>。</p>
+<h3>3. 从训练走到推理</h3>
+<pre><span class="code-label">bash</span><code>uv run --frozen --extra train python -m vla_pipeline.training --release data/learning-001/store/releases/&lt;release_id&gt; --output data/learning-001/training --steps 20 --threads 1
+uv run --frozen --extra train python scripts/infer_bc_offline.py --release data/learning-001/store/releases/&lt;release_id&gt; --source g1_edu_synthetic --checkpoint data/learning-001/training/g1_edu_synthetic.pt --output data/learning-001/prediction.json
+uv run --frozen python -c &quot;import json; from pathlib import Path; d=json.loads(Path(&#x27;data/learning-001/prediction.json&#x27;).read_text()); print(&#x27;instruction:&#x27;,d[&#x27;language&#x27;]); print(&#x27;prediction:&#x27;,d[&#x27;native_prediction&#x27;][0]); print(&#x27;label:&#x27;,d[&#x27;native_label&#x27;][0]); print(&#x27;robot_command_sent:&#x27;,d[&#x27;robot_command_sent&#x27;])&quot;</code></pre>
+<p>训练会保存模型/优化器以及数据/统计哈希，推理从validation取一个窗口、恢复模型、前向预测并逆归一化，输出<code>[8,2]</code>。应有<code>robot_command_sent=False</code>。<strong>模型输出和真实标签不同是正常的</strong>，20步接口探针不是学会工厂动作。</p>
+<p>看代码顺序：<code>dataset.WindowDataset.__getitem__</code> → <code>training.TinyMultimodalBC.forward</code> → <code>training.masked_mse</code> → <code>loss.backward/optimizer.step</code> → <code>infer_bc_offline.py</code>。解释训练用target，而推理不应使用target；执行器为什么不能直接接这两维虚构动作。</p>
+<h3>4. 看异步数值流怎样对齐</h3>
+<pre><span class="code-label">bash</span><code>uv run --frozen python scripts/align_numeric_streams.py --input configs/async_numeric_demo.json --output data/learning-001/aligned.json
+uv run --frozen python -c &quot;import json; from pathlib import Path; d=json.loads(Path(&#x27;data/learning-001/aligned.json&#x27;).read_text()); print(d[&#x27;timestamps&#x27;]); print(d[&#x27;streams&#x27;][&#x27;wrist_force&#x27;]); print(d[&#x27;all_streams_valid&#x27;])&quot;</code></pre>
+<p>应有共享有效时刻<code>3/5</code>、mask <code>[false,true,true,false,true]</code>。在t=0不能读取0.01秒才发生的力数据；在t=0.15关节样本已经过旧，输出null，不用0.199秒未来值补它。</p>
+<p>读<code>src/vla_pipeline/synchronize.py</code>：<code>searchsorted(...,side=&#x27;right&#x27;)-1</code> 找最近过去样本，<code>max_age_s</code>决定陈旧阈值。输入要求统一时钟；真实clock offset/drift未由脚本测量，也未把这些字段送入BC模型。帧率相同不能证明设备已同步。</p>
+<h3>5. PPO：检查rollout，再只用actor推理</h3>
+<pre><span class="code-label">bash</span><code>uv run --frozen --extra train python scripts/ppo_position_lab.py train --output data/learning-ppo-001 --updates 60
+uv run --frozen --extra train python scripts/ppo_position_lab.py play --checkpoint data/learning-ppo-001/ppo_actor_critic.pt --output data/learning-ppo-001/play.json
+uv run --frozen python -c &quot;import numpy as np; a=np.load(&#x27;data/learning-ppo-001/first_rollout.npz&#x27;); print({k:a[k].shape for k in a.files}); print(&#x27;r=&#x27;,a[&#x27;reward&#x27;][0,0],&#x27;V=&#x27;,a[&#x27;value&#x27;][0,0],&#x27;A=&#x27;,a[&#x27;advantage&#x27;][0,0],&#x27;return=&#x27;,a[&#x27;returns&#x27;][0,0]); print(&#x27;last done=&#x27;,a[&#x27;done&#x27;][-1])&quot;</code></pre>
+<p>应有obs <code>[48,16,4]</code>，action/reward/logprob/value/advantage <code>[48,16]</code>，48步末尾是真终止。这里16是并行的虚构数值环境，不是16个机器人。比较同一固定初始条件的前后平均回报；曲线不保证每次单调改善。</p>
+<p>读<code>ActorCritic</code>、<code>transition</code>、GAE反向循环、ratio/clamp，再读<code>evaluate</code>。回答：奖励是什么？critic拟合什么？部署为什么只用actor输出动作？raw Gaussian action 与tanh后的实际动作是什么关系？该示例不是G1、不含接触物理、不是步态仿真。</p>
+<h3>6. 官方LeRobot：真的用框架训练，而不是只写训练命令</h3>
+<p>这是可选独立环境。<strong>不要把官方SDK的依赖混进基础 <code>.venv</code></strong>。该步骤需要安装软件包，但不下载VLA权重或完整数据集。先看 <a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/docs/16-training-export.md#两条-g1-转换路线">固定SDK桥</a>；环境创建与导出命令在下面重列。</p>
+<p>Linux/macOS示例，Windows路径和CPU wheel按对应平台准备：</p>
+<pre><span class="code-label">bash</span><code>uv venv .venv-sdk --python 3.12
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/huggingface/lerobot.git .build/learning-lerobot-sdk
+git -C .build/learning-lerobot-sdk checkout ca69a2068462a37f7cdcb74180927a2f863d2bf7
+uv pip install --python .venv-sdk/bin/python -e &quot;.build/learning-lerobot-sdk[dataset]&quot; -e . &quot;accelerate==1.15.0&quot;
+uv pip freeze --python .venv-sdk/bin/python &gt; data/sdk-environment.txt</code></pre>
+<p>PowerShell先设置<code>$env:GIT_LFS_SKIP_SMUDGE=&quot;1&quot;</code>再运行不带前缀赋值的git clone。Linux基础Torch默认可能带CUDA软件包；CPU实验建议先装匹配Torch/torchvision CPU wheel再解析SDK。目标OS必须重建验证；本次实际官方训练证据是macOS arm64，不是Windows/GPU/NPU认证。</p>
+<p>导出train与validation两份独立数据，原生动作、完整帧与SDK统计：</p>
+<pre><span class="code-label">bash</span><code>.venv-sdk/bin/python scripts/verify_lerobot_export.py --release data/learning-001/store/releases/&lt;release_id&gt; --raw-root data/learning-001/store/raw --source g1_edu_synthetic --output-root data/learning-sdk-001 --report-dir reports/local-learning-sdk
+.venv-sdk/bin/python scripts/run_act_interface_probe.py --dataset-root data/learning-sdk-001/train --repo-id local/g1_edu_synthetic-train --output data/learning-act-001 --report reports/local-learning-act.json
+.venv-sdk/bin/python scripts/infer_act_offline.py --checkpoint data/learning-act-001/checkpoints/000005/pretrained_model --dataset-root data/learning-sdk-001/validation --repo-id local/g1_edu_synthetic-validation --output data/learning-act-001/prediction.json</code></pre>
+<p>应有168train/24validation帧，官方ACT完成5个更新，保存<code>safetensors</code>、config、训练前后processor及优化器运行状态；离线预测原生动作块<code>[2,8,2]</code>。ACT没有语言条件，此脚本不把字符串任务假装接进VLA。其随机初始化视觉骨干不下载权重，网络缩小只为教学；不是标准模型性能实验。</p>
+<p><code>run_act_interface_probe.py</code> 保存真实参数与loss日志摘要；内部本质是：</p>
+<pre><span class="code-label">bash</span><code>python -m lerobot.scripts.lerobot_train --dataset.repo_id=local/g1_edu_synthetic-train --dataset.root=data/learning-sdk-001/train --dataset.video_backend=pyav --policy.type=act --policy.device=cpu --policy.push_to_hub=false --policy.pretrained_backbone_weights=null --policy.chunk_size=8 --policy.n_action_steps=8 --policy.dim_model=64 --policy.n_heads=4 --policy.dim_feedforward=128 --policy.n_encoder_layers=1 --policy.n_decoder_layers=1 --policy.n_vae_encoder_layers=1 --policy.latent_dim=8 --batch_size=2 --num_workers=0 --steps=5 --save_freq=5 --log_freq=1 --env_eval_freq=0 --eval_steps=0 --wandb.enable=false --output_dir=data/learning-act-manual-001</code></pre>
+<p>这条命令只在上面SDK环境中执行，不能使用基础环境的python。内部将Hub/Transformers设为offline、防止意外下载；不要向内部工厂数据添加Hub上传参数。</p>
+<h3>7. 真实G1路线：哪些命令现在只是候选</h3>
+<h4>7.1 宇树上肢IL</h4>
+<p>固定源码版本，自己的单独目录；不执行真机例子：</p>
+<pre><span class="code-label">bash</span><code>git clone https://github.com/unitreerobotics/unitree_lerobot.git
+cd unitree_lerobot
+git checkout 41c2805742de879ddab2d8d6beaeaf215f876395</code></pre>
+<p>阅读其README的转换、ACT/Diffusion/π/GR00T训练和回放。模型与数据的版本、手型/关节、动作含义和控制器匹配后才填写对应参数。旧名<code>unitree_IL_lerobot</code>目前重定向到该仓库；其子目录与本项目固定官方SDK并非同一个环境。<strong>本次训练的是官方SDK的ACT教学，不是该宇树fork的真机训练。</strong></p>
+<h4>7.2 宇树UnifoLM-WLA</h4>
+<pre><span class="code-label">bash</span><code>git clone https://github.com/unitreerobotics/unifolm-wla.git
+cd unifolm-wla
+git checkout 0a1aa87be8f775c7883fcd27216e3666ac18a8c5</code></pre>
+<p>先读<code>docs/robot_action_state_processing_en.md</code>和<code>docs/train_action_expert_en.md</code>，按54/60维槽位、mask、相对位姿和统计建立模型视图。上游微调入口为：</p>
+<pre><span class="code-label">bash</span><code>base_model_dir=/company/models/UnifoLM-WLA-1.0-Base bash examples/unifolm_wla/train_files/run_finetune_mmdit_frozen_vlm.sh</code></pre>
+<p>这是Linux候选命令，<strong>本次未执行</strong>。须先按上游安装环境、准备授权模型本地目录、配置数据路径/动作槽位/相机、训练预算与算子兼容性。不能把<code>/company/...</code>占位路径原样运行。上游默认冻结VLM、训练动作专家/状态投影，服务器当前Dex1接口的限制见 <a href="#chapter-5">来源与采购</a>。</p>
+<h4>7.3 行走RL</h4>
+<pre><span class="code-label">bash</span><code>git clone https://github.com/unitreerobotics/unitree_rl_lab.git
+cd unitree_rl_lab
+git checkout 4960b84732b0c2ec593dccbfe963fda1bcd7b1e3</code></pre>
+<p>按官方README准备兼容的IsaacLab环境和目标G1模型，限制并行环境/渲染与资源后，可使用上游任务入口：</p>
+<pre><span class="code-label">bash</span><code>python scripts/rsl_rl/train.py --headless --task Unitree-G1-29dof-Velocity
+python scripts/rsl_rl/play.py --task Unitree-G1-29dof-Velocity</code></pre>
+<p>这两条仅是核对的官方入口，<strong>本次未安装IsaacLab或执行</strong>。默认并行环境可能较大，不直接照搬到本机；实际参数以锁定任务配置/<code>--help</code>核对。actor观测、动作scale、default姿态、PD增益与训练机器人参数均需保留，实机还要sim2sim与合同核验。</p>
+<h4>7.4 全身路线</h4>
+<p><a href="https://github.com/NVlabs/GR00T-WholeBodyControl">GR00T-WBC/SONIC</a> 的锁定版本与文档见源码证据。它有独立数据采集、VLA训练、运动控制/部署环境，不能用上肢LeRobot动作代替SONIC的表示。克隆时Git LFS可能拉取大型二进制；研究源码可用<code>GIT_LFS_SKIP_SMUDGE=1</code>，运行时必须按所选模型清单显式补齐、校验资产，不能把LFS指针误作权重。此次未下载全身权重、未运行机器人。</p>
+<h3>8. 缺真实配置时让检查器明确失败</h3>
+<pre><span class="code-label">bash</span><code>uv run --frozen python scripts/check_industrial_contract.py --contract configs/industrial_intake.template.json --evidence-root . --output data/learning-001/intake_audit.json</code></pre>
+<p>预期退出码 <strong>2</strong>，因为机器人配置、时钟、控制器、通道语义及附件未填写。Linux/macOS用<code>echo $?</code>，PowerShell用<code>$LASTEXITCODE</code>查看；不是意外运行失败。填好的资料检查通过也只代表字段/哈希齐全，不能授权实机动作。</p>
+<h3>9. 你能逐项说清楚就学到了</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">问题</th><th scope="col">达标答案</th></tr></thead><tbody><tr><td>开放/遥操作/仿真/LeRobot关系？</td><td>获取权利、控制方式、环境与格式是不同维度</td></tr><tr><td>BC的标签？</td><td>有明确物理含义的示范动作，不是success或视频</td></tr><tr><td>PPO的标签？</td><td>根据rollout奖励构造优势/回报，无需每步专家动作</td></tr><tr><td>为什么不能直接把输出发G1？</td><td>虚构/来源动作需匹配本体、控制器、单位、时序与验证</td></tr><tr><td>上下身如何配合？</td><td>共享权限/时序/坐标，分阶段或统一全身控制器</td></tr><tr><td>做到哪一步？</td><td>小样本数据/训练/离线推理；尚无真实装配/行走验证</td></tr></tbody></table></div>
+<p>每次只学一关，先用自己的话解释，再看下一关。主管汇报按 <a href="#chapter-7">讲稿</a> 的7段展开，不必在首次汇报展示全部公式。</p></div></details></section><section class="chapter" id="chapter-7" aria-labelledby="title-7"><div class="chapter-number">07 / 07</div><h2 id="title-7">汇报讲稿与主管问答</h2><p class="takeaway">用7段讲清目标、系统、证据与需要协调的条件。</p><p>先讲业务闭环，再讲训练与控制，最后展示实测和下一步工位、硬件、算力与运维要求。</p><details><summary>展开：原理、字段、方案与复现细节</summary><div class="details-body"><p>建议8–12分钟，按听众问题展开技术细节。离线HTML默认展示主要结论；切换“技术详读”可展开本次完整报告。</p>
+<h3>1. 我们到底在做什么</h3>
+<p>“我们要建设从机器人采集到训练和任务评估的数据闭环。以G1 EDU为目标本体，以螺丝装配作例子，明确数据、模型和控制接口。当前交付是可运行原型与工业化设计，生产部署需要设备和工位验收。”</p>
+<p>不要开场罗列模型名和下载规模。主管先需要知道：为什么做、用在什么地方、现在做到什么。</p>
+<h3>2. 数据从哪里来</h3>
+<p>“最直接的是目标机器人遥操作；真机和仿真都可遥操作。公开数据也是各种采集方式的集合。LeRobot是数据/工具生态，我们已能转换和读取；还要检查动作含义、本体配置和任务是否相关。我们暂不下载完整大数据，内网按固定版本和小样本验收后扩大。”</p>
+<h3>3. 用拧螺丝说明为什么不能只有一个模型</h3>
+<p>“完整任务包含到工位、取料、双手对位、接触、拧紧和复核。视觉和策略学习能帮助选料/运动；接触和平衡要由控制器处理，拧紧结果要来自工具/工艺检验。我们先固定站位，再扩展持工具移动。”</p>
+<h3>4. 模型如何学、怎么执行</h3>
+<p>“监督学习看示范动作，预测未来动作块。PPO通过仿真奖励更新运动策略。VLA可以加入语言与视觉基础模型，世界模型可以辅助预测和规划。部署时模型产生参考，匹配的控制器执行并持续反馈；不是接摄像头之后任其自己工作。”</p>
+<p>如果追问loss：BC回归动作；ACT重建＋KL；token VLA交叉熵；flow/diffusion学习动作生成；PPO是概率比与优势。详细公式在模型报告。</p>
+<h3>5. 当前有哪几项可核查成果</h3>
+<p>“已有来源样本接入与不可变版本、原始追溯、训练窗口和固定SDK导出。此次补充异步数值流对齐、工业接入资料检查，并实跑BC训练/推理、官方ACT五次更新/离线推理和PPO教学。它们证明接口可运行，未证明G1会拧螺丝或在产线连续工作。”</p>
+<p>演示选一条：数据窗口 → loss/checkpoint → 预测动作还原 → <code>robot_command_sent=false</code>；或时间对齐中缺样本为何不能拿未来值补。不要把教学回报与工厂指标混在一起。</p>
+<h3>6. 设备与路线怎么决策</h3>
+<p>“优先匹配实际G1手型与动作接口。可比较简单夹爪/固定拧紧模组与灵巧手手持工具；前者容易建立可测工艺基线，后者适合研究工具泛化。全身路线已列出宇树与NVIDIA公开入口，但需要配套控制器和目标数据。先做小样本接口验证，再根据固定测试集评价模型。”</p>
+<h3>7. 下一步需要主管协调什么</h3>
+<p>“请确定一个工位的工艺负责人和验收指标，取得G1具体配置/控制授权，明确工具/力传感采购与内网运行资源。我们先采10个完整episode试接入，然后对固定工位做基线与数据对照。工业运维同时按数据量建设对象存储、目录、权限、重试、监控和恢复。”</p>
+<h3>主管可能追问</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="技术比较表，可横向滚动"><table><thead><tr><th scope="col">问题</th><th scope="col">建议回答</th></tr></thead><tbody><tr><td>什么时候可以上线？</td><td>先明确工艺/硬件/质量与节拍，用里程碑验收后给时间；目前不能按演示承诺产线日期</td></tr><tr><td>为什么不用开源数据直接训练？</td><td>需要对应任务/本体/控制语义；公开数据助起步，目标数据补工位与硬件差异</td></tr><tr><td>为什么不直接用最大VLA？</td><td>先有传统/ACT基线，按任务质量、延迟、算力和维护比较，不按参数数排名</td></tr><tr><td>需要灵巧手吗？</td><td>若有固定工具/供料，简单夹持可能足够；若研究手持工具和手内操作再比较灵巧手</td></tr><tr><td>行走和导航有什么区别？</td><td>一个稳定执行移动，一个决定路线/避障/停靠；全身协同处理操作时身体支持</td></tr><tr><td>世界模型可替代仿真/真机吗？</td><td>可辅助预测与规划；接触/工具质量必须真实验证，不以生成视频替代</td></tr><tr><td>已完成工业管线吗？</td><td>已完成可运行原型扩展与工业化方案，未完成公司服务/实机/工位SLA验收</td></tr><tr><td>MIT能保证第三方数据都商业可用吗？</td><td>MIT只覆盖项目自有代码/原创文档，模型与数据各自授权；智元NC等单独核查</td></tr><tr><td>怎么量化收益？</td><td>固定未见工件/session测试：完整成功率、工艺合格率、节拍分布、接管/返工、稳定性和成本</td></tr><tr><td>如何避免只做调研没有进展？</td><td>每阶段有命令、产物和验证报告；下一阶段有工位验收记录与模型/数据对照</td></tr></tbody></table></div>
+<h3>两句话记忆卡</h3>
+<p><strong>数据管线把原始经验变成可追溯的模型训练输入，任务评价证明这些输入是否真的有用。模型输出的是动作参考，机器人还需要经过验证的控制、传感、工具与质量闭环。</strong></p>
+<p>完整材料从<a href="#chapter-1">业务流程</a>开始，随后<a href="#chapter-2">模型</a>、<a href="#chapter-3">协同</a>、<a href="#chapter-4">工业化</a>、<a href="#chapter-5">来源与采购</a>、<a href="#chapter-6">实操</a>。</p></div></details></section><section class="chapter" id="evidence"><div class="chapter-number">实际运行 / 证据边界</div><h2>已经执行了什么</h2><ul class="evidence-list"><li>合成XR结构：8条轨迹、192个时刻，保留原始文件与哈希，得到32个训练窗口。</li><li>BC：CPU训练20步，恢复检查点，在持出窗口预测并还原动作。</li><li>官方LeRobot ACT：固定SDK 0.6.2，读取168帧训练数据，执行5次更新，保存模型和训练processor；离线持出预测动作块。</li><li>PPO：虚构一维有限时域环境，实际采集rollout、计算优势、更新actor/critic并执行actor推理。</li><li>异步数值流：保留过去样本与有效性，缺失/陈旧数据不会用未来值填补。</li><li>接入模板：由于实际配置与证据未填写，检查器按预期拒绝；文件检查不授权实机执行。</li></ul><p class="boundary">全部训练演示使用合成/虚构教学环境。未训练预训练VLA，未执行G1行走或螺丝装配，也未完成公司生产服务部署。<a href="https://github.com/fengjikui/vla_data_pipeline/tree/main/reports/industrial-2026-10-14">验收记录与原始JSON证据</a></p></section><footer>内容源：docs/17–23，生成脚本：scripts/build_industrial_report.py。厂商一手出处在对应章节；原始数据、训练证据与公开素材各自保留许可。<br><a href="https://github.com/fengjikui/vla_data_pipeline">公开仓库</a> · <a href="https://github.com/fengjikui/vla_data_pipeline/blob/main/LICENSE">MIT（自有代码与原创文档）</a><br>此报告可下载后独立打开；外部出处链接需要联网。</footer></main></div><script>
+const details = [...document.querySelectorAll('.chapter details')];
+const mode = document.getElementById('mode-live');
+function setMode(open) { details.forEach(d=>d.open=open); document.getElementById('brief').setAttribute('aria-pressed',String(!open)); document.getElementById('deep').setAttribute('aria-pressed',String(open)); mode.textContent=open?'已展开全部技术章节；可随时折叠单章。':'当前为汇报概览；每章可单独展开技术细节。'; }
+document.getElementById('brief').addEventListener('click',()=>setMode(false));
+document.getElementById('deep').addEventListener('click',()=>setMode(true));
+let printState=[]; window.addEventListener('beforeprint',()=>{printState=details.map(d=>d.open);details.forEach(d=>d.open=true)});window.addEventListener('afterprint',()=>details.forEach((d,i)=>d.open=printState[i]));
+document.getElementById('print').addEventListener('click',()=>window.print());
+const scenes={station:['固定站位装配','先确认稳定站立与工位治具，让双臂完成取料、对位，再接入可读工具结果。','目标数据：双臂/手、头部/腕部相机、接触和拧紧曲线。','模型：传统伺服/ACT基线，再比较目标G1数据微调的小VLA或专门模型。'],moving:['持工具移动与操作','导航、运动控制、操作策略与全身控制器必须统一权限、时序与负载。','目标数据：全身状态、基座、足部接触、负载/惯量、双手参考和任务结果。','模型：配套全身控制路线，不能直接拼接上肢BC与行走PPO。'],diy:['自造机械臂研究','先构建可标定、可读状态、可执行明确命令的小型本体，再研究迁移。','目标数据：自造本体的关节/控制/相机契约、标定、真实示范与任务结果。','模型：简单BC/ACT起步；其他本体的数据须重定向和目标本体微调。']};
+function scene(){const x=scenes[document.getElementById('scenario').value];document.getElementById('scene-title').textContent=x[0];document.getElementById('scene-body').textContent=x[1];document.getElementById('scene-data').textContent=x[2];document.getElementById('scene-model').textContent=x[3]}
+document.getElementById('scenario').addEventListener('change',scene);scene();
+</script></body></html>

@@ -1,0 +1,711 @@
+{
+  "checked_on": "2026-10-14",
+  "datasets": [
+    {
+      "repo_id": "unitreerobotics/G1_Dex1_Clean_Table",
+      "status": "lookup_failed",
+      "error": "HTTP Error 401: Unauthorized"
+    },
+    {
+      "repo_id": "unitreerobotics/G1_WBT_Brainco_Collect_Plates_Into_Dishwasher",
+      "url": "https://huggingface.co/datasets/unitreerobotics/G1_WBT_Brainco_Collect_Plates_Into_Dishwasher",
+      "revision": "fa3ebd465e861388ab5f0a8ea1435f38ff66c989",
+      "card_license": "apache-2.0",
+      "gated": false,
+      "status": "metadata_only_not_bulk_downloaded",
+      "codebase_version": "v3.0",
+      "fps": 30,
+      "features": {
+        "observation.images.head_stereo_left": {
+          "dtype": "video",
+          "shape": [
+            480,
+            640,
+            3
+          ],
+          "names": [
+            "height",
+            "width",
+            "channel"
+          ],
+          "info": {
+            "video.height": 480,
+            "video.width": 640,
+            "video.codec": "av1",
+            "video.pix_fmt": "yuv420p",
+            "video.is_depth_map": false,
+            "video.fps": 30,
+            "video.channels": 3,
+            "has_audio": false
+          }
+        },
+        "observation.images.head_stereo_right": {
+          "dtype": "video",
+          "shape": [
+            480,
+            640,
+            3
+          ],
+          "names": [
+            "height",
+            "width",
+            "channel"
+          ],
+          "info": {
+            "video.height": 480,
+            "video.width": 640,
+            "video.codec": "av1",
+            "video.pix_fmt": "yuv420p",
+            "video.is_depth_map": false,
+            "video.fps": 30,
+            "video.channels": 3,
+            "has_audio": false
+          }
+        },
+        "observation.images.wrist_left": {
+          "dtype": "video",
+          "shape": [
+            480,
+            640,
+            3
+          ],
+          "names": [
+            "height",
+            "width",
+            "channel"
+          ],
+          "info": {
+            "video.height": 480,
+            "video.width": 640,
+            "video.codec": "av1",
+            "video.pix_fmt": "yuv420p",
+            "video.is_depth_map": false,
+            "video.fps": 30,
+            "video.channels": 3,
+            "has_audio": false
+          }
+        },
+        "observation.images.wrist_right": {
+          "dtype": "video",
+          "shape": [
+            480,
+            640,
+            3
+          ],
+          "names": [
+            "height",
+            "width",
+            "channel"
+          ],
+          "info": {
+            "video.height": 480,
+            "video.width": 640,
+            "video.codec": "av1",
+            "video.pix_fmt": "yuv420p",
+            "video.is_depth_map": false,
+            "video.fps": 30,
+            "video.channels": 3,
+            "has_audio": false
+          }
+        },
+        "observation.state.lower_body": {
+          "dtype": "float32",
+          "shape": [
+            15
+          ],
+          "names": [
+            "left_hip_pitch",
+            "left_hip_roll",
+            "left_hip_yaw",
+            "left_knee",
+            "left_ankle_pitch",
+            "left_ankle_roll",
+            "right_hip_pitch",
+            "right_hip_roll",
+            "right_hip_yaw",
+            "right_knee",
+            "right_ankle_pitch",
+            "right_ankle_roll",
+            "waist_yaw",
+            "waist_roll",
+            "waist_pitch"
+          ]
+        },
+        "observation.state.left_arm": {
+          "dtype": "float32",
+          "shape": [
+            7
+          ],
+          "names": [
+            "shoulder_pitch",
+            "shoulder_roll",
+            "shoulder_yaw",
+            "elbow",
+            "wrist_yaw",
+            "wrist_roll",
+            "wrist_pitch"
+          ]
+        },
+        "observation.state.right_arm": {
+          "dtype": "float32",
+          "shape": [
+            7
+          ],
+          "names": [
+            "shoulder_pitch",
+            "shoulder_roll",
+            "shoulder_yaw",
+            "elbow",
+            "wrist_yaw",
+            "wrist_roll",
+            "wrist_pitch"
+          ]
+        },
+        "observation.state.left_leg": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "hip_pitch",
+            "hip_roll",
+            "hip_yaw",
+            "knee",
+            "ankle_pitch",
+            "ankle_roll"
+          ]
+        },
+        "observation.state.right_leg": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "hip_pitch",
+            "hip_roll",
+            "hip_yaw",
+            "knee",
+            "ankle_pitch",
+            "ankle_roll"
+          ]
+        },
+        "observation.state.hand_state": {
+          "dtype": "float32",
+          "shape": [
+            12
+          ],
+          "names": [
+            "finger_0",
+            "finger_1",
+            "finger_2",
+            "finger_3",
+            "finger_4",
+            "finger_5",
+            "finger_6",
+            "finger_7",
+            "finger_8",
+            "finger_9",
+            "finger_10",
+            "finger_11"
+          ]
+        },
+        "observation.state.left_ee_pose_gripper_base": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "observation.state.right_ee_pose_gripper_base": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "observation.state.state_torso": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "observation.state.state_d435": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "observation.state.left_ee_pose_gripper_torso": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "observation.state.right_ee_pose_gripper_torso": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "observation.state.state_base_pose": {
+          "dtype": "float32",
+          "shape": [
+            7
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "qx",
+            "qy",
+            "qz",
+            "qw"
+          ]
+        },
+        "observation.state.waist_state_joint": {
+          "dtype": "float32",
+          "shape": [
+            3
+          ],
+          "names": [
+            "yaw",
+            "roll",
+            "pitch"
+          ]
+        },
+        "observation.state.left_fig6d": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "thumb_oc",
+            "thumb_lat",
+            "index",
+            "middle",
+            "ring",
+            "little"
+          ]
+        },
+        "observation.state.right_fig6d": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "thumb_oc",
+            "thumb_lat",
+            "index",
+            "middle",
+            "ring",
+            "little"
+          ]
+        },
+        "observation.state.recomputed_ee_valid": {
+          "dtype": "int8",
+          "shape": [
+            1
+          ],
+          "names": [
+            "valid"
+          ]
+        },
+        "action.lower_body": {
+          "dtype": "float32",
+          "shape": [
+            15
+          ],
+          "names": [
+            "left_hip_pitch",
+            "left_hip_roll",
+            "left_hip_yaw",
+            "left_knee",
+            "left_ankle_pitch",
+            "left_ankle_roll",
+            "right_hip_pitch",
+            "right_hip_roll",
+            "right_hip_yaw",
+            "right_knee",
+            "right_ankle_pitch",
+            "right_ankle_roll",
+            "waist_yaw",
+            "waist_roll",
+            "waist_pitch"
+          ]
+        },
+        "action.left_arm": {
+          "dtype": "float32",
+          "shape": [
+            7
+          ],
+          "names": [
+            "shoulder_pitch",
+            "shoulder_roll",
+            "shoulder_yaw",
+            "elbow",
+            "wrist_yaw",
+            "wrist_roll",
+            "wrist_pitch"
+          ]
+        },
+        "action.right_arm": {
+          "dtype": "float32",
+          "shape": [
+            7
+          ],
+          "names": [
+            "shoulder_pitch",
+            "shoulder_roll",
+            "shoulder_yaw",
+            "elbow",
+            "wrist_yaw",
+            "wrist_roll",
+            "wrist_pitch"
+          ]
+        },
+        "action.left_leg": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "hip_pitch",
+            "hip_roll",
+            "hip_yaw",
+            "knee",
+            "ankle_pitch",
+            "ankle_roll"
+          ]
+        },
+        "action.right_leg": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "hip_pitch",
+            "hip_roll",
+            "hip_yaw",
+            "knee",
+            "ankle_pitch",
+            "ankle_roll"
+          ]
+        },
+        "action.hand_cmd": {
+          "dtype": "float32",
+          "shape": [
+            12
+          ],
+          "names": [
+            "finger_0",
+            "finger_1",
+            "finger_2",
+            "finger_3",
+            "finger_4",
+            "finger_5",
+            "finger_6",
+            "finger_7",
+            "finger_8",
+            "finger_9",
+            "finger_10",
+            "finger_11"
+          ]
+        },
+        "action.left_ee_pose_gripper_base": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "action.right_ee_pose_gripper_base": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "action.action_torso": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "action.action_d435": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "action.left_ee_pose_gripper_torso": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "action.right_ee_pose_gripper_torso": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "roll",
+            "pitch",
+            "yaw"
+          ]
+        },
+        "action.action_base_pose": {
+          "dtype": "float32",
+          "shape": [
+            7
+          ],
+          "names": [
+            "x",
+            "y",
+            "z",
+            "qx",
+            "qy",
+            "qz",
+            "qw"
+          ]
+        },
+        "action.base_command": {
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "names": [
+            "vx",
+            "vy",
+            "angle_z",
+            "height"
+          ]
+        },
+        "action.waist_action_joint": {
+          "dtype": "float32",
+          "shape": [
+            3
+          ],
+          "names": [
+            "yaw",
+            "roll",
+            "pitch"
+          ]
+        },
+        "action.left_fig6d": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "thumb_oc",
+            "thumb_lat",
+            "index",
+            "middle",
+            "ring",
+            "little"
+          ]
+        },
+        "action.right_fig6d": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "thumb_oc",
+            "thumb_lat",
+            "index",
+            "middle",
+            "ring",
+            "little"
+          ]
+        },
+        "timestamp": {
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "frame_index": {
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "episode_index": {
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "index": {
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "task_index": {
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "observation.state.state_base_rot": {
+          "dtype": "float32",
+          "shape": [
+            6
+          ],
+          "names": [
+            "gx",
+            "gy",
+            "gz",
+            "wx",
+            "wy",
+            "wz"
+          ]
+        },
+        "observation.state.state_base_rot_quat": {
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "names": [
+            "qx",
+            "qy",
+            "qz",
+            "qw"
+          ]
+        },
+        "action.action_base_rot": {
+          "dtype": "float32",
+          "shape": [
+            4
+          ],
+          "names": [
+            "qx",
+            "qy",
+            "qz",
+            "qw"
+          ]
+        }
+      },
+      "info_sha256": "45d332477ba583e15ae7a779fe7a213e18693a45431106aa402a189c618eb21f"
+    },
+    {
+      "repo_id": "nvidia/PhysicalAI-Robotics-GR00T-Teleop-G1",
+      "url": "https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-GR00T-Teleop-G1",
+      "revision": "0d7bdd06e67f3ca0868892d0ec8f03bcd3e49e40",
+      "card_license": "cc-by-4.0",
+      "gated": false,
+      "status": "metadata_only_not_bulk_downloaded"
+    },
+    {
+      "repo_id": "agibot-world/AgiBotWorld2026",
+      "url": "https://huggingface.co/datasets/agibot-world/AgiBotWorld2026",
+      "revision": "cf9841dffaa4bb6a7b226a30b145e4fa5127a064",
+      "card_license": "cc-by-nc-sa-4.0",
+      "gated": false,
+      "status": "metadata_only_not_bulk_downloaded"
+    },
+    {
+      "repo_id": "vegebirrd/SynGrasp-1B",
+      "url": "https://huggingface.co/datasets/vegebirrd/SynGrasp-1B",
+      "revision": "411e82e0f40b1d95e05962a9cf3d881aa76c6443",
+      "card_license": null,
+      "gated": false,
+      "status": "metadata_only_not_bulk_downloaded"
+    }
+  ]
+}

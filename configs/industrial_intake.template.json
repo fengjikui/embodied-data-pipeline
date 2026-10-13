@@ -1,0 +1,14 @@
+{
+  "schema": "industrial_intake_v1",
+  "robot_id": "lab_g1_edu",
+  "robot_configuration": null,
+  "task_id": "screw_assembly_candidate",
+  "session_id": null,
+  "clock_id": null,
+  "controller_id": null,
+  "timestamp_basis": null,
+  "state_channels": [],
+  "action_channels": [],
+  "evidence": {},
+  "note": "Intentionally incomplete. Fill from purchased hardware and measured evidence; no sample limits are robot settings."
+}

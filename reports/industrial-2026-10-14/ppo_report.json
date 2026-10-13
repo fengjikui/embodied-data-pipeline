@@ -1,0 +1,904 @@
+{
+  "checkpoint_sha256": "5f2e88197d5802c675a6e438b157139cec853812f11bf3ff67042243fdf766bb",
+  "clip": 0.2,
+  "curve": [
+    {
+      "actor_loss": 0.09453974664211273,
+      "critic_loss": 104.95059204101562,
+      "rollout_mean_return": -25.068443298339844,
+      "update": 1
+    },
+    {
+      "actor_loss": 0.053964149206876755,
+      "critic_loss": 1.6772181987762451,
+      "rollout_mean_return": -6.190422534942627,
+      "update": 11
+    },
+    {
+      "actor_loss": 0.0021685566753149033,
+      "critic_loss": 0.7148213386535645,
+      "rollout_mean_return": -4.31218957901001,
+      "update": 21
+    },
+    {
+      "actor_loss": -0.08163288980722427,
+      "critic_loss": 0.4247414171695709,
+      "rollout_mean_return": -4.172919273376465,
+      "update": 31
+    },
+    {
+      "actor_loss": 0.01804685965180397,
+      "critic_loss": 0.24178160727024078,
+      "rollout_mean_return": -2.263104200363159,
+      "update": 41
+    },
+    {
+      "actor_loss": -0.09463293850421906,
+      "critic_loss": 0.2135210633277893,
+      "rollout_mean_return": -2.898549795150757,
+      "update": 51
+    },
+    {
+      "actor_loss": 0.09753288328647614,
+      "critic_loss": 0.31451207399368286,
+      "rollout_mean_return": -2.0686917304992676,
+      "update": 60
+    }
+  ],
+  "device": "cpu",
+  "final_evaluation": {
+    "evaluation_initial_conditions": "32 fixed positions evenly spaced in [-1,1], zero target and velocity",
+    "example_trajectory": [
+      {
+        "action": 0.9733720421791077,
+        "example_v": 0.1460058093070984,
+        "example_x": -0.9853994250297546,
+        "reward": -0.9804865717887878,
+        "step": 0
+      },
+      {
+        "action": 0.9712461829185486,
+        "example_v": 0.2697918713092804,
+        "example_x": -0.9584202170372009,
+        "reward": -0.9280025362968445,
+        "step": 1
+      },
+      {
+        "action": 0.9675281643867493,
+        "example_v": 0.3744523525238037,
+        "example_x": -0.9209749698638916,
+        "reward": -0.8575559854507446,
+        "step": 2
+      },
+      {
+        "action": 0.9618806838989258,
+        "example_v": 0.462566614151001,
+        "example_x": -0.8747183084487915,
+        "reward": -0.7743842601776123,
+        "step": 3
+      },
+      {
+        "action": 0.9537088871002197,
+        "example_v": 0.5362379550933838,
+        "example_x": -0.8210945129394531,
+        "reward": -0.6832917928695679,
+        "step": 4
+      },
+      {
+        "action": 0.942091703414917,
+        "example_v": 0.5971159934997559,
+        "example_x": -0.7613829374313354,
+        "reward": -0.5885793566703796,
+        "step": 5
+      },
+      {
+        "action": 0.9256755113601685,
+        "example_v": 0.646399974822998,
+        "example_x": -0.6967429518699646,
+        "reward": -0.4940195083618164,
+        "step": 6
+      },
+      {
+        "action": 0.9025458693504333,
+        "example_v": 0.6848218441009521,
+        "example_x": -0.6282607913017273,
+        "reward": -0.4028575122356415,
+        "step": 7
+      },
+      {
+        "action": 0.8701171875,
+        "example_v": 0.7126162052154541,
+        "example_x": -0.556999146938324,
+        "reward": -0.31781908869743347,
+        "step": 8
+      },
+      {
+        "action": 0.8251422643661499,
+        "example_v": 0.7294951677322388,
+        "example_x": -0.48404961824417114,
+        "reward": -0.241112619638443,
+        "step": 9
+      },
+      {
+        "action": 0.7640275359153748,
+        "example_v": 0.7346750497817993,
+        "example_x": -0.41058212518692017,
+        "reward": -0.17441506683826447,
+        "step": 10
+      },
+      {
+        "action": 0.6836854815483093,
+        "example_v": 0.727026641368866,
+        "example_x": -0.3378794491291046,
+        "reward": -0.11883677542209625,
+        "step": 11
+      },
+      {
+        "action": 0.5830091834068298,
+        "example_v": 0.7054240703582764,
+        "example_x": -0.26733702421188354,
+        "reward": -0.0748680830001831,
+        "step": 12
+      },
+      {
+        "action": 0.4645184576511383,
+        "example_v": 0.6692882180213928,
+        "example_x": -0.2004081904888153,
+        "reward": -0.04232121631503105,
+        "step": 13
+      },
+      {
+        "action": 0.3350575864315033,
+        "example_v": 0.619153618812561,
+        "example_x": -0.13849282264709473,
+        "reward": -0.020302899181842804,
+        "step": 14
+      },
+      {
+        "action": 0.20451289415359497,
+        "example_v": 0.5569575428962708,
+        "example_x": -0.08279706537723541,
+        "reward": -0.007273609284311533,
+        "step": 15
+      },
+      {
+        "action": 0.08291121572256088,
+        "example_v": 0.48585060238838196,
+        "example_x": -0.03421200439333916,
+        "reward": -0.0012392039643600583,
+        "step": 16
+      },
+      {
+        "action": -0.0223262757062912,
+        "example_v": 0.4096240699291229,
+        "example_x": 0.0067504048347473145,
+        "reward": -5.0552589527796954e-05,
+        "step": 17
+      },
+      {
+        "action": -0.10749296098947525,
+        "example_v": 0.33205652236938477,
+        "example_x": 0.03995605930685997,
+        "reward": -0.0017120339907705784,
+        "step": 18
+      },
+      {
+        "action": -0.172077015042305,
+        "example_v": 0.2564364969730377,
+        "example_x": 0.0655997097492218,
+        "reward": -0.004599426873028278,
+        "step": 19
+      },
+      {
+        "action": -0.21754977107048035,
+        "example_v": 0.18533855676651,
+        "example_x": 0.0841335654258728,
+        "reward": -0.007551735732704401,
+        "step": 20
+      },
+      {
+        "action": -0.24626518785953522,
+        "example_v": 0.12059798836708069,
+        "example_x": 0.09619336575269699,
+        "reward": -0.009859628975391388,
+        "step": 21
+      },
+      {
+        "action": -0.2607681453227997,
+        "example_v": 0.06339307129383087,
+        "example_x": 0.10253266990184784,
+        "reward": -0.011192948557436466,
+        "step": 22
+      },
+      {
+        "action": -0.263470858335495,
+        "example_v": 0.014363482594490051,
+        "example_x": 0.1039690151810646,
+        "reward": -0.011503725312650204,
+        "step": 23
+      },
+      {
+        "action": -0.25655874609947205,
+        "example_v": -0.026274852454662323,
+        "example_x": 0.10134153068065643,
+        "reward": -0.010928330011665821,
+        "step": 24
+      },
+      {
+        "action": -0.24200227856636047,
+        "example_v": -0.058633968234062195,
+        "example_x": 0.0954781323671341,
+        "reward": -0.009701725095510483,
+        "step": 25
+      },
+      {
+        "action": -0.22159872949123383,
+        "example_v": -0.08307868242263794,
+        "example_x": 0.08717026561498642,
+        "reward": -0.008089715614914894,
+        "step": 26
+      },
+      {
+        "action": -0.1970055103302002,
+        "example_v": -0.10016770660877228,
+        "example_x": 0.07715349644422531,
+        "reward": -0.006340773776173592,
+        "step": 27
+      },
+      {
+        "action": -0.16975104808807373,
+        "example_v": -0.11060521006584167,
+        "example_x": 0.06609297543764114,
+        "reward": -0.004656435456126928,
+        "step": 28
+      },
+      {
+        "action": -0.14122506976127625,
+        "example_v": -0.11519818753004074,
+        "example_x": 0.05457315593957901,
+        "reward": -0.0031776747200638056,
+        "step": 29
+      },
+      {
+        "action": -0.11265573650598526,
+        "example_v": -0.1148168295621872,
+        "example_x": 0.04309147223830223,
+        "reward": -0.0019837880972772837,
+        "step": 30
+      },
+      {
+        "action": -0.08508484065532684,
+        "example_v": -0.11035703122615814,
+        "example_x": 0.03205576911568642,
+        "reward": -0.0010999665828421712,
+        "step": 31
+      },
+      {
+        "action": -0.05935000628232956,
+        "example_v": -0.10270598530769348,
+        "example_x": 0.02178516983985901,
+        "reward": -0.0005098178517073393,
+        "step": 32
+      },
+      {
+        "action": -0.03607785329222679,
+        "example_v": -0.09271176904439926,
+        "example_x": 0.012513992376625538,
+        "reward": -0.00016961611981969327,
+        "step": 33
+      },
+      {
+        "action": -0.01569066382944584,
+        "example_v": -0.0811586081981659,
+        "example_x": 0.0043981317430734634,
+        "reward": -2.1805532014695928e-05,
+        "step": 34
+      },
+      {
+        "action": 0.0015766905853524804,
+        "example_v": -0.06874831765890121,
+        "example_x": -0.0024767001159489155,
+        "reward": -6.15890303379274e-06,
+        "step": 35
+      },
+      {
+        "action": 0.015652257949113846,
+        "example_v": -0.05608823522925377,
+        "example_x": -0.00808552373200655,
+        "reward": -6.782562559237704e-05,
+        "step": 36
+      },
+      {
+        "action": 0.026598958298563957,
+        "example_v": -0.04368515685200691,
+        "example_x": -0.012454039417207241,
+        "reward": -0.0001621781411813572,
+        "step": 37
+      },
+      {
+        "action": 0.0345860980451107,
+        "example_v": -0.03194447234272957,
+        "example_x": -0.015648486092686653,
+        "reward": -0.00025683711282908916,
+        "step": 38
+      },
+      {
+        "action": 0.039862122386693954,
+        "example_v": -0.02117348462343216,
+        "example_x": -0.0177658349275589,
+        "reward": -0.00033151477691717446,
+        "step": 39
+      },
+      {
+        "action": 0.04273020848631859,
+        "example_v": -0.011587930843234062,
+        "example_x": -0.01892462745308876,
+        "reward": -0.0003764002176467329,
+        "step": 40
+      },
+      {
+        "action": 0.04352693632245064,
+        "example_v": -0.003320700488984585,
+        "example_x": -0.019256697967648506,
+        "reward": -0.0003897663555108011,
+        "step": 41
+      },
+      {
+        "action": 0.042603749781847,
+        "example_v": 0.0035679673310369253,
+        "example_x": -0.01889990083873272,
+        "reward": -0.0003753570490516722,
+        "step": 42
+      },
+      {
+        "action": 0.040311772376298904,
+        "example_v": 0.00907953828573227,
+        "example_x": -0.017991947010159492,
+        "reward": -0.00033996053389273584,
+        "step": 43
+      },
+      {
+        "action": 0.03698912262916565,
+        "example_v": 0.013265976682305336,
+        "example_x": -0.016665348783135414,
+        "reward": -0.00029141578124836087,
+        "step": 44
+      },
+      {
+        "action": 0.03295077756047249,
+        "example_v": 0.016218697652220726,
+        "example_x": -0.015043479390442371,
+        "reward": -0.0002371638111071661,
+        "step": 45
+      },
+      {
+        "action": 0.02848133258521557,
+        "example_v": 0.018058093264698982,
+        "example_x": -0.013237670063972473,
+        "reward": -0.00018334777269046754,
+        "step": 46
+      },
+      {
+        "action": 0.023829583078622818,
+        "example_v": 0.018923817202448845,
+        "example_x": -0.011345288716256618,
+        "reward": -0.00013439406757242978,
+        "step": 47
+      }
+    ],
+    "mean_final_absolute_error": 0.003685197327286005,
+    "mean_return": -2.1379685401916504
+  },
+  "gae_lambda": 0.95,
+  "gamma": 0.98,
+  "initial_evaluation": {
+    "evaluation_initial_conditions": "32 fixed positions evenly spaced in [-1,1], zero target and velocity",
+    "example_trajectory": [
+      {
+        "action": 0.07452056556940079,
+        "example_v": 0.011178085580468178,
+        "example_x": -0.9988821744918823,
+        "reward": -0.9978211522102356,
+        "step": 0
+      },
+      {
+        "action": 0.07099423557519913,
+        "example_v": 0.020150508731603622,
+        "example_x": -0.9968671202659607,
+        "reward": -0.9937945008277893,
+        "step": 1
+      },
+      {
+        "action": 0.06787693500518799,
+        "example_v": 0.027309473603963852,
+        "example_x": -0.9941361546516418,
+        "reward": -0.9883527755737305,
+        "step": 2
+      },
+      {
+        "action": 0.06509650498628616,
+        "example_v": 0.03297752887010574,
+        "example_x": -0.9908384084701538,
+        "reward": -0.9818031191825867,
+        "step": 3
+      },
+      {
+        "action": 0.06259316205978394,
+        "example_v": 0.0374198742210865,
+        "example_x": -0.9870964288711548,
+        "reward": -0.9743984937667847,
+        "step": 4
+      },
+      {
+        "action": 0.060317497700452805,
+        "example_v": 0.04085451737046242,
+        "example_x": -0.9830109477043152,
+        "reward": -0.9663468599319458,
+        "step": 5
+      },
+      {
+        "action": 0.058228738605976105,
+        "example_v": 0.043460652232170105,
+        "example_x": -0.9786648750305176,
+        "reward": -0.957818865776062,
+        "step": 6
+      },
+      {
+        "action": 0.05629315972328186,
+        "example_v": 0.04538552835583687,
+        "example_x": -0.9741263389587402,
+        "reward": -0.9489538073539734,
+        "step": 7
+      },
+      {
+        "action": 0.05448296293616295,
+        "example_v": 0.04675014689564705,
+        "example_x": -0.9694513082504272,
+        "reward": -0.9398655295372009,
+        "step": 8
+      },
+      {
+        "action": 0.05277520790696144,
+        "example_v": 0.047653909772634506,
+        "example_x": -0.9646859169006348,
+        "reward": -0.9306467771530151,
+        "step": 9
+      },
+      {
+        "action": 0.05115116387605667,
+        "example_v": 0.048178497701883316,
+        "example_x": -0.9598680734634399,
+        "reward": -0.9213728904724121,
+        "step": 10
+      },
+      {
+        "action": 0.04959508404135704,
+        "example_v": 0.048390988260507584,
+        "example_x": -0.9550289511680603,
+        "reward": -0.9121049046516418,
+        "step": 11
+      },
+      {
+        "action": 0.04809435456991196,
+        "example_v": 0.04834649711847305,
+        "example_x": -0.9501942992210388,
+        "reward": -0.9028923511505127,
+        "step": 12
+      },
+      {
+        "action": 0.046638380736112595,
+        "example_v": 0.04809027910232544,
+        "example_x": -0.9453852772712708,
+        "reward": -0.8937751054763794,
+        "step": 13
+      },
+      {
+        "action": 0.04521860554814339,
+        "example_v": 0.047659531235694885,
+        "example_x": -0.9406193494796753,
+        "reward": -0.8847851753234863,
+        "step": 14
+      },
+      {
+        "action": 0.043827950954437256,
+        "example_v": 0.04708479344844818,
+        "example_x": -0.9359108805656433,
+        "reward": -0.8759483695030212,
+        "step": 15
+      },
+      {
+        "action": 0.04246063157916069,
+        "example_v": 0.04639117047190666,
+        "example_x": -0.9312717914581299,
+        "reward": -0.8672851324081421,
+        "step": 16
+      },
+      {
+        "action": 0.041111916303634644,
+        "example_v": 0.045599281787872314,
+        "example_x": -0.9267118573188782,
+        "reward": -0.8588117957115173,
+        "step": 17
+      },
+      {
+        "action": 0.039778050035238266,
+        "example_v": 0.04472609981894493,
+        "example_x": -0.9222392439842224,
+        "reward": -0.8505409955978394,
+        "step": 18
+      },
+      {
+        "action": 0.03845585510134697,
+        "example_v": 0.043785564601421356,
+        "example_x": -0.9178606867790222,
+        "reward": -0.8424830436706543,
+        "step": 19
+      },
+      {
+        "action": 0.0371427945792675,
+        "example_v": 0.04278915375471115,
+        "example_x": -0.9135817885398865,
+        "reward": -0.8346454501152039,
+        "step": 20
+      },
+      {
+        "action": 0.03583688661456108,
+        "example_v": 0.041746314615011215,
+        "example_x": -0.9094071388244629,
+        "reward": -0.8270341753959656,
+        "step": 21
+      },
+      {
+        "action": 0.03453652188181877,
+        "example_v": 0.04066484794020653,
+        "example_x": -0.9053406715393066,
+        "reward": -0.8196536302566528,
+        "step": 22
+      },
+      {
+        "action": 0.0332404188811779,
+        "example_v": 0.039551183581352234,
+        "example_x": -0.9013855457305908,
+        "reward": -0.812506914138794,
+        "step": 23
+      },
+      {
+        "action": 0.031947556883096695,
+        "example_v": 0.03841064125299454,
+        "example_x": -0.8975445032119751,
+        "reward": -0.8055963516235352,
+        "step": 24
+      },
+      {
+        "action": 0.03065715916454792,
+        "example_v": 0.03724762052297592,
+        "example_x": -0.8938197493553162,
+        "reward": -0.798923134803772,
+        "step": 25
+      },
+      {
+        "action": 0.029368683695793152,
+        "example_v": 0.036065779626369476,
+        "example_x": -0.8902131915092468,
+        "reward": -0.792488157749176,
+        "step": 26
+      },
+      {
+        "action": 0.02808172069489956,
+        "example_v": 0.03486817330121994,
+        "example_x": -0.8867263793945312,
+        "reward": -0.7862915396690369,
+        "step": 27
+      },
+      {
+        "action": 0.02679595910012722,
+        "example_v": 0.033657342195510864,
+        "example_x": -0.8833606243133545,
+        "reward": -0.7803331613540649,
+        "step": 28
+      },
+      {
+        "action": 0.025511212646961212,
+        "example_v": 0.032435424625873566,
+        "example_x": -0.8801170587539673,
+        "reward": -0.774612545967102,
+        "step": 29
+      },
+      {
+        "action": 0.024227406829595566,
+        "example_v": 0.0312042236328125,
+        "example_x": -0.876996636390686,
+        "reward": -0.7691289186477661,
+        "step": 30
+      },
+      {
+        "action": 0.022944491356611252,
+        "example_v": 0.029965264722704887,
+        "example_x": -0.8740001320838928,
+        "reward": -0.763881504535675,
+        "step": 31
+      },
+      {
+        "action": 0.021662570536136627,
+        "example_v": 0.028719862923026085,
+        "example_x": -0.8711281418800354,
+        "reward": -0.758868932723999,
+        "step": 32
+      },
+      {
+        "action": 0.020381726324558258,
+        "example_v": 0.027469143271446228,
+        "example_x": -0.8683812022209167,
+        "reward": -0.7540900707244873,
+        "step": 33
+      },
+      {
+        "action": 0.019102081656455994,
+        "example_v": 0.026214085519313812,
+        "example_x": -0.8657597899436951,
+        "reward": -0.7495436668395996,
+        "step": 34
+      },
+      {
+        "action": 0.017823833972215652,
+        "example_v": 0.024955548346042633,
+        "example_x": -0.863264262676239,
+        "reward": -0.7452283501625061,
+        "step": 35
+      },
+      {
+        "action": 0.016547152772545815,
+        "example_v": 0.023694289848208427,
+        "example_x": -0.8608948588371277,
+        "reward": -0.7411426901817322,
+        "step": 36
+      },
+      {
+        "action": 0.015272353775799274,
+        "example_v": 0.02243099920451641,
+        "example_x": -0.8586517572402954,
+        "reward": -0.7372851371765137,
+        "step": 37
+      },
+      {
+        "action": 0.0139996949583292,
+        "example_v": 0.021166304126381874,
+        "example_x": -0.8565351366996765,
+        "reward": -0.7336543798446655,
+        "step": 38
+      },
+      {
+        "action": 0.012729374691843987,
+        "example_v": 0.019900765269994736,
+        "example_x": -0.8545450568199158,
+        "reward": -0.7302488684654236,
+        "step": 39
+      },
+      {
+        "action": 0.011461754329502583,
+        "example_v": 0.018634913489222527,
+        "example_x": -0.852681577205658,
+        "reward": -0.7270671725273132,
+        "step": 40
+      },
+      {
+        "action": 0.010197106748819351,
+        "example_v": 0.017369244247674942,
+        "example_x": -0.8509446382522583,
+        "reward": -0.7241078019142151,
+        "step": 41
+      },
+      {
+        "action": 0.008935839869081974,
+        "example_v": 0.016104234382510185,
+        "example_x": -0.8493342399597168,
+        "reward": -0.7213694453239441,
+        "step": 42
+      },
+      {
+        "action": 0.0076781343668699265,
+        "example_v": 0.014840319752693176,
+        "example_x": -0.8478502035140991,
+        "reward": -0.7188505530357361,
+        "step": 43
+      },
+      {
+        "action": 0.006424487568438053,
+        "example_v": 0.013577945530414581,
+        "example_x": -0.8464924097061157,
+        "reward": -0.716549813747406,
+        "step": 44
+      },
+      {
+        "action": 0.005175156984478235,
+        "example_v": 0.012317527085542679,
+        "example_x": -0.8452606797218323,
+        "reward": -0.714465856552124,
+        "step": 45
+      },
+      {
+        "action": 0.00393048906698823,
+        "example_v": 0.01105947233736515,
+        "example_x": -0.8441547155380249,
+        "reward": -0.7125973701477051,
+        "step": 46
+      },
+      {
+        "action": 0.002690889872610569,
+        "example_v": 0.00980418547987938,
+        "example_x": -0.8431742787361145,
+        "reward": -0.7109429240226746,
+        "step": 47
+      }
+    ],
+    "mean_final_absolute_error": 0.9641222953796387,
+    "mean_return": -34.00664138793945
+  },
+  "purpose": "PPO actor/critic/GAE/likelihood/inference teaching ONLY; not locomotion, contact simulation or G1 deployment",
+  "resource_snapshots": [
+    {
+      "phase": "before",
+      "snapshot": {
+        "load_average": [
+          2.50146484375,
+          2.734375,
+          2.7421875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 126188 \nPages purgeable: 15820 \nPages purged: 825515 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1379117 \nPages inactive: 1340775 \nPages speculative: 36142 \nPages throttled: 0 \nPages wired down: 1211852 \n\nCompressor Stats:\nPages used by compressor: 46824 \nPages decompressed: 485783 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17157989 \nPageouts: 989898 \n\nSystem-wide memory free percentage: 69%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    },
+    {
+      "phase": "update-1",
+      "snapshot": {
+        "load_average": [
+          2.50146484375,
+          2.734375,
+          2.7421875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 121493 \nPages purgeable: 15838 \nPages purged: 825515 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1381787 \nPages inactive: 1345621 \nPages speculative: 34182 \nPages throttled: 0 \nPages wired down: 1211090 \n\nCompressor Stats:\nPages used by compressor: 46824 \nPages decompressed: 485783 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17158126 \nPageouts: 989898 \n\nSystem-wide memory free percentage: 69%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    },
+    {
+      "phase": "update-11",
+      "snapshot": {
+        "load_average": [
+          2.50146484375,
+          2.734375,
+          2.7421875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 121265 \nPages purgeable: 15700 \nPages purged: 825515 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1383281 \nPages inactive: 1345895 \nPages speculative: 34182 \nPages throttled: 0 \nPages wired down: 1209569 \n\nCompressor Stats:\nPages used by compressor: 46824 \nPages decompressed: 485783 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17158128 \nPageouts: 989898 \n\nSystem-wide memory free percentage: 69%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    },
+    {
+      "phase": "update-21",
+      "snapshot": {
+        "load_average": [
+          2.50146484375,
+          2.734375,
+          2.7421875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 121014 \nPages purgeable: 15766 \nPages purged: 825515 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1382309 \nPages inactive: 1345407 \nPages speculative: 34182 \nPages throttled: 0 \nPages wired down: 1211174 \n\nCompressor Stats:\nPages used by compressor: 46824 \nPages decompressed: 485783 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17158130 \nPageouts: 989898 \n\nSystem-wide memory free percentage: 69%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    },
+    {
+      "phase": "update-31",
+      "snapshot": {
+        "load_average": [
+          2.50146484375,
+          2.734375,
+          2.7421875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 121332 \nPages purgeable: 15853 \nPages purged: 825515 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1384134 \nPages inactive: 1345687 \nPages speculative: 34182 \nPages throttled: 0 \nPages wired down: 1208816 \n\nCompressor Stats:\nPages used by compressor: 46824 \nPages decompressed: 485783 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17158132 \nPageouts: 989898 \n\nSystem-wide memory free percentage: 69%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    },
+    {
+      "phase": "update-41",
+      "snapshot": {
+        "load_average": [
+          2.50146484375,
+          2.734375,
+          2.7421875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 121207 \nPages purgeable: 15853 \nPages purged: 825515 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1383835 \nPages inactive: 1345986 \nPages speculative: 34182 \nPages throttled: 0 \nPages wired down: 1208816 \n\nCompressor Stats:\nPages used by compressor: 46824 \nPages decompressed: 485783 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17158134 \nPageouts: 989898 \n\nSystem-wide memory free percentage: 69%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    },
+    {
+      "phase": "update-51",
+      "snapshot": {
+        "load_average": [
+          2.50146484375,
+          2.734375,
+          2.7421875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 121066 \nPages purgeable: 15870 \nPages purged: 825515 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1382974 \nPages inactive: 1346414 \nPages speculative: 34182 \nPages throttled: 0 \nPages wired down: 1209542 \n\nCompressor Stats:\nPages used by compressor: 46824 \nPages decompressed: 485783 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17158136 \nPageouts: 989898 \n\nSystem-wide memory free percentage: 69%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    },
+    {
+      "phase": "update-60",
+      "snapshot": {
+        "load_average": [
+          2.50146484375,
+          2.734375,
+          2.7421875
+        ],
+        "logical_cpu_count": 24,
+        "memory_pressure": "The system has 68719476736 (4194304 pages with a page size of 16384).\n\nStats: \nPages free: 120590 \nPages purgeable: 15870 \nPages purged: 825515 \n\nSwap I/O:\nSwapins: 0 \nSwapouts: 0 \n\nPage Q counts:\nPages active: 1383238 \nPages inactive: 1347100 \nPages speculative: 34181 \nPages throttled: 0 \nPages wired down: 1208943 \n\nCompressor Stats:\nPages used by compressor: 46824 \nPages decompressed: 485783 \nPages compressed: 635916 \n\nFile I/O:\nPageins: 17158149 \nPageouts: 989898 \n\nSystem-wide memory free percentage: 69%",
+        "platform": "Darwin",
+        "temperature": null,
+        "thermal_status": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded"
+      }
+    }
+  ],
+  "robot_command_sent": false,
+  "rollout_shapes": {
+    "action": [
+      48,
+      16
+    ],
+    "advantage": [
+      48,
+      16
+    ],
+    "done": [
+      48,
+      16
+    ],
+    "observation": [
+      48,
+      16,
+      4
+    ],
+    "old_log_prob": [
+      48,
+      16
+    ],
+    "raw_action": [
+      48,
+      16
+    ],
+    "returns": [
+      48,
+      16
+    ],
+    "reward": [
+      48,
+      16
+    ],
+    "value": [
+      48,
+      16
+    ]
+  },
+  "script_sha256": "c96a4ad2c3263d9a270d08d4777a16eb4c611a1e49bfabe2f1d4cff5e7d02c9b",
+  "seed": 7,
+  "threads": 1,
+  "updates": 60
+}

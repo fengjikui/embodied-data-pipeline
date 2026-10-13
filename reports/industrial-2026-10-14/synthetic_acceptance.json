@@ -1,0 +1,32 @@
+{
+  "alternate_release_id": "585d1b93bffaf7559001836c",
+  "checked_on": "2026-10-14",
+  "checks": {
+    "action_roundtrip_max_abs_error": 7.105317934019695e-08,
+    "bounded_action_windows": true,
+    "full_frame_causal_replay": true,
+    "masked_padding_elements": 176,
+    "new_recipe_new_release": true,
+    "old_release_integrity_verified": true,
+    "original_file_bytes_preserved": true,
+    "same_recipe_idempotent": true,
+    "train_only_statistics": true
+  },
+  "counts": {
+    "episodes": 8,
+    "full_frame_export_preflight_train_frames": 168,
+    "numeric_frames": 192,
+    "original_files_preserved": 200,
+    "train_windows": 28,
+    "validation_windows": 4,
+    "windows": 32
+  },
+  "deployment_ready": false,
+  "official_lerobot_sdk_export": "not_executed_by_this_script; separate SDK receipt required",
+  "pipeline_code_sha256": "5d09fdb7b0922356f774f70961a26e024e548a3e9ce9f22ae226087d80d0c10e",
+  "platform": "macOS-15.7.4-arm64-arm-64bit",
+  "purpose": "Synthetic engineering reproduction; NOT collected G1 data, physics simulation or robot capability evaluation",
+  "python": "3.12.13",
+  "release_id": "051742e14498ee2d094bf7cd",
+  "wall_seconds": 2.165
+}

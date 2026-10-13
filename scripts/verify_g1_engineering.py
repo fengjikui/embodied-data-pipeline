@@ -1,5 +1,6 @@
 """Reproduce the small XR-to-training chain and write dated, non-bulk evidence."""
 import argparse
+from datetime import date
 import json
 from pathlib import Path
 import platform
@@ -21,6 +22,7 @@ def main():
     p.add_argument('--workdir', type=Path, required=True, help='Fresh scratch directory')
     p.add_argument('--report-dir', type=Path, required=True)
     p.add_argument('--train-steps', type=int, default=0, help='Optional real CPU probe; requires Torch')
+    p.add_argument('--checked-on', default=date.today().isoformat(), help='Evidence date, YYYY-MM-DD')
     args = p.parse_args(); started = time.perf_counter()
     if args.workdir.exists():
         raise FileExistsError('Use a fresh workdir; old versions are retained')
@@ -72,7 +74,8 @@ def main():
         probe = train_probe(release, args.workdir / 'training', steps=args.train_steps, threads=1)
         write_json(args.report_dir / 'synthetic_training_probe.json', probe)
     resources.append({'phase': 'after', 'snapshot': snapshot()})
-    result = {'checked_on': '2026-10-08', 'purpose': 'Synthetic engineering reproduction; NOT collected G1 data, physics simulation or robot capability evaluation',
+    date.fromisoformat(args.checked_on)
+    result = {'checked_on': args.checked_on, 'purpose': 'Synthetic engineering reproduction; NOT collected G1 data, physics simulation or robot capability evaluation',
               'release_id': manifest['release_id'], 'alternate_release_id': alternate['release_id'], 'pipeline_code_sha256': manifest['code_sha256'],
               'python': platform.python_version(), 'platform': platform.platform(), 'counts': {'episodes': 8, 'numeric_frames': 192, 'windows': 32, 'train_windows': 28, 'validation_windows': 4, 'original_files_preserved': 200, 'full_frame_export_preflight_train_frames': native_frames},
               'checks': {'original_file_bytes_preserved': True, 'train_only_statistics': True, 'bounded_action_windows': True, 'masked_padding_elements': padded, 'action_roundtrip_max_abs_error': max_error, 'same_recipe_idempotent': True, 'new_recipe_new_release': True, 'old_release_integrity_verified': True, 'full_frame_causal_replay': True},

@@ -1,0 +1,122 @@
+{
+  "checked_on": "2026-10-14",
+  "scope": "primary-source code metadata and README; no datasets or models downloaded",
+  "repositories": [
+    {
+      "repo": "unitreerobotics/xr_teleoperate",
+      "url": "https://github.com/unitreerobotics/xr_teleoperate",
+      "revision": "817fb00c63cde15e5f24a0f8fa08e1e33ed89d3b",
+      "readme_sha256": "74584a00b61204e7eefe3a60de549fa55f918dda52491c4e3b27e39ae7d9fd3c",
+      "license_api": "NOASSERTION",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "unitreerobotics/unitree_lerobot",
+      "url": "https://github.com/unitreerobotics/unitree_lerobot",
+      "revision": "41c2805742de879ddab2d8d6beaeaf215f876395",
+      "readme_sha256": "357828b9aba2bd3a21d16541c1a47c83d7ef8fd623fa4794482a2773bb619f91",
+      "license_api": "NOASSERTION",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "unitreerobotics/unitree_rl_lab",
+      "url": "https://github.com/unitreerobotics/unitree_rl_lab",
+      "revision": "4960b84732b0c2ec593dccbfe963fda1bcd7b1e3",
+      "readme_sha256": "87a0ca55d9896c74b6b6fa690a3795c6ebc1635e57d2d50f36d87fcfe7718a32",
+      "license_api": "Apache-2.0",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "unitreerobotics/unifolm-wla",
+      "url": "https://github.com/unitreerobotics/unifolm-wla",
+      "revision": "0a1aa87be8f775c7883fcd27216e3666ac18a8c5",
+      "readme_sha256": "a292f851fd5094a4f3652ee6f89372dae3aa17861991216a073ea030c2a6d0cf",
+      "license_api": "Apache-2.0",
+      "status": "metadata_and_readme_only_not_training",
+      "reviewed_files": [
+        {
+          "path": "docs/robot_action_state_processing_en.md",
+          "sha256": "5d6734c632721f99c9acea4bac06f0532678f63eb98a02ceace680f8f7dbb45e",
+          "url": "https://github.com/unitreerobotics/unifolm-wla/blob/0a1aa87be8f775c7883fcd27216e3666ac18a8c5/docs/robot_action_state_processing_en.md"
+        },
+        {
+          "path": "docs/train_action_expert_en.md",
+          "sha256": "7410c6f0ce70d15ce94a896196c4f07240705f6d0b195c752a48ff9a343c800c",
+          "url": "https://github.com/unitreerobotics/unifolm-wla/blob/0a1aa87be8f775c7883fcd27216e3666ac18a8c5/docs/train_action_expert_en.md"
+        }
+      ]
+    },
+    {
+      "repo": "unitreerobotics/unifolm-world-model-action",
+      "url": "https://github.com/unitreerobotics/unifolm-world-model-action",
+      "revision": "3e198de68de55f93f24b3ad623dd499390aaee45",
+      "readme_sha256": "f515e988d1a9cad26f8f8d25d5543a34bdc409e648b06d6f6e1a8f8fd4d200e0",
+      "license_api": "NOASSERTION",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "NVlabs/GR00T-WholeBodyControl",
+      "url": "https://github.com/NVlabs/GR00T-WholeBodyControl",
+      "revision": "b042411fae38ee4d1af9aac82a37a1f8d14d6dd0",
+      "readme_sha256": "4ad15191359f9569426ecc884669d2b9ed25b4027d740b70269dcd06d10d34fe",
+      "license_api": "NOASSERTION",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "NVIDIA/Isaac-GR00T",
+      "url": "https://github.com/NVIDIA/Isaac-GR00T",
+      "revision": "d2b7e75b937e3ec9aa5dbc798f08b89692c49734",
+      "readme_sha256": "62f6c55a356be039287416f97e03a3b5541052d038a3daec208ea9ff8045a067",
+      "license_api": "Apache-2.0",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "physical-intelligence/openpi",
+      "url": "https://github.com/Physical-Intelligence/openpi",
+      "revision": "215abfb217dbac7d5f1273282331b9b1866c0479",
+      "readme_sha256": "567fc57766bd736664f50126cab8145af4071ca16cc5e238f2b11e369169c3b5",
+      "license_api": "Apache-2.0",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "PKU-EPIC/GraspVLA",
+      "url": "https://github.com/PKU-EPIC/GraspVLA",
+      "revision": "6acd035edf7fee9ef7d90246bd9911ccf2232b8e",
+      "readme_sha256": "42ebc84dd0a376576e41906d25f303aa083f879ea69e7f31df176ace1e27be95",
+      "license_api": null,
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "OpenDriveLab/AgiBot-World",
+      "url": "https://github.com/OpenDriveLab/AgiBot-World",
+      "revision": "98f136ea6b345db1a08451a2f543d67c1789a809",
+      "readme_sha256": "4ee72fc2161e3c66d93638f99ece0479c90bda996abe54f7070e4e08208b1acc",
+      "license_api": null,
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "leggedrobotics/rsl_rl",
+      "url": "https://github.com/leggedrobotics/rsl_rl",
+      "revision": "a87ef38fde4e2a554bec1565e14b868a64de5851",
+      "readme_sha256": "2cc91a5d8c1b1c4d6f0da291153373d9b39df1b67ec10f10cee54027de010e19",
+      "license_api": "NOASSERTION",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "openvla/openvla",
+      "url": "https://github.com/openvla/openvla",
+      "revision": "c8f03f48af692657d3060c19588038c7220e9af9",
+      "readme_sha256": "ba8e9a2884e38a8000dafc98af4116512e37b0e143dad2f940100482bfd6b75c",
+      "license_api": "MIT",
+      "status": "metadata_and_readme_only_not_training"
+    },
+    {
+      "repo": "GalaxyGeneralRobotics/HumanTracker",
+      "url": "https://github.com/GalaxyGeneralRobotics/HumanTracker",
+      "revision": "492f128dc903d1c859d2ff535c549c149f9adda8",
+      "readme_sha256": "73b9190ec06dc9ca1bfcc831564be30b9f6c5e3f6b2504b18f0e5dcb9aff3791",
+      "license_api": "Apache-2.0",
+      "status": "metadata_and_readme_only_not_training"
+    }
+  ]
+}

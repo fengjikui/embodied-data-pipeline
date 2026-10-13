@@ -1,0 +1,159 @@
+{
+  "schema": "industrial_training_routes_v1",
+  "checked_on": "2026-10-14",
+  "no_model_performance_ranking": true,
+  "routes": [
+    {
+      "id": "act",
+      "family": "imitation_no_language",
+      "source_repo": "huggingface/lerobot",
+      "data_contract": "LeRobot with images/state/action, chunk/pad",
+      "objective": "L1 reconstruction + KL",
+      "lab_role": "first fixed-station learning baseline",
+      "verification_status": "official_5_CPU_updates_on_synthetic_fixture",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/huggingface/lerobot",
+      "revision": "ca69a2068462a37f7cdcb74180927a2f863d2bf7"
+    },
+    {
+      "id": "diffusion_policy",
+      "family": "imitation_no_language",
+      "source_repo": "huggingface/lerobot",
+      "data_contract": "LeRobot or implementation-specific HDF5",
+      "objective": "conditional denoising",
+      "lab_role": "multimodal-action comparison",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/huggingface/lerobot",
+      "revision": "ca69a2068462a37f7cdcb74180927a2f863d2bf7"
+    },
+    {
+      "id": "smolvla",
+      "family": "language_conditioned_flow",
+      "source_repo": "huggingface/lerobot",
+      "data_contract": "LeRobot plus matching tokenizer/processors",
+      "objective": "conditional flow matching",
+      "lab_role": "compact language/multitask candidate",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/huggingface/lerobot",
+      "revision": "ca69a2068462a37f7cdcb74180927a2f863d2bf7"
+    },
+    {
+      "id": "openvla",
+      "family": "autoregressive_tokens",
+      "source_repo": "openvla/openvla",
+      "data_contract": "RLDS plus action tokenizer/normalization",
+      "objective": "cross entropy on action tokens",
+      "lab_role": "LLM-action architecture reference",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/openvla/openvla",
+      "revision": "c8f03f48af692657d3060c19588038c7220e9af9"
+    },
+    {
+      "id": "pi_family",
+      "family": "continuous_flow_or_FAST_variant",
+      "source_repo": "physical-intelligence/openpi",
+      "data_contract": "LeRobot plus robot-specific transforms",
+      "objective": "flow or token objective depending on variant",
+      "lab_role": "strong VLA comparison",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/physical-intelligence/openpi",
+      "revision": "215abfb217dbac7d5f1273282331b9b1866c0479"
+    },
+    {
+      "id": "gr00t",
+      "family": "multimodal_action",
+      "source_repo": "NVIDIA/Isaac-GR00T",
+      "data_contract": "GR00T LeRobot/modality and embodiment config",
+      "objective": "continuous action-generation objective, version-specific",
+      "lab_role": "G1 and SONIC candidates with separate interfaces",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/NVIDIA/Isaac-GR00T",
+      "revision": "d2b7e75b937e3ec9aa5dbc798f08b89692c49734"
+    },
+    {
+      "id": "unifolm_wla",
+      "family": "multimodal_action_expert",
+      "source_repo": "unitreerobotics/unifolm-wla",
+      "data_contract": "54-action/60-state representation, masks, pose/statistics specification",
+      "objective": "action-expert objective per locked version",
+      "lab_role": "G1-specific mapping candidate; current server Dex1 restriction",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/unitreerobotics/unifolm-wla",
+      "revision": "0a1aa87be8f775c7883fcd27216e3666ac18a8c5"
+    },
+    {
+      "id": "graspvla",
+      "family": "synthetic_grasping",
+      "source_repo": "PKU-EPIC/GraspVLA",
+      "data_contract": "author schema and LeRobot Franka loader",
+      "objective": "autoregressive perception + flow action",
+      "lab_role": "grasping transfer candidate, not tightening",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/PKU-EPIC/GraspVLA",
+      "revision": "6acd035edf7fee9ef7d90246bd9911ccf2232b8e"
+    },
+    {
+      "id": "go1",
+      "family": "bimanual_foundation",
+      "source_repo": "OpenDriveLab/AgiBot-World",
+      "data_contract": "AgiBot model-specific format/configuration",
+      "objective": "see upstream model implementation",
+      "lab_role": "cross-embodiment reference, NC permission check",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/OpenDriveLab/AgiBot-World",
+      "revision": "98f136ea6b345db1a08451a2f543d67c1789a809"
+    },
+    {
+      "id": "unitree_rl",
+      "family": "simulation_PPO",
+      "source_repo": "unitreerobotics/unitree_rl_lab",
+      "data_contract": "simulator rollout + robot/physics/reward/obs configuration",
+      "objective": "PPO clipped objective + value + entropy",
+      "lab_role": "locomotion candidate",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/unitreerobotics/unitree_rl_lab",
+      "revision": "4960b84732b0c2ec593dccbfe963fda1bcd7b1e3"
+    },
+    {
+      "id": "sonic_wbc",
+      "family": "motion_tracking_PPO",
+      "source_repo": "NVlabs/GR00T-WholeBodyControl",
+      "data_contract": "motion references and matching encoder/decoder/controller configuration",
+      "objective": "tracking rewards + PPO per upstream",
+      "lab_role": "whole-body candidate",
+      "verification_status": "primary_source_review_only",
+      "robot_deployment_verified": false,
+      "url": "https://github.com/NVlabs/GR00T-WholeBodyControl",
+      "revision": "b042411fae38ee4d1af9aac82a37a1f8d14d6dd0"
+    },
+    {
+      "id": "toy_bc",
+      "family": "teaching_only",
+      "source_repo": null,
+      "data_contract": "project interface_smoke NPZ",
+      "objective": "masked MSE",
+      "lab_role": "teach observations/actions/checkpoint",
+      "verification_status": "actual_CPU_training_and_offline_inference",
+      "robot_deployment_verified": false
+    },
+    {
+      "id": "toy_ppo",
+      "family": "teaching_only",
+      "source_repo": null,
+      "data_contract": "fictional 1D episodic rollout",
+      "objective": "PPO/GAE value loss, latent Gaussian entropy",
+      "lab_role": "teach RL internals; not humanoid dynamics",
+      "verification_status": "actual_CPU_training_and_actor_play",
+      "robot_deployment_verified": false
+    }
+  ]
+}
