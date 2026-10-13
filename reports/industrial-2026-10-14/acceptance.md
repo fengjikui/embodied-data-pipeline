@@ -24,8 +24,11 @@
 | 工业资料检查 | 缺硬件/时钟/控制器/证据模板按预期拒绝，CLI退出2 | `intake_audit.json` | 文件齐全也不能授权实机或认证工艺 |
 | 浏览器检查 | 桌面1440×1100与窄屏390×844，模式/场景/锚点/打印恢复通过 | `browser-qa.json` | 展示与交互验证，不是机器人验证 |
 | 核心测试 | 本机52项通过，0失败/错误/跳过 | `tests.json` | 包含时序、伪造哈希、越界路径、名义时间等拒绝用例 |
+| 跨平台CI | Ubuntu24.04和Windows各52项通过，CLI与wheel构建成功 | `ci.json` | 基础环境不安装Torch或官方SDK，不能据此声称这些可选路线跨平台通过 |
 
 报告/代码/本地产物一致性检查由 `scripts/verify_industrial_evidence.py` 执行，结果见 `evidence-audit.json`。输出仅表示这些教学记录一致，不将字段齐全或曲线改善解释成工业能力。
+
+[本轮CI实际运行](https://github.com/fengjikui/vla_data_pipeline/actions/runs/38437117883) 对应代码commit `cd193ac8fb5c1e49647362cfab3dab0da3842589`；两个下载的JUnit记录均为52 tests、0 failures/errors/skipped，hash已归档。本机SDK出现重复FFmpeg动态库类的非致命告警；本次回读/训练/推理成功，目标公司平台仍需独立验证。
 
 ## 复现
 

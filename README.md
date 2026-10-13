@@ -17,6 +17,8 @@
 - [模型路线索引](catalog/industrial_training_routes.json) / [硬件候选索引](catalog/industrial_hardware_candidates.json) / [本次源码核查](evidence/industrial-upstreams-2026-10-14.json) / [数据元信息核查](evidence/industrial-datasets-2026-10-14.json)。
 - [日期化验收记录](reports/industrial-2026-10-14/acceptance.md)：实际执行的 BC、官方 LeRobot ACT、PPO 教学、离线推理与时间对齐。
 
+基础管线在 Ubuntu 24.04 和 Windows **各通过 52 项测试、CLI 与 wheel 构建**（[本轮 CI](https://github.com/fengjikui/vla_data_pipeline/actions/runs/38437117883)，[归档证据](reports/industrial-2026-10-14/ci.json)）。官方 SDK/ACT 与 Torch 教学的实际平台、输入和结果单独记录，不由基础 CI 推断。
+
 工业级生产系统仍需公司对象存储/目录、权限、重试/并发、恢复及真实工位验收。目前实际训练和推理演示使用合成/虚构教学数据，不代表 G1 的装配、行走或产线能力。
 
 ## G1 EDU 数据工程（2026-10-08）

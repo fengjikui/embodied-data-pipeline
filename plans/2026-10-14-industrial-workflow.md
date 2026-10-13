@@ -33,3 +33,5 @@
 技术材料在 `docs/17–23`，离线报告在 `deliverables/industrial-report.html`；13条模型/训练路线、7类硬件候选及代码/数据元信息快照已归档。基础测试本机52项通过；实际执行合成XR数据处理、BC训练/离线推理、固定官方LeRobot SDK导出、ACT五次更新/持出推理、PPO教学/actor推理、数值对齐和资料拒绝检查。
 
 报告经过桌面/窄屏截图审阅与交互检查；HTML和Markdown、训练/推理checkpoint及本地发布/SDK产物的哈希一致性已核验。证据在 `reports/industrial-2026-10-14`。公司生产服务、实机与工位验收属于上表后续里程碑，未作为本次已完成能力宣称。
+
+代码commit `cd193ac8fb5c1e49647362cfab3dab0da3842589` 已推送；本轮GitHub CI在Ubuntu24.04与Windows各52项测试通过，CLI和wheel成功，JUnit摘要在 `reports/industrial-2026-10-14/ci.json`。

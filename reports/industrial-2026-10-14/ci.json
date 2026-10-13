@@ -1,0 +1,129 @@
+{
+  "checked_on": "2026-10-14",
+  "code_commit": "cd193ac8fb5c1e49647362cfab3dab0da3842589",
+  "run_url": "https://github.com/fengjikui/vla_data_pipeline/actions/runs/38437117883",
+  "conclusion": "success",
+  "test_artifacts": [
+    {
+      "platform": "results-ubuntu-24.04",
+      "sha256": "80016bd027558b2afd943ead3523cba495b9ae7876a3f5bf0b45f5d30f096513",
+      "tests": 52,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "platform": "results-windows-latest",
+      "sha256": "1c334e57e29cb53a2389265934988045e8d83e69486f885c7a61d38e831e1832",
+      "tests": 52,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    }
+  ],
+  "jobs": [
+    {
+      "name": "contracts (ubuntu-24.04)",
+      "conclusion": "success",
+      "url": "https://github.com/fengjikui/vla_data_pipeline/actions/runs/38437117883/job/115433904029",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv sync --frozen --extra dev",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --frozen --extra dev pytest -q --junitxml=reports/ci-tests.xml",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --frozen vla-pipeline --help",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv build --wheel",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "contracts (windows-latest)",
+      "conclusion": "success",
+      "url": "https://github.com/fengjikui/vla_data_pipeline/actions/runs/38437117883/job/115433904347",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run astral-sh/setup-uv@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv sync --frozen --extra dev",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --frozen --extra dev pytest -q --junitxml=reports/ci-tests.xml",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv run --frozen vla-pipeline --help",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run uv build --wheel",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run astral-sh/setup-uv@v6",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "scope": "Core pipeline tests, CLI and wheel on Ubuntu/Windows. Does not cover Torch teaching, official SDK, GPU/NPU, robots or factory."
+}
