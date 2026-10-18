@@ -41,6 +41,8 @@ Scale AI 的 Physical AI 页面可作为商业服务线索；本项目未获取�
 
 来源：[银河通用](https://www.galbot.com/about/)、[Figure Helix 02](https://www.figure.ai/news/helix-02)、[Tesla AI](https://www.tesla.com/AI)。专项羽毛球、Sony 及工业视觉案例见 [范围补充](../../02-custom-embodiments-and-cases.md)。
 
+精细操作的跨领域案例见 [手术机器人专题](../topics/01-surgical-robots.md)：分别核实达芬奇与 Symani 的医生操控、Aquablation 的步骤自动化，以及 SRT-H 的离体组织自主研究。精度、自动化范围与临床证据需要分别判断。
+
 ## 汇报时怎样说“生产级”
 
 区分厂商演示、研究评估、厂商报告进入生产，以及我们独立验证的现场结果。实际生产判断还要工况范围、稳定运行、质量、完整节拍、人工介入和维护信息。没有这些证据时，明确“公开资料尚未提供”，不填推测数字。

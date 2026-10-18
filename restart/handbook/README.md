@@ -21,6 +21,8 @@
 
 开始执行前先完成 [L0 环境搭建](labs/00-environment.md)。以后使用租赁计算机时看 [L4 Linux／AutoDL 迁移](labs/04-gpu-and-transfer.md)。名词随用随解释，另有 [术语与复述卡](glossary-and-review.md)。主管汇报顺序沿用 [汇报大纲](../03-report-outline.md)。
 
+专题补充：[手术机器人：精细操作、医生遥操作与自主研究的边界](topics/01-surgical-robots.md)（2026-10-19）。
+
 ## 必须分清的三种“真实”
 
 - **真实公开数据**：L1 下载宇树发布版本的小量元数据和表格。未下载视频，下载目录不是完整 LeRobot 数据集。
