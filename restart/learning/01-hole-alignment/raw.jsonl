@@ -1,0 +1,3 @@
+{"timestamp_s": 0.0, "observation": {"image": "images/frame_000.png", "tool_xy_m": [0.098, 0.049]}, "action": {"delta_xy_m": [0.001, 0.0005]}}
+{"timestamp_s": 0.1, "observation": {"image": "images/frame_001.png", "tool_xy_m": [0.099, 0.0495]}, "action": {"delta_xy_m": [0.001, 0.0005]}}
+{"timestamp_s": 0.2, "observation": {"image": "images/frame_002.png", "tool_xy_m": [0.1, 0.05]}, "action": {"delta_xy_m": [0.0, 0.0]}}

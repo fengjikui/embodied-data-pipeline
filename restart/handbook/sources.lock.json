@@ -1,0 +1,48 @@
+{
+  "checked_on": "2026-10-18",
+  "sdk": {
+    "repository": "https://github.com/huggingface/lerobot",
+    "commit": "ca69a2068462a37f7cdcb74180927a2f863d2bf7",
+    "package_version": "0.6.2"
+  },
+  "real_dataset": {
+    "repo_id": "unitreerobotics/G1_Dex3_ToastedBread_Dataset",
+    "revision": "02cb29161f5adb2981a072aa35b408d82a556d07",
+    "license_at_check": "apache-2.0",
+    "download_budget_bytes": 7000000,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 8735,
+        "sha256": "fec1c167f576413cc2969c410371fecf3d09876247ff679fc83377300b2602ee"
+      },
+      {
+        "path": "meta/info.json",
+        "bytes": 6592,
+        "sha256": "0c0c87873d87d302abd98a1b2171ef56c13dc3609517a02fadd65ef5e309b716"
+      },
+      {
+        "path": "meta/stats.json",
+        "bytes": 14565,
+        "sha256": "1fa4ae8f67279060d7b7ea604ca8a31be936c83dda0887708f2fd6ea9cebf3ec"
+      },
+      {
+        "path": "meta/tasks.parquet",
+        "bytes": 2111,
+        "sha256": "b5179bf1e5ea5842fd7a47a38cecc9e0d0abac1cff43f1d2f3a0762e46f1d407"
+      },
+      {
+        "path": "meta/episodes/chunk-000/file-000.parquet",
+        "bytes": 929020,
+        "sha256": "100132ac7246c848501d7d2f8fb44e623987419b4b808ef26c65944c85908d29"
+      },
+      {
+        "path": "data/chunk-000/file-001.parquet",
+        "bytes": 4874858,
+        "sha256": "18c80f29e101f07fb965885156fce11dbce8980e3a5a36a5cd3d802057024bdc"
+      }
+    ],
+    "complete_dataset": false,
+    "videos_downloaded": false
+  }
+}

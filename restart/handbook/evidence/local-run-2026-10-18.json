@@ -1,0 +1,155 @@
+{
+  "checked_on": "2026-10-18",
+  "lab_code_sha256": "62cc1e7a45b89370763f320de765297b8fda66ad29269051cad98b501387be73",
+  "sdk_commit": "ca69a2068462a37f7cdcb74180927a2f863d2bf7",
+  "environment": {
+    "python": "3.12.13 (main, Mar 25 2026, 03:16:06) [Clang 22.1.1 ]",
+    "platform": "macOS-15.7.4-arm64-arm-64bit",
+    "lerobot": "0.6.2",
+    "torch": "2.11.0",
+    "torchvision": "0.26.0",
+    "numpy": "2.2.6",
+    "pyarrow": "25.0.1",
+    "accelerate": "1.15.0"
+  },
+  "real_source": {
+    "repo_id": "unitreerobotics/G1_Dex3_ToastedBread_Dataset",
+    "revision": "02cb29161f5adb2981a072aa35b408d82a556d07",
+    "bytes": 5835881,
+    "files": 6,
+    "numeric_shapes": {
+      "observation.state": [
+        16576,
+        28
+      ],
+      "action": [
+        16576,
+        28
+      ]
+    },
+    "complete_dataset": false,
+    "videos_downloaded": false
+  },
+  "synthetic_export": {
+    "train": {
+      "episodes": [
+        0,
+        1,
+        2
+      ],
+      "frames": 60,
+      "codebase_version": "v3.0",
+      "state_shape": [
+        28
+      ],
+      "action_shape": [
+        28
+      ],
+      "image_shape": [
+        3,
+        64,
+        64
+      ]
+    },
+    "validation": {
+      "episodes": [
+        3
+      ],
+      "frames": 20,
+      "codebase_version": "v3.0",
+      "state_shape": [
+        28
+      ],
+      "action_shape": [
+        28
+      ],
+      "image_shape": [
+        3,
+        64,
+        64
+      ]
+    }
+  },
+  "tail_action_padding": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "training": {
+    "device": "cpu",
+    "steps": 5,
+    "seed": 1000,
+    "losses": [
+      {
+        "step": 1,
+        "total": 10.569,
+        "l1": 0.935,
+        "kl": 0.963
+      },
+      {
+        "step": 2,
+        "total": 11.877,
+        "l1": 0.734,
+        "kl": 1.114
+      },
+      {
+        "step": 3,
+        "total": 10.348,
+        "l1": 0.919,
+        "kl": 0.943
+      },
+      {
+        "step": 4,
+        "total": 8.971,
+        "l1": 0.897,
+        "kl": 0.807
+      },
+      {
+        "step": 5,
+        "total": 9.604,
+        "l1": 1.093,
+        "kl": 0.851
+      }
+    ],
+    "model_sha256": "ecd0819648f3e170881127271d2dee6e811c5dc0364ee5f088923c9af01f8368"
+  },
+  "inference": {
+    "prediction_shape": [
+      2,
+      8,
+      28
+    ],
+    "input_keys": [
+      "observation.state",
+      "observation.images.front"
+    ],
+    "label_passed_as_input": false,
+    "robot_command_sent": false
+  },
+  "verified": [
+    "real download hashes",
+    "real numeric arrays",
+    "official SDK export/readback",
+    "episode split",
+    "raw and training snapshots",
+    "tail padding",
+    "official ACT updates",
+    "checkpoint restore"
+  ],
+  "not_verified": [
+    "fresh OS installation",
+    "CUDA/NPU training",
+    "IsaacLab",
+    "physical teleoperation",
+    "real G1 task competence",
+    "production UI"
+  ],
+  "thermal_before": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\n",
+  "thermal_after": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded\n",
+  "measured_temperature_celsius": null
+}
