@@ -15,11 +15,11 @@
 | 增量与版本 | 新增本地同契约数据后，旧轨迹 split 不变，旧发布仍通过完整性校验；不同字节不能覆盖同 revision 原件 |
 | 离线与复用 | 已缓存依赖和原始数据时，无网络重跑复用相同 release；输出 SHA256 全部通过 |
 | 小模型训练 | 三组独立随机初始化多模态 BC，CPU 各 120 步；梯度有限，检查点恢复输出误差为 0，优化器状态可恢复 |
-| 本机测试与打包 | macOS ARM64 / Python 3.12，21 项测试通过，wheel 构建成功 |
+| 本机测试与打包 | 本机 ARM64 / Python 3.12，21 项测试通过，wheel 构建成功 |
 | Ubuntu 24.04 | 21 项测试通过，无跳过；CLI 与 wheel 构建通过 |
 | Windows runner | 21 项测试通过，无跳过；CLI 与 wheel 构建通过 |
 
-跨平台实际运行记录：[GitHub Actions](https://github.com/fengjikui/vla_data_pipeline/actions/runs/34678405092)，对应工程提交 `f75695c52761ca349cfc12b6bf1412775e636f1b`。下载的 JUnit 结果汇总见 [test-summary.json](test-summary.json)，任务状态见 [cross-platform-ci.json](cross-platform-ci.json)。CI 使用生成的合成视频与契约样本，不下载约 212 MB 的公开数据，不训练 Torch 模型。
+跨平台实际运行记录：[GitHub Actions](https://github.com/fengjikui/embodied-data-pipeline/actions/runs/34678405092)，对应工程提交 `f75695c52761ca349cfc12b6bf1412775e636f1b`。下载的 JUnit 结果汇总见 [test-summary.json](test-summary.json)，任务状态见 [cross-platform-ci.json](cross-platform-ci.json)。CI 使用生成的合成视频与契约样本，不下载约 212 MB 的公开数据，不训练 Torch 模型。
 
 ## 交付材料
 
@@ -33,7 +33,7 @@
 
 当前训练出口是 `interface_smoke`：可以用于数据和训练代码的接口检查。尚未核实全部物理动作语义，也没有输出已验证兼容 openpi / GR00T 的生产训练集。完整预训练 VLA 微调、仿真闭环、机器人执行、工业合格率与数据增益均未完成，不能据本次 loss 下降作能力结论。
 
-Mac 的真实样本与训练结果、CI 的合成契约测试，是不同范围的证据。公司服务器仍需验证真实样包、存储、具体编码、驱动、SDK、内网依赖和所选模型。核心项目与数据包可迁移；Python 环境、wheel、GPU 依赖要按 OS / 架构分别准备。
+本机的真实样本与训练结果、CI 的合成契约测试，是不同范围的证据。公司服务器仍需验证真实样包、存储、具体编码、驱动、SDK、内网依赖和所选模型。核心项目与数据包可迁移；Python 环境、wheel、GPU 依赖要按 OS / 架构分别准备。
 
 ## 演示材料验证说明
 

@@ -4,7 +4,7 @@
 
 ## 0. 环境和资源
 
-在仓库根目录，Python3.12；Linux/macOS 命令如下。Windows PowerShell 的 `uv run ...` 命令相同，虚拟环境路径 `bin/python` 改为 `Scripts/python.exe`。不要复制Mac虚拟环境到服务器。
+在仓库根目录，Python3.12；Linux 命令如下。Windows PowerShell 的 `uv run ...` 命令相同，虚拟环境路径 `bin/python` 改为 `Scripts/python.exe`。不要跨操作系统复制虚拟环境到服务器。
 
 ```bash
 uv sync --frozen --extra dev --extra train
@@ -13,7 +13,7 @@ uv run --frozen python scripts/resource_status.py
 
 Torch 软件包可能较大；仅CPU演示可按 [独立CPU环境](16-training-export.md#cpu-训练探针) 安装 CPU wheel，或者使用已安装环境的python执行下文脚本。`--offline` 只能使用已有缓存，不会补齐依赖。训练前后及期间查看内存/热压力，采用1线程与小批次；无温度读数时不声称具体温度。
 
-Linux/macOS：
+Linux：
 
 ```bash
 export OMP_NUM_THREADS=1
@@ -99,7 +99,7 @@ uv run --frozen python -c "import numpy as np; a=np.load('data/learning-ppo-001/
 
 这是可选独立环境。**不要把官方SDK的依赖混进基础 `.venv`**。该步骤需要安装软件包，但不下载VLA权重或完整数据集。先看 [固定SDK桥](16-training-export.md#两条-g1-转换路线)；环境创建与导出命令在下面重列。
 
-Linux/macOS示例，Windows路径和CPU wheel按对应平台准备：
+Linux示例，Windows路径和CPU wheel按对应平台准备：
 
 ```bash
 uv venv .venv-sdk --python 3.12
@@ -109,7 +109,7 @@ uv pip install --python .venv-sdk/bin/python -e ".build/learning-lerobot-sdk[dat
 uv pip freeze --python .venv-sdk/bin/python > data/sdk-environment.txt
 ```
 
-PowerShell先设置`$env:GIT_LFS_SKIP_SMUDGE="1"`再运行不带前缀赋值的git clone。Linux基础Torch默认可能带CUDA软件包；CPU实验建议先装匹配Torch/torchvision CPU wheel再解析SDK。目标OS必须重建验证；本次实际官方训练证据是macOS arm64，不是Windows/GPU/NPU认证。
+PowerShell先设置`$env:GIT_LFS_SKIP_SMUDGE="1"`再运行不带前缀赋值的git clone。Linux基础Torch默认可能带CUDA软件包；CPU实验建议先装匹配Torch/torchvision CPU wheel再解析SDK。目标OS必须重建验证；本次实际官方训练证据是本机 ARM64，不是Windows/GPU/NPU认证。
 
 导出train与validation两份独立数据，原生动作、完整帧与SDK统计：
 
@@ -186,7 +186,7 @@ python scripts/rsl_rl/play.py --task Unitree-G1-29dof-Velocity
 uv run --frozen python scripts/check_industrial_contract.py --contract configs/industrial_intake.template.json --evidence-root . --output data/learning-001/intake_audit.json
 ```
 
-预期退出码 **2**，因为机器人配置、时钟、控制器、通道语义及附件未填写。Linux/macOS用`echo $?`，PowerShell用`$LASTEXITCODE`查看；不是意外运行失败。填好的资料检查通过也只代表字段/哈希齐全，不能授权实机动作。
+预期退出码 **2**，因为机器人配置、时钟、控制器、通道语义及附件未填写。Linux用`echo $?`，PowerShell用`$LASTEXITCODE`查看；不是意外运行失败。填好的资料检查通过也只代表字段/哈希齐全，不能授权实机动作。
 
 ## 9. 你能逐项说清楚就学到了
 

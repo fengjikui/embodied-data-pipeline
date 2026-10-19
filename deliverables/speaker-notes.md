@@ -60,7 +60,7 @@
 
 ### 第 12 页 · 公司环境迁移与平台适配
 
-建议用时 45 秒。公司实际落地优先 Ubuntu 服务器，并兼容 Windows。代码和数据契约跨平台，运行库和 wheel 需要按系统准备。Mac 虚拟环境不能直接复制。当前提供校验包和离线模式，两平台 CI 已实际通过 21 项测试；CI 是合成契约测试，真实服务器的编解码、GPU 和内网环境仍要复验。来源：docs/10-linux-windows-offline-deployment.md；https://docs.astral.sh/uv/concepts/projects/layout/。
+建议用时 45 秒。公司实际落地优先 Ubuntu 服务器，并兼容 Windows。代码和数据契约跨平台，运行库和 wheel 需要按系统准备。不同操作系统的虚拟环境不能直接复制。当前提供校验包和离线模式，两平台 CI 已实际通过 21 项测试；CI 是合成契约测试，真实服务器的编解码、GPU 和内网环境仍要复验。来源：docs/10-linux-windows-offline-deployment.md；https://docs.astral.sh/uv/concepts/projects/layout/。
 
 ### 第 13 页 · 机械臂与人形的并行验证路线
 

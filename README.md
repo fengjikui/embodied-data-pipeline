@@ -1,8 +1,8 @@
-# VLA 数据预研与训练数据 Pipeline 设计
+# 具身智能数据管线（Embodied Data Pipeline）
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-面向计划开展工业具身智能研究的实验室，解释 VLA 数据是什么、如何训练模型、哪些公开数据值得使用，以及如何逐步建立可持续接入新数据的处理流水线。机械臂与人形机器人按同等深度讨论。
+面向计划开展工业具身智能研究的实验室，覆盖遥操作、仿真与公开数据的接入、质量校验和训练格式转换，并解释 VLA 等模型的数据是什么、如何训练模型、哪些公开数据值得使用，以及如何逐步建立可持续接入新数据的处理流水线。机械臂与人形机器人按同等深度讨论。
 
 **2026-10-18 起的学习与重建主线：[restart 理论与实操手册](restart/handbook/README.md)**。包含八个理论主题和六个实操章节，使用少量真实 G1 表格查看格式，并用明确标注的教学数据验证官方 LeRobot 转换、ACT 训练与离线推理。下方是此前成果，作为参考保留。
 
@@ -19,13 +19,13 @@
 - [模型路线索引](catalog/industrial_training_routes.json) / [硬件候选索引](catalog/industrial_hardware_candidates.json) / [本次源码核查](evidence/industrial-upstreams-2026-10-14.json) / [数据元信息核查](evidence/industrial-datasets-2026-10-14.json)。
 - [日期化验收记录](reports/industrial-2026-10-14/acceptance.md)：实际执行的 BC、官方 LeRobot ACT、PPO 教学、离线推理与时间对齐。
 
-基础管线在 Ubuntu 24.04 和 Windows **各通过 52 项测试、CLI 与 wheel 构建**（[本轮 CI](https://github.com/fengjikui/vla_data_pipeline/actions/runs/38437117883)，[归档证据](reports/industrial-2026-10-14/ci.json)）。官方 SDK/ACT 与 Torch 教学的实际平台、输入和结果单独记录，不由基础 CI 推断。
+基础管线在 Ubuntu 24.04 和 Windows **各通过 52 项测试、CLI 与 wheel 构建**（[本轮 CI](https://github.com/fengjikui/embodied-data-pipeline/actions/runs/38437117883)，[归档证据](reports/industrial-2026-10-14/ci.json)）。官方 SDK/ACT 与 Torch 教学的实际平台、输入和结果单独记录，不由基础 CI 推断。
 
 工业级生产系统仍需公司对象存储/目录、权限、重试/并发、恢复及真实工位验收。目前实际训练和推理演示使用合成/虚构教学数据，不代表 G1 的装配、行走或产线能力。
 
 ## G1 EDU 数据工程（2026-10-08）
 
-采购对象已明确为 **G1 EDU**，具体自由度、手型和控制配置待确认。基础管线现已在 Ubuntu 24.04 和 Windows **各通过 40 项测试、CLI 与 wheel 构建**（[CI](https://github.com/fengjikui/vla_data_pipeline/actions/runs/37755702032)）。新增了 XR JSON/图片接入、完整原始快照与哈希、不可改写本地批次、明确 recipe、训练窗口 Dataset，以及固定官方 SDK 的可选 LeRobot 导出桥。
+采购对象已明确为 **G1 EDU**，具体自由度、手型和控制配置待确认。基础管线现已在 Ubuntu 24.04 和 Windows **各通过 40 项测试、CLI 与 wheel 构建**（[CI](https://github.com/fengjikui/embodied-data-pipeline/actions/runs/37755702032)）。新增了 XR JSON/图片接入、完整原始快照与哈希、不可改写本地批次、明确 recipe、训练窗口 Dataset，以及固定官方 SDK 的可选 LeRobot 导出桥。
 
 - [数据工程手册](docs/13-g1-edu-data-engineering.md)：现有与候选来源、行走/导航/上肢/搬运的数据区别、逐阶段流程。
 - [手工复现教程](docs/14-g1-edu-manual-reproduction.md)：不需要机器人或数据下载，从合成小样本逐条跑到训练 batch。
@@ -77,7 +77,7 @@ uv run --frozen --extra train python -m vla_pipeline.training
 
 工程检查通过不等于动作语义已完整确认，当前输出视图仅为 `interface_smoke`。[验收原始结果](reports/acceptance.json)、[训练结果](reports/training_probe.json)、[完整实施计划](plans/2026-09-14-delivery.md)。
 
-2026-09-12 的 Ubuntu 24.04 与 Windows 已分别通过 21 项契约／集成测试、CLI 检查与 wheel 构建。[当时的 CI 实际运行记录](https://github.com/fengjikui/vla_data_pipeline/actions/runs/34678405092)。较新的 G1 与工业流程证据见上方日期化章节；核心 CI 不涵盖 GPU、机器人 SDK 或公司内网。
+2026-09-12 的 Ubuntu 24.04 与 Windows 已分别通过 21 项契约／集成测试、CLI 检查与 wheel 构建。[当时的 CI 实际运行记录](https://github.com/fengjikui/embodied-data-pipeline/actions/runs/34678405092)。较新的 G1 与工业流程证据见上方日期化章节；核心 CI 不涵盖 GPU、机器人 SDK 或公司内网。
 
 ## 阅读顺序
 

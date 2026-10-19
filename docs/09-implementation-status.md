@@ -15,7 +15,7 @@
 | 统计与窗口 | 每来源训练集统计；8 步动作块；尾部 mask；不跨 episode | 不做跨本体归一化或动作空间转换 |
 | 发布 | recipe + lock + code hash 标识，临时写入后发布，文件完整性复验 | 单写入进程，本地文件系统；无分布式事务 |
 | 训练 | CPU 小型多模态 BC，有限 loss/梯度与检查点恢复 | 随机初始化，无上游预训练 VLA 骨干 |
-| 平台 | Python 3.12、uv.lock、无核心 macOS 专属命令 | Ubuntu / Windows CI 验证状态见最终验收；真实内网仍需复验 |
+| 平台 | Python 3.12、uv.lock、核心入口不依赖特定桌面系统命令 | Ubuntu / Windows CI 验证状态见最终验收；真实内网仍需复验 |
 
 `docs/03-pipeline-design.md` 是完整设计目标，本文件是实际实现清单。它们不是同一个完成度口径。
 

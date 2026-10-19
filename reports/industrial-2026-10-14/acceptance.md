@@ -1,6 +1,6 @@
 # G1 工业数据与训练流程交付验收
 
-日期：2026-10-14。实际执行平台：macOS arm64、Python3.12。基础数据契约的跨平台 CI 单独记录；官方SDK/ACT、本机Torch教学未据此推断GPU/NPU/机器人或生产环境兼容性。
+日期：2026-10-14。实际执行平台：本机 ARM64、Python3.12。基础数据契约的跨平台 CI 单独记录；官方SDK/ACT、本机Torch教学未据此推断GPU/NPU/机器人或生产环境兼容性。
 
 ## 本次交付
 
@@ -28,7 +28,7 @@
 
 报告/代码/本地产物一致性检查由 `scripts/verify_industrial_evidence.py` 执行，结果见 `evidence-audit.json`。输出仅表示这些教学记录一致，不将字段齐全或曲线改善解释成工业能力。
 
-[本轮CI实际运行](https://github.com/fengjikui/vla_data_pipeline/actions/runs/38437117883) 对应代码commit `cd193ac8fb5c1e49647362cfab3dab0da3842589`；两个下载的JUnit记录均为52 tests、0 failures/errors/skipped，hash已归档。本机SDK出现重复FFmpeg动态库类的非致命告警；本次回读/训练/推理成功，目标公司平台仍需独立验证。
+[本轮CI实际运行](https://github.com/fengjikui/embodied-data-pipeline/actions/runs/38437117883) 对应代码commit `cd193ac8fb5c1e49647362cfab3dab0da3842589`；两个下载的JUnit记录均为52 tests、0 failures/errors/skipped，hash已归档。本机SDK出现重复FFmpeg动态库类的非致命告警；本次回读/训练/推理成功，目标公司平台仍需独立验证。
 
 ## 复现
 

@@ -1,4 +1,4 @@
-// Artifact authoring uses the supplied Codex runtime. Production pipeline is independent.
+// Artifact authoring uses a separate presentation runtime. Production pipeline is independent.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
@@ -35,7 +35,7 @@ pipeline:'建议用时 60 秒。原始层保存文件和哈希，规范层保存
 leak:'建议用时 60 秒。这是本次真实发现：ABC 一行存着整段语言标注，若直接拼接，会把未来阶段提前给模型。这是针对带生效时间的阶段标签；任务开始前本来已知的完整指令并不自动构成泄漏。现在只取当前时刻已经生效的阶段标注。图像也只选过去帧。这个验证依赖源时间，设备时钟与实际延迟仍需标定。来源：data/raw/abc_real 的固定版本 episode 0；src/vla_pipeline/readers.py；tests/test_contracts.py。',
 quality:'建议用时 50 秒。原始样本 18 条均通过当前工程检查；我们另造了异常变体来测试规则：错误时间、NaN、缺少视频被隔离，重复副本被跳过。注入错误比例不代表原始数据质量。来源：reports/acceptance.json；scripts/verify_delivery.py。',
 train:'建议用时 60 秒。每组单独训练一个随机初始化的小网络，实际输入图像、语言和状态，监督是 8 步动作。CPU 跑 120 步，有限梯度、检查点和优化器恢复通过。训练误差下降只说明拟合；仿真组验证误差仍高，提醒我们不能把训练链路正常等同于泛化或机器人成功。不同来源的归一化尺度不同，不能直接排优劣。来源：reports/training_probe.json；src/vla_pipeline/training.py。',
-platform:'建议用时 45 秒。公司实际落地优先 Ubuntu 服务器，并兼容 Windows。代码和数据契约跨平台，运行库和 wheel 需要按系统准备。Mac 虚拟环境不能直接复制。当前提供校验包和离线模式，两平台 CI 已实际通过 21 项测试；CI 是合成契约测试，真实服务器的编解码、GPU 和内网环境仍要复验。来源：docs/10-linux-windows-offline-deployment.md；https://docs.astral.sh/uv/concepts/projects/layout/。',
+platform:'建议用时 45 秒。公司实际落地优先 Ubuntu 服务器，并兼容 Windows。代码和数据契约跨平台，运行库和 wheel 需要按系统准备。不同操作系统的虚拟环境不能直接复制。当前提供校验包和离线模式，两平台 CI 已实际通过 21 项测试；CI 是合成契约测试，真实服务器的编解码、GPU 和内网环境仍要复验。来源：docs/10-linux-windows-offline-deployment.md；https://docs.astral.sh/uv/concepts/projects/layout/。',
 routes:'建议用时 60 秒。机械臂与人形保持同等研究深度，数据管理共用，控制适配分别做。机械臂先分拣和上下料，再讨论接触；人形先静止双臂，再增加移动、负载和稳定性验证。需要现场真实条件与控制接口参与，而不是只凭已有数据定采购。来源：docs/05-lab-roadmap.md。',
 roadmap:'建议用时 60 秒。建议四周按检查点推进：任务与接口清楚、上游模型能够微调、固定任务有完整试验、数据增加有对照。资源和设备未确定，所以这是工作安排，不是工业达标日期。来源：docs/06-supervisor-brief.md。',
 asks:'建议用时 45 秒。希望主管确认下一阶段先完成一个候选任务的模型和评测闭环，协调一到两个现场联系人，明确现有机器人、GPU 和人员资源，并设置两周复盘。我们负责形成技术证据，业务现场定义价值和合格标准，主管决定投入优先级。来源：docs/06-supervisor-brief.md。',

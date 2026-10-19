@@ -58,7 +58,7 @@ try {
   assert(remoteRequests.length===0,'Report may not request remote runtime assets');
   checks.no_remote_assets_or_js_errors = true;
   const sha256 = path => createHash('sha256').update(readFileSync(path)).digest('hex');
-  const report = { checked_on: '2026-10-14', html_sha256: sha256('deliverables/industrial-report.html'), qa_script_sha256: sha256('scripts/verify_industrial_report.mjs'), browser: browser.version(), desktop: [1440,1100], mobile: [390,844], checks, errors, remoteRequests, screenshot_directory: output, scope: 'Offline HTML interactions and layout; not model or robot capability validation' };
+  const report = { checked_on: new Date().toISOString().slice(0, 10), html_sha256: sha256('deliverables/industrial-report.html'), qa_script_sha256: sha256('scripts/verify_industrial_report.mjs'), browser: browser.version(), desktop: [1440,1100], mobile: [390,844], checks, errors, remoteRequests, screenshot_directory: output, scope: 'Offline HTML interactions and layout; not model or robot capability validation' };
   writeFileSync(resolve(output,'browser-qa.json'), JSON.stringify(report,null,2)+'\n');
   console.log(JSON.stringify(report));
 } finally { await browser.close(); }

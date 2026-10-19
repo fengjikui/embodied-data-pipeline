@@ -1,0 +1,27 @@
+{
+  "checked_on": "2026-10-19",
+  "repository": "https://github.com/fengjikui/embodied-data-pipeline",
+  "scope": "Repository naming and document wording; no change to robot capability or model validation claims",
+  "markdown_html_files_checked": 63,
+  "local_markdown_links_valid": true,
+  "slides": {
+    "file": "deliverables/VLA数据预研与管线验证-主管汇报.pptx",
+    "sha256": "bf27396728d85b42d033208aee49f5e49e862e93c61f9fcf26523768595b4b60",
+    "original_sha256": "10591ab220d4499fa7013f2c5d73b5a3449e3cee55cf3492dada7dc2f0b2c708",
+    "changed_entries": [
+      "ppt/notesSlides/notesSlide12.xml"
+    ],
+    "visible_slide_count": 16,
+    "all_other_package_entries_byte_identical": true,
+    "all_xml_well_formed": true
+  },
+  "pdf": {
+    "file": "deliverables/VLA数据预研与管线验证-主管汇报.pdf",
+    "sha256": "1cd3b7a9e4a8936ef894c1bd8747550b151dc1367717c9d232d2232cf067d2d7",
+    "unchanged": true,
+    "pages_text_checked": 16
+  },
+  "speaker_notes_sha256": "26016cbef3d0d8f302c29236946e0f7bfb2b1c2468fdd02c5044c8340de2ab09",
+  "html_browser_receipt": "reports/industrial-2026-10-14/browser-qa.json",
+  "historical_machine_logs_preserved": true
+}

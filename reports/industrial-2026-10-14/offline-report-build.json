@@ -1,5 +1,5 @@
 {
-  "checked_on": "2026-10-14",
+  "checked_on": "2026-10-19",
   "schema": "offline_report_build_v1",
   "markdown_sha256": {
     "docs/17-industrial-screw-workflow.md": "2de3af8a69b6129600c267e6ed3510c2b3eae7106473277408a515eadb92cd3c",
@@ -7,10 +7,10 @@
     "docs/19-whole-body-coordination.md": "b71183d16575727580484b6f6ec618cd931017a9faa5d79f53686f5aa56d070a",
     "docs/20-industrial-pipeline-roadmap.md": "5c483298a939dcc0ac5c8b28fa4f188061fa266e4487e59be96f3fbf7c2e4538",
     "docs/21-ecosystem-data-hardware.md": "41f23dc375967850916b291eb0eceaa0ae5a96045ae45f27c25bb47595e33a82",
-    "docs/22-command-learning-lab.md": "e415b0c85fd7e2c435b06ac7eceda87fde92ce9abce1e8cd1efa7590ee638ba9",
+    "docs/22-command-learning-lab.md": "ceb164053f483033d38b7749c1028b6355a2f34af8b717475d485a1fd110b856",
     "docs/23-supervisor-script.md": "9367200bf54112bcce9ea43c3bada9d4eb54378d7aa6b0b0f3e09cc144041b15"
   },
-  "html_sha256": "49d4ad6f476b7c12a45660ca2736e7ce05b1a3ab35ba59dfca2295c81ab325a3",
+  "html_sha256": "30efd93ea978bec28620bb4f4de606d8ae4a7fa4654c58e54ee8ce3481a952f7",
   "external_runtime_assets": false,
   "report_inputs_sha256": {
     "act-training.json": "47a07e228597911221602fee91e8c0fa272fde883de35754516a8a75cfc334ff",

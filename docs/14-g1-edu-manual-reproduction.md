@@ -6,11 +6,11 @@
 
 ## 0. 选好目录和运行环境
 
-在仓库根目录运行，Python 3.12、uv；依赖须能安装或已经带入公司内网。**`--offline` 数据参数不会安装缺失的 Python 依赖**。内网 wheel 准备参见 [部署说明](10-linux-windows-offline-deployment.md)。Linux 与 Windows 的虚拟环境应在各自平台创建，不能复制 Mac 的 `.venv`。
+在仓库根目录运行，Python 3.12、uv；依赖须能安装或已经带入公司内网。**`--offline` 数据参数不会安装缺失的 Python 依赖**。内网 wheel 准备参见 [部署说明](10-linux-windows-offline-deployment.md)。Linux 与 Windows 的虚拟环境应在各自平台创建，不能跨操作系统复制 `.venv`。
 
 ```bash
-git clone https://github.com/fengjikui/vla_data_pipeline.git
-cd vla_data_pipeline
+git clone https://github.com/fengjikui/embodied-data-pipeline.git
+cd embodied-data-pipeline
 uv sync --frozen --extra dev
 uv run --frozen vla-pipeline --help
 uv run --frozen python scripts/resource_status.py
@@ -18,7 +18,7 @@ uv run --frozen python scripts/resource_status.py
 
 若已经 clone，本次不必重新 clone。先查看 `git status`，保留自己的修改。下载和安装步骤只在联网工作区完成；已有依赖时可以使用 `uv run --offline --frozen ...`。
 
-Linux/macOS 限制数值库线程：
+Linux 限制数值库线程：
 
 ```bash
 export PYTHONUTF8=1

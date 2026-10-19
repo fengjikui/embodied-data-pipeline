@@ -2,11 +2,11 @@
 
 ## 1. 目标环境与适配范围
 
-生产研究环境建议优先按 **Ubuntu 24.04 / x86_64 / Python 3.12** 验证，兼容 Windows 的数据工程入口。Ubuntu 22.04、ARM Linux、WSL 和其他服务器组合应在对应环境跑同一验收，不能由 Mac 结果直接外推。真实 VLA 的 CUDA、GPU 驱动与模型库应按所选模型单独固定。
+生产研究环境建议优先按 **Ubuntu 24.04 / x86_64 / Python 3.12** 验证，兼容 Windows 的数据工程入口。Ubuntu 22.04、ARM Linux、WSL 和其他服务器组合应在对应环境跑同一验收，不能由本机结果直接外推。真实 VLA 的 CUDA、GPU 驱动与模型库应按所选模型单独固定。
 
-本项目以 Python `pathlib` 管理路径，命令行不要求 Bash、Homebrew 或 macOS 工具。核心数据处理不需要 GPU，也不依赖桌面图形界面。汇报制作脚本使用另备的制稿工具，不属于公司服务器运行管线的依赖，见 `deliverables/README.md`。PyAV 在 Python 内读取视频，不调用系统 `ffmpeg` 命令。具体平台仍需安装可用的 PyAV 二进制包并验证所用编码。官方提供多平台 wheel，编解码支持以实际安装构建为准。[PyAV 安装说明](https://pyav.org/docs/stable/overview/installation.html)
+本项目以 Python `pathlib` 管理路径，命令行入口使用跨平台 Python 实现。核心数据处理不需要 GPU，也不依赖桌面图形界面。汇报制作脚本使用另备的制稿工具，不属于公司服务器运行管线的依赖，见 `deliverables/README.md`。PyAV 在 Python 内读取视频，不调用系统 `ffmpeg` 命令。具体平台仍需安装可用的 PyAV 二进制包并验证所用编码。官方提供多平台 wheel，编解码支持以实际安装构建为准。[PyAV 安装说明](https://pyav.org/docs/stable/overview/installation.html)
 
-`uv.lock` 记录跨平台依赖解析，不能直接把 Mac 的 `.venv` 复制到 Linux 或 Windows。不同 OS、CPU 架构和 Python ABI 需要相应安装包。[uv 项目结构](https://docs.astral.sh/uv/concepts/projects/layout/)
+`uv.lock` 记录跨平台依赖解析，不同操作系统之间不能直接复制 `.venv`。不同 OS、CPU 架构和 Python ABI 需要相应安装包。[uv 项目结构](https://docs.astral.sh/uv/concepts/projects/layout/)
 
 ## 2. 在线 Linux / Ubuntu 安装
 
@@ -67,7 +67,7 @@ uv run python scripts/export_transfer_bundle.py --include-samples --output data/
 
 ## 6. 环境包的准备方式
 
-最可靠的办法是在**与公司目标机相同 OS / 架构 / Python 版本**的获准联网准备机上构建环境包。下例是基础数据处理包，不含 Torch，不要求在当前 Mac 执行。
+最可靠的办法是在**与公司目标机相同 OS / 架构 / Python 版本**的获准联网准备机上构建环境包。下例是基础数据处理包，不含 Torch，应在匹配目标平台的准备机上执行。
 
 ```bash
 uv export --frozen --no-dev --no-emit-project --no-hashes --output-file requirements-base.txt
@@ -76,7 +76,7 @@ python -m pip download --only-binary=:all: --dest wheelhouse --requirement requi
 python -m pip download --only-binary=:all: --dest wheelhouse pip
 ```
 
-保留 `uv.lock` 与导出的安装清单。对 wheelhouse、项目 wheel、Python 安装包逐文件计算 SHA256。若某个依赖没有目标平台 wheel，停止并准备对应平台构建产物，不能转用 Mac wheel。离线依赖导出方式参见 [uv locking and syncing](https://docs.astral.sh/uv/concepts/projects/sync/)。
+保留 `uv.lock` 与导出的安装清单。对 wheelhouse、项目 wheel、Python 安装包逐文件计算 SHA256。若某个依赖没有目标平台 wheel，停止并准备对应平台构建产物，不能用其他平台的 wheel 替代。离线依赖导出方式参见 [uv locking and syncing](https://docs.astral.sh/uv/concepts/projects/sync/)。
 
 在内网目标机已有 Python 3.12 的前提下：
 
@@ -128,6 +128,6 @@ data-root/raw/{source_id}/{revision}/{原始相对路径}
 
 ## 9. 验证状态
 
-macOS ARM64 已执行真实样本、图像解码、CPU 训练与离线重跑。GitHub Actions 已在 Ubuntu 24.04 和 Windows 分别通过 21 项测试、CLI 入口检查与 wheel 构建，包含合成视频解码及本地新增数据集成测试。[运行记录](https://github.com/fengjikui/vla_data_pipeline/actions/runs/34678405092)，机器可读状态见 `reports/cross-platform-ci.json`。
+本机 ARM64 已执行真实样本、图像解码、CPU 训练与离线重跑。GitHub Actions 已在 Ubuntu 24.04 和 Windows 分别通过 21 项测试、CLI 入口检查与 wheel 构建，包含合成视频解码及本地新增数据集成测试。[运行记录](https://github.com/fengjikui/embodied-data-pipeline/actions/runs/34678405092)，机器可读状态见 `reports/cross-platform-ci.json`。
 
 CI 不下载全部公开样本，也不验证生产 GPU、公司内网、机器人 SDK 或真实 VLA 微调。这些需在公司目标环境按同一验收表补测。

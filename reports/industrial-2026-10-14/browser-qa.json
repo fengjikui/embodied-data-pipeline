@@ -1,8 +1,8 @@
 {
-  "checked_on": "2026-10-14",
-  "html_sha256": "49d4ad6f476b7c12a45660ca2736e7ce05b1a3ab35ba59dfca2295c81ab325a3",
-  "qa_script_sha256": "34388b0e72ec720e27ec4b744e14a72c1006ac634a2bd1c85596755734ce28bb",
-  "browser": "155.0.8059.40",
+  "checked_on": "2026-10-19",
+  "html_sha256": "30efd93ea978bec28620bb4f4de606d8ae4a7fa4654c58e54ee8ce3481a952f7",
+  "qa_script_sha256": "cc074d68c22651e689abf2f7a6d3a81d9b1e06dfe618d8804bc896ef8135b030",
+  "browser": "155.0.8059.82",
   "desktop": [
     1440,
     1100
@@ -21,6 +21,6 @@
   },
   "errors": [],
   "remoteRequests": [],
-  "screenshot_directory": "/Users/fengjikui/Documents/dev-coding/codex_build/vla_data_pipeline/.build/industrial-report-qa-final",
+  "screenshot_directory": "/Users/fengjikui/Documents/dev-coding/codex_build/vla_data_pipeline/.build/rebrand/browser-qa",
   "scope": "Offline HTML interactions and layout; not model or robot capability validation"
 }

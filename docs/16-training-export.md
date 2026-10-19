@@ -141,7 +141,7 @@ uv pip freeze --python .venv-cpu/bin/python > data/cpu-environment.txt
 .venv-cpu/bin/python -m vla_pipeline.training --release data/g1-demo/store/releases/<release_id> --output data/g1-demo/training-cpu --steps 20 --threads 1
 ```
 
-Windows 将 `.venv-cpu/bin/python` 换成 `.venv-cpu/Scripts/python.exe`。macOS 的 Torch 常规 wheel 即 CPU/MPS 包，应使用常规 PyPI 而非假定存在相同 CPU 索引。此独立 CPU 环境不是本项目 uv.lock 的完全重现，首次验收后保存其 freeze、Python 和平台记录；严格内网复现应使用这份独立环境的固定依赖/wheel 清单。
+Windows 将 `.venv-cpu/bin/python` 换成 `.venv-cpu/Scripts/python.exe`。上述 CPU 安装源面向 Linux／Windows；其他平台应按官方支持选择安装源与对应 wheel。此独立 CPU 环境不是本项目 uv.lock 的完全重现，首次验收后保存其 freeze、Python 和平台记录；严格内网复现应使用这份独立环境的固定依赖/wheel 清单。
 
 ## 5. LeRobot 是另一种正式训练数据布局
 
@@ -189,7 +189,7 @@ validation 使用不同目录和 repo_id 单独导出。`repo-id` 是本地 SDK 
 .venv-lerobot/bin/python scripts/verify_lerobot_export.py --release data/g1-demo/store/releases/<release_id> --raw-root data/g1-demo/store/raw --source g1_edu_synthetic --output-root data/g1-demo/lerobot-acceptance --report-dir reports/local-sdk-check
 ```
 
-本次已经在 macOS arm64 的独立官方 SDK 环境执行；结果和版本见 [验收记录](../reports/g1-edu-2026-10-08/acceptance.md)。基础 CI 与 SDK 的跨平台情况分别说明。macOS 环境出现 PyAV/系统 FFmpeg 动态库重复类的非致命告警；本次回读与窗口检查通过，但这仍是平台兼容性事项，不能扩展为全部环境已验证。
+本次已经在本机 ARM64 的独立官方 SDK 环境执行；结果和版本见 [验收记录](../reports/g1-edu-2026-10-08/acceptance.md)。基础 CI 与 SDK 的跨平台情况分别说明。本机环境出现 PyAV/系统 FFmpeg 动态库重复类的非致命告警；本次回读与窗口检查通过，但这仍是平台兼容性事项，不能扩展为全部环境已验证。
 
 ## 6. “格式可读取”之后，如何进入选定模型
 

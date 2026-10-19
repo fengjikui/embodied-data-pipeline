@@ -24,7 +24,7 @@
 
 数据与训练报告更新后，先确保 `reports/acceptance.json` 与 `reports/training_probe.json` 的 release ID 一致，再运行 `scripts/build_offline_report.py`。它会读取本机已缓存原始视频，不需要重新下载全部数据。
 
-`scripts/build_presentation.mjs` 是本次汇报制作脚本，使用 Codex 随附的 `@oai/artifact-tool` 和演示文稿校验工具。它们**不是数据 Pipeline 的运行依赖**；公司服务器只需安装 `pyproject.toml` 指定的数据处理依赖。PPTX 可以直接用办公室软件编辑，无须安装报告制作工具。
+`scripts/build_presentation.mjs` 是本次汇报制作脚本，使用独立制稿环境中的 `@oai/artifact-tool` 和演示文稿校验工具。它们**不是数据 Pipeline 的运行依赖**；公司服务器只需安装 `pyproject.toml` 指定的数据处理依赖。PPTX 可以直接用办公室软件编辑，无须安装报告制作工具。
 
 若在具有同样制稿工具的环境重新生成，需要设置 `PROJECT_ROOT、PRESENTATIONS_SKILL、RUNTIME_PYTHON、RUNTIME_NODE_MODULES`，使 Node 能解析 `@oai/artifact-tool`。最终输出不能覆盖既有文件，重新生成前请另存旧稿，或通过 `DECK_FILENAME` 指定新名称。
 

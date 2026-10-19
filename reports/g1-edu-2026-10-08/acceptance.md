@@ -44,7 +44,7 @@ train loss 下降仅是接口验证，validation MSE 为 0.76562；不能由此�
 
 SDK 产物保留来源锁、recipe 和统计 sidecar；验收 JSON 含每个导出文件 SHA256。sidecar 是审计信息，不自动替换 SDK 的模型统计。缺失真实关节语义仍标未知；SDK 正式格式可读取不代表物理命令可执行。
 
-官方 SDK 实际执行平台为 **macOS arm64**；不声称已在 Linux/Windows 执行可选 SDK、GPU 或机器人环境。运行中观察到 PyAV 与系统 FFmpeg 重复动态库类的非致命告警，本次回读/窗口/标签检查通过；目标环境仍须单独验证。Ubuntu 24.04 与 Windows 各通过 40 项测试（0 skipped）、CLI 与 wheel 构建；[实际 CI 运行](https://github.com/fengjikui/vla_data_pipeline/actions/runs/37755702032)，[运行及测试计数](ci.json)。验证代码 commit 为 `d9fff32d701ad001ce1517b36e61d928be38be4c`，之后文档证据归档不改变数据包代码哈希。
+官方 SDK 实际执行平台为 **本机 ARM64**；不声称已在 Linux/Windows 执行可选 SDK、GPU 或机器人环境。运行中观察到 PyAV 与系统 FFmpeg 重复动态库类的非致命告警，本次回读/窗口/标签检查通过；目标环境仍须单独验证。Ubuntu 24.04 与 Windows 各通过 40 项测试（0 skipped）、CLI 与 wheel 构建；[实际 CI 运行](https://github.com/fengjikui/embodied-data-pipeline/actions/runs/37755702032)，[运行及测试计数](ci.json)。验证代码 commit 为 `d9fff32d701ad001ce1517b36e61d928be38be4c`，之后文档证据归档不改变数据包代码哈希。
 
 ## 复现入口
 
