@@ -21,6 +21,6 @@
   },
   "errors": [],
   "remoteRequests": [],
-  "screenshot_directory": "/Users/fengjikui/Documents/dev-coding/codex_build/vla_data_pipeline/.build/rebrand/browser-qa",
+  "screenshot_directory": ".build/rebrand/browser-qa",
   "scope": "Offline HTML interactions and layout; not model or robot capability validation"
 }

@@ -1,0 +1,47 @@
+{
+  "schema": "local_project_directory_relocation_v1",
+  "checked_on": "2026-10-19",
+  "old_directory_name": "vla_data_pipeline",
+  "new_directory_name": "embodied-data-pipeline",
+  "scope": "本机同一系统内的目录改名与路径修复，不表示虚拟环境可以跨系统搬运。",
+  "local_environment_repair": {
+    "files_updated": 99,
+    "package_record_files_updated": 22,
+    "environments": [
+      ".venv",
+      ".build/lerobot-env"
+    ],
+    "font_cache_config_updated": true
+  },
+  "verification": {
+    "core_tests_passed": 52,
+    "handbook_tests_passed": 10,
+    "source_document_path_scan_files": 109,
+    "old_absolute_root_in_source_documents": 0,
+    "local_markdown_links_valid": true,
+    "cli_entrypoint_verified": true,
+    "editable_package_imports_from_new_root": true,
+    "wheel_built": "dist/vla_data_pipeline-0.2.0-py3-none-any.whl",
+    "real_cached_source_episodes": 18,
+    "real_training_windows": 590,
+    "real_output_integrity_verified": true,
+    "official_sdk_inference_shape": [
+      2,
+      8,
+      28
+    ],
+    "label_passed_as_input": false,
+    "robot_command_sent": false,
+    "industrial_local_artifacts_checked": [
+      "immutable_release",
+      "BC_checkpoint",
+      "PPO_checkpoint",
+      "ACT_checkpoint_bundle",
+      "all_SDK_export_files"
+    ]
+  },
+  "historical_training_commands_preserved": true,
+  "checkpoint_bundles_unchanged": true,
+  "pre_existing_user_edit_preserved": true,
+  "historical_paths_note": "历史训练命令与检查点配置保留原始路径。重新运行时显式指定当前数据目录和新输出目录；当前截图位置使用仓库相对路径。"
+}

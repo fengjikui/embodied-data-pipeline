@@ -1,5 +1,11 @@
 # Linux / Ubuntu、Windows 与内网部署
 
+项目目录统一使用 `embodied-data-pipeline`。下文命令从仓库根目录执行；代码按文件位置或显式参数解析数据路径，不依赖某台开发电脑的绝对目录。
+
+移动本地目录后，已打开的终端应重新进入新目录；已激活的环境先执行 `deactivate`，再从新目录激活。跨平台迁移仍须按本章重建环境，不能把本机目录改名后的验证结果视为任意系统可直接搬运虚拟环境。历史训练日志与检查点中的命令保留原始记录；重新运行时使用当前数据路径和新的输出目录，不照抄其中的旧绝对路径。
+
+Python 包名 `vla_pipeline`、命令行 `vla-pipeline` 与现有 wheel 名称保留兼容，因此仓库目录改名后原有命令保持不变。
+
 ## 1. 目标环境与适配范围
 
 生产研究环境建议优先按 **Ubuntu 24.04 / x86_64 / Python 3.12** 验证，兼容 Windows 的数据工程入口。Ubuntu 22.04、ARM Linux、WSL 和其他服务器组合应在对应环境跑同一验收，不能由本机结果直接外推。真实 VLA 的 CUDA、GPU 驱动与模型库应按所选模型单独固定。
@@ -88,7 +94,7 @@ Linux：
 
 ```bash
 .venv/bin/python -m pip install --no-index --find-links wheelhouse -r requirements-base.txt
-.venv/bin/python -m pip install --no-index --no-deps dist/vla_data_pipeline-0.1.0-py3-none-any.whl
+.venv/bin/python -m pip install --no-index --no-deps dist/vla_data_pipeline-0.2.0-py3-none-any.whl
 .venv/bin/python -m vla_pipeline.cli run --root /srv/vla-data --offline
 ```
 
@@ -96,7 +102,7 @@ Windows：
 
 ```powershell
 .venv\Scripts\python.exe -m pip install --no-index --find-links wheelhouse -r requirements-base.txt
-.venv\Scripts\python.exe -m pip install --no-index --no-deps dist\vla_data_pipeline-0.1.0-py3-none-any.whl
+.venv\Scripts\python.exe -m pip install --no-index --no-deps dist\vla_data_pipeline-0.2.0-py3-none-any.whl
 .venv\Scripts\python.exe -m vla_pipeline.cli run --root D:\vla-data --offline
 ```
 
